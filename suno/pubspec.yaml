@@ -48,6 +48,31 @@ flutter:
   assets:
     - assets/netflix.png
     - assets/spotify.png
+    - assets/adobe_creative.jpeg
+    - assets/amazon_primevideo.png
+    - assets/apple_music.jpg
+    - assets/apple_tv.png
+    - assets/crunchyroll.png
+    - assets/deezer.jpg
+    - assets/globoplay.png
+    - assets/looke.png
+    - assets/office.png
+    - assets/telecineplay.png
+    - assets/youtube_music.jpg
+    - assets/youtube_premium.jpg
+    - assets/linkedin_premium.jpeg
+    - assets/kindle_unlimited.png
+    - assets/viki.png
+    - assets/apple_arcade.jpeg
+    - assets/stadia.jpg
+    - assets/psn.png
+    - assets/xbox_live.jpg
+    - assets/ea_access.png
+    - assets/xbox_gamepass.jpg
+    - assets/nintendo_online.jpg
+    - assets/disney_pluss.png
+    - assets/hulu.png
+    - assets/hbo.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

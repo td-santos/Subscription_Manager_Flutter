@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:suno/widgets/CardItemList.dart';
-
 import 'AddAssinatra.dart';
 
 class Home extends StatefulWidget {
@@ -43,8 +42,8 @@ class _HomeState extends State<Home> {
         ],
       ),
       body: SafeArea(
-          child: SingleChildScrollView(
         child: Container(
+          height: height,
           child: Column(
             children: <Widget>[
               Padding(
@@ -68,8 +67,7 @@ class _HomeState extends State<Home> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Text("Total: ",
-                          style: TextStyle(fontSize: 25, color: Colors.grey)
-                        ),
+                            style: TextStyle(fontSize: 25, color: Colors.grey)),
                         Text(
                           "240,99",
                           style: TextStyle(fontSize: 40, color: Colors.grey),
@@ -79,50 +77,19 @@ class _HomeState extends State<Home> {
                   ),
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(left: 15, right: 15, top: 15),
-                child: CardItemList(
-                  imagemUrl: "assets/netflix.png",
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: 15, right: 15, top: 15),
-                child: CardItemList(
-                  imagemUrl: "assets/spotify.png",
-                ),
-              ),
-
-              Padding(
-                padding: EdgeInsets.only(left: 15, right: 15, top: 15),
-                child: CardItemList(
-                  imagemUrl: "assets/netflix.png",
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: 15, right: 15, top: 15),
-                child: CardItemList(
-                  imagemUrl: "assets/spotify.png",
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: 15, right: 15, top: 15),
-                child: CardItemList(
-                  imagemUrl: "assets/netflix.png",
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: 15, right: 15, top: 15),
-                child: CardItemList(
-                  imagemUrl: "assets/spotify.png",
-                ),
-              ),
-              SizedBox(
-                height: 30,
+              Expanded(
+                child: ListView.builder(
+                    itemCount: mapLogos.length,
+                    itemBuilder: (context, index) {
+                      return CardItemList(
+                        imagemUrl: mapLogos[index],
+                      );
+                    }),
               )
             ],
           ),
         ),
-      )),
+      ),
     );
   }
 }

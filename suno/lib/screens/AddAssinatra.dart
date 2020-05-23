@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:suno/widgets/ContainerOption.dart';
 
@@ -10,12 +8,66 @@ class AddAssinatura extends StatefulWidget {
 
 class _AddAssinaturaState extends State<AddAssinatura> {
   double valueSlide;
-  bool planB,planP,planPr =false;
-  bool recU,recM,recA = false;
+  bool planB, planP, planPr = false;
+  bool recU, recM, recA = false;
+  String urlLogo;
 
   TextEditingController _controllerAssinatura = TextEditingController();
   TextEditingController _controllerDesc = TextEditingController();
-  String plano,recorrencia;
+  String plano, recorrencia;
+
+  showDialogLogos() {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+              backgroundColor: Colors.transparent,
+              //title: Text("Logos"),
+              content: Container(
+                padding: EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                    color: Colors.grey[900],
+                    borderRadius: BorderRadius.circular(17)),
+                child: SingleChildScrollView(
+                  child: SizedBox(
+                    height: 500,
+                    width: 400,
+                    child: GridView.builder(
+                      itemCount: mapLogos.length,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 3,
+                        crossAxisSpacing: 10,
+                        mainAxisSpacing: 10,
+                      ),
+                      itemBuilder: (context, index) {
+                        return GestureDetector(
+                          onTap: () {
+                            Navigator.pop(context);
+                            Future.delayed(Duration(milliseconds: 300), () {
+                              setState(() {
+                                urlLogo = mapLogos[index];
+                              });
+                            });
+                          },
+                          child: Container(
+                            height: 60,
+                            width: 60,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(15),
+                              child: Image.asset(
+                                mapLogos[index],
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ),
+              ));
+        });
+  }
 
   @override
   void initState() {
@@ -48,17 +100,18 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                   },
                 ),
                 GestureDetector(
-                  onTap: (){
-
+                  onTap: () {
                     print("Assinatura: ${_controllerAssinatura.text}\n");
                     print("Plano: ${plano}\n");
                     print("Recorrência: ${recorrencia}\n");
-                    print("Valor: ${valueSlide.toStringAsFixed(2).toString()}\n");
+                    print(
+                        "Valor: ${valueSlide.toStringAsFixed(2).toString()}\n");
                     print("Descricao: ${_controllerDesc.text}\n");
+                    print("logo: ${urlLogo}\n");
                   },
-                                  child: Container(
-                      padding:
-                          EdgeInsets.only(left: 16, right: 16, top: 4, bottom: 4),
+                  child: Container(
+                      padding: EdgeInsets.only(
+                          left: 16, right: 16, top: 4, bottom: 4),
                       decoration: BoxDecoration(
                           color: Colors.blue,
                           borderRadius: BorderRadius.circular(10)),
@@ -68,13 +121,13 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                 )
               ],
             ),
-
-            SizedBox(height: 40,),
-
+            SizedBox(
+              height: 40,
+            ),
             Text("Add"),
-
-            SizedBox(height: 20,),
-
+            SizedBox(
+              height: 20,
+            ),
             Container(
               padding:
                   EdgeInsets.only(top: 20, left: 15, right: 15, bottom: 20),
@@ -86,8 +139,8 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                   Row(
                     children: <Widget>[
                       Flexible(
-                        child: TextField(     
-                          controller: _controllerAssinatura,                     
+                        child: TextField(
+                          controller: _controllerAssinatura,
                           keyboardType: TextInputType.text,
                           decoration: InputDecoration(
                               hintText: "Assinatura",
@@ -98,21 +151,33 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                       ),
                       Padding(
                         padding: EdgeInsets.only(left: 10),
-                        child: Container(
-                          height: 50,
-                          width: 50,
-                          decoration: BoxDecoration(
-                              color: Colors.blue,
-                              borderRadius: BorderRadius.circular(15)),
-                          child: Icon(
-                            Icons.blur_on,
-                            size: 30,
+                        child: GestureDetector(
+                          onTap: () {
+                            showDialogLogos();
+                          },
+                          child: Container(
+                            height: 50,
+                            width: 50,
+                            decoration: BoxDecoration(
+                                color: Colors.blue,
+                                borderRadius: BorderRadius.circular(15)),
+                            child: urlLogo == null
+                                ? Icon(
+                                    Icons.blur_on,
+                                    size: 30,
+                                  )
+                                : ClipRRect(
+                                    borderRadius: BorderRadius.circular(15),
+                                    child: Image.asset(
+                                      urlLogo,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
                           ),
                         ),
                       )
                     ],
                   ),
-                  
                   SizedBox(
                     height: 40,
                   ),
@@ -123,33 +188,32 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                         width: 10,
                       ),
                       GestureDetector(
-                        onTap: (){
+                        onTap: () {
                           setState(() {
-                            planP=false;
+                            planP = false;
                             planPr = false;
-                            planB =true;
-                            plano ="Básico";
+                            planB = true;
+                            plano = "Básico";
                           });
                         },
-                                              child: ContainerOption(
+                        child: ContainerOption(
                           selected: planB,
                           texto: "Básico",
-                          
                         ),
                       ),
                       SizedBox(
                         width: 10,
                       ),
                       GestureDetector(
-                        onTap: (){
+                        onTap: () {
                           setState(() {
-                            planP=true;
+                            planP = true;
                             planPr = false;
-                            planB =false;
-                            plano ="Padrao";
+                            planB = false;
+                            plano = "Padrao";
                           });
                         },
-                                              child: ContainerOption(
+                        child: ContainerOption(
                           selected: planP,
                           texto: "Padrão",
                         ),
@@ -158,15 +222,15 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                         width: 10,
                       ),
                       GestureDetector(
-                        onTap: (){
+                        onTap: () {
                           setState(() {
-                            planP=false;
+                            planP = false;
                             planPr = true;
-                            planB =false;
-                            plano ="Premium";
+                            planB = false;
+                            plano = "Premium";
                           });
                         },
-                                              child: ContainerOption(
+                        child: ContainerOption(
                           selected: planPr,
                           texto: "Premium",
                         ),
@@ -183,15 +247,15 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                         width: 10,
                       ),
                       GestureDetector(
-                        onTap: (){
+                        onTap: () {
                           setState(() {
-                            recU=true;
+                            recU = true;
                             recM = false;
-                            recA =false;
+                            recA = false;
                             recorrencia = "Única";
                           });
                         },
-                                              child: ContainerOption(
+                        child: ContainerOption(
                           selected: recU,
                           texto: "Única",
                         ),
@@ -200,15 +264,15 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                         width: 10,
                       ),
                       GestureDetector(
-                        onTap: (){
+                        onTap: () {
                           setState(() {
-                            recU=false;
+                            recU = false;
                             recM = true;
-                            recA =false;
+                            recA = false;
                             recorrencia = "Mensal";
                           });
                         },
-                                              child: ContainerOption(
+                        child: ContainerOption(
                           selected: recM,
                           texto: "Mensal",
                         ),
@@ -217,15 +281,15 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                         width: 10,
                       ),
                       GestureDetector(
-                        onTap: (){
+                        onTap: () {
                           setState(() {
-                            recU=false;
+                            recU = false;
                             recM = false;
-                            recA =true;
+                            recA = true;
                             recorrencia = "Anual";
                           });
                         },
-                                              child: ContainerOption(
+                        child: ContainerOption(
                           selected: recA,
                           texto: "Anual",
                         ),
@@ -287,7 +351,6 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                   TextField(
                     controller: _controllerDesc,
                     maxLines: 4,
-                    
                     keyboardType: TextInputType.text,
                     decoration: InputDecoration(
                         hintText: "Descriçao",
@@ -304,3 +367,33 @@ class _AddAssinaturaState extends State<AddAssinatura> {
     );
   }
 }
+
+Map<int, String> mapLogos = {
+  0: "assets/netflix.png",
+  1: "assets/spotify.png",
+  2: "assets/adobe_creative.jpeg",
+  3: "assets/amazon_primevideo.png",
+  4: "assets/apple_music.jpg",
+  5: "assets/apple_tv.png",
+  6: "assets/crunchyroll.png",
+  7: "assets/deezer.jpg",
+  8: "assets/globoplay.png",
+  9: "assets/looke.png",
+  10: "assets/office.png",
+  11: "assets/telecineplay.png",
+  12: "assets/youtube_music.jpg",
+  13: "assets/youtube_premium.jpg",
+  14: "assets/linkedin_premium.jpeg",
+  15: "assets/kindle_unlimited.png",
+  16: "assets/viki.png",
+  17: "assets/apple_arcade.jpeg",
+  18: "assets/stadia.jpg",
+  19: "assets/psn.png",
+  20: "assets/xbox_live.jpg",
+  21: "assets/ea_access.png",
+  22: "assets/xbox_gamepass.jpg",
+  23: "assets/nintendo_online.jpg",
+  24: "assets/disney_pluss.png",
+  25: "assets/hulu.png",
+  26: "assets/hbo.png",
+};

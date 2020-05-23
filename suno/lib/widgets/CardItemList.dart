@@ -7,7 +7,8 @@ class CardItemList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Padding(padding: EdgeInsets.only(left: 15, bottom: 10, right: 15),
+    child: Container(
       padding: EdgeInsets.all(15),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
@@ -75,6 +76,7 @@ class CardItemList extends StatelessWidget {
           )
         ],
       ),
+    ),
     );
   }
 }
