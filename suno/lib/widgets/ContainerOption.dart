@@ -13,7 +13,7 @@ class ContainerOption extends StatelessWidget {
                         width: 60,
                         decoration: BoxDecoration(
                             color: Colors.grey[900],
-                            border:Border.all(color: selected ==true? Colors.teal[300]: Colors.transparent, width: 1),
+                            border:Border.all(color: selected ==true? Colors.amber[800]: Colors.transparent, width: 1),
                             borderRadius: BorderRadius.circular(10)),
                         child: Center(
                           child: Text(

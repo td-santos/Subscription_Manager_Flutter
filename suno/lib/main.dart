@@ -5,7 +5,10 @@ void main() {
   runApp(MaterialApp(
     home: Home(),
     debugShowCheckedModeBanner: false,
-    theme: ThemeData.dark(),
+    theme: ThemeData(
+      brightness: Brightness.dark,
+      accentColor: Colors.amber[700]
+    ),
   ));
 }
 

@@ -14,6 +14,8 @@ class _AddAssinaturaState extends State<AddAssinatura> {
 
   TextEditingController _controllerAssinatura = TextEditingController();
   TextEditingController _controllerDesc = TextEditingController();
+  TextEditingController _controllerNota = TextEditingController();
+  TextEditingController _controllerMetPG = TextEditingController();
   String plano, recorrencia;
 
   showDialogLogos() {
@@ -113,21 +115,21 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                       padding: EdgeInsets.only(
                           left: 16, right: 16, top: 4, bottom: 4),
                       decoration: BoxDecoration(
-                          color: Colors.blue,
+                          color: Colors.amber[700],
                           borderRadius: BorderRadius.circular(10)),
                       child: Center(
-                        child: Text("Save"),
+                        child: Text(
+                          "Save",
+                          style: TextStyle(color: Colors.grey[900]),
+                        ),
                       )),
                 )
               ],
             ),
             SizedBox(
-              height: 40,
+              height: 25,
             ),
-            Text("Add"),
-            SizedBox(
-              height: 20,
-            ),
+            
             Container(
               padding:
                   EdgeInsets.only(top: 20, left: 15, right: 15, bottom: 20),
@@ -156,14 +158,22 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                             showDialogLogos();
                           },
                           child: Container(
-                            height: 50,
-                            width: 50,
+                            height: 45,
+                            width: 45,
                             decoration: BoxDecoration(
-                                color: Colors.blue,
-                                borderRadius: BorderRadius.circular(15)),
+                                color: Colors.amber[700],
+                                //border: Border.all(color: Colors.amber[700]),
+                                borderRadius: BorderRadius.circular(15),
+                                boxShadow: [
+                                  BoxShadow(
+                                      offset: Offset(-3, 3),
+                                      blurRadius: 7,
+                                      color: Colors.grey[900])
+                                ]),
                             child: urlLogo == null
                                 ? Icon(
-                                    Icons.blur_on,
+                                    Icons.style,
+                                    color: Colors.grey[850],
                                     size: 30,
                                   )
                                 : ClipRRect(
@@ -296,19 +306,28 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                       ),
                     ],
                   ),
+                  SizedBox(
+                    height: 25,
+                  ),
+                  TextField(
+                    controller: _controllerNota,
+                    maxLines: 2,
+                    keyboardType: TextInputType.text,
+                    decoration: InputDecoration(
+                        hintText: "Nota (opicional)",
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        )),
+                  ),
                 ],
               ),
             ),
             SizedBox(
-              height: 20,
+              height: 30,
             ),
-            Text("PG"),
-            SizedBox(
-              height: 10,
-            ),
+            
             Container(
-              padding:
-                  EdgeInsets.only(top: 20, left: 15, right: 15, bottom: 20),
+              padding: EdgeInsets.only(top: 20, left: 15, right: 15, bottom: 20),
               decoration: BoxDecoration(
                   color: Colors.grey[850],
                   borderRadius: BorderRadius.circular(15)),
@@ -320,40 +339,80 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                         color: Colors.grey[900],
                         borderRadius: BorderRadius.circular(15)),
                     child: Padding(
-                      padding: EdgeInsets.all(15),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Text(
-                            "${valueSlide.toStringAsFixed(2)}",
-                            style: TextStyle(fontSize: 40),
-                          ),
-                          Column(
-                            children: <Widget>[
-                              Slider(
-                                max: 200,
-                                value: valueSlide,
-                                onChanged: (value) {
-                                  setState(() {
-                                    valueSlide = value;
-                                  });
-                                },
-                              )
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
+                        padding: EdgeInsets.all(15),
+                        child: Column(
+                          children: <Widget>[
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Text(
+                                  "${valueSlide.toStringAsFixed(2)}",
+                                  style: TextStyle(fontSize: 37),
+                                ),
+                                Column(
+                                  children: <Widget>[
+                                    Slider(
+                                      activeColor: Colors.amber[700],
+                                      max: 200,
+                                      value: valueSlide,
+                                      onChanged: (value) {
+                                        setState(() {
+                                          valueSlide = value;
+                                        });
+                                      },
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                            SizedBox(height: 20,),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Text("Primeiro pagamento:  ",style: TextStyle(color: Colors.white.withAlpha(80)),),
+                                Row(
+                                  children: <Widget>[
+                                    Text(
+                                      "22/05/2020",
+                                      style: TextStyle(
+                                          fontSize: 17,
+                                          color: Colors.white.withAlpha(170),
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                    SizedBox(
+                                      width: 15,
+                                    ),
+                                    GestureDetector(
+                                      child: Icon(Icons.edit,color: Colors.white.withAlpha(170),),
+                                    )
+                                  ],
+                                )
+                              ],
+                            ),
+                          ],
+                        )),
                   ),
                   SizedBox(
                     height: 25,
+                  ),
+                  TextField(
+                    controller: _controllerMetPG,
+                    keyboardType: TextInputType.text,
+                    decoration: InputDecoration(
+                        hintText: "Método de pagamento  (opicional)",
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        )),
+                  ),
+                  SizedBox(
+                    height: 10,
                   ),
                   TextField(
                     controller: _controllerDesc,
                     maxLines: 4,
                     keyboardType: TextInputType.text,
                     decoration: InputDecoration(
-                        hintText: "Descriçao",
+                        hintText: "Descriçao (opicional)",
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15),
                         )),
