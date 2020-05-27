@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 
 class CardItemList extends StatelessWidget {
   final String imagemUrl;
+  final String nome;
+  final String valor;
+  final String plano;
+  final String recorrencia;
 
-  const CardItemList({Key key, this.imagemUrl}) : super(key: key);
+  const CardItemList({Key key, this.imagemUrl, this.nome, this.valor, this.plano, this.recorrencia}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -53,13 +57,13 @@ class CardItemList extends StatelessWidget {
                     width: 10,
                   ),
                   Text(
-                    "Nome ... ... .. .",
+                    "$nome",
                     style: TextStyle(fontSize: 20),
                   )
                 ],
               ),
               Text(
-                "33.33",
+                "$valor",
                 style: TextStyle(fontSize: 20),
               )
             ],
@@ -70,8 +74,8 @@ class CardItemList extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Text("Plano: Premium"),
-              Text("Recorrencia: Mensal")
+              Text("Plano: $plano"),
+              Text("Recorrencia: $recorrencia")
             ],
           )
         ],

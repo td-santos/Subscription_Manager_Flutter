@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:suno/controles/AssinaturaDB.dart';
+import 'package:suno/model/Assinatura.dart';
 import 'package:suno/widgets/CardItemList.dart';
 import 'AddAssinatra.dart';
 
@@ -8,10 +11,53 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+  AssinaturaDB assDB = AssinaturaDB();
+  List<Assinatura> listaAssinaturas = List();
+  var total;
+  var formatMMyyyy = DateFormat("MM/yyyy");
+  var dataAtual = new DateTime.now();
+  String totalAssinaturas;
+  
+
+  String format(double n) {
+    return n.toStringAsFixed(n.truncateToDouble() == n ? 0 : 2);
+  }
+
+  _allMovMes(String data) {
+    assDB.getAllAssinaturasPorMes(data).then((list) {
+      if (list.isNotEmpty) {
+        setState(() {
+          listaAssinaturas = list;
+          //total =listmovimentacoes.map((item) => item.valor).reduce((a, b) => a + b);
+        });
+        total = listaAssinaturas.map((item) => item.valor).reduce((a, b) => a + b);
+        totalAssinaturas = format(total).toString();
+      } else {
+        setState(() {
+          listaAssinaturas.clear();
+          total = 0;
+          totalAssinaturas = total.toString();
+        });
+      }
+
+      //print("TOTAL: $total");
+      //print("All MovMES: $listmovimentacoes");
+    });
+  }
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _allMovMes(formatMMyyyy.format(dataAtual));
+  }
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+
+    _allMovMes(formatMMyyyy.format(dataAtual));
 
     return Scaffold(
       backgroundColor: Colors.grey[900],
@@ -69,7 +115,7 @@ class _HomeState extends State<Home> {
                         Text("Total: ",
                             style: TextStyle(fontSize: 25, color: Colors.grey)),
                         Text(
-                          "240,99",
+                          totalAssinaturas,
                           style: TextStyle(fontSize: 40, color: Colors.grey),
                         ),
                       ],
@@ -79,10 +125,16 @@ class _HomeState extends State<Home> {
               ),
               Expanded(
                 child: ListView.builder(
-                    itemCount: mapLogos.length,
+                    itemCount: listaAssinaturas.length,
                     itemBuilder: (context, index) {
+                      Assinatura ass = listaAssinaturas[index];
                       return CardItemList(
-                        imagemUrl: mapLogos[index],
+                        nome: ass.assinaturaName,
+                        imagemUrl: ass.urlLogo,
+                        valor: ass.valor.toString(),
+                        plano: ass.plano,
+                        recorrencia: ass.recorrencia,
+
                       );
                     }),
               )

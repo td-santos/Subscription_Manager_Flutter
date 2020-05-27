@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
+import 'package:suno/controles/AssinaturaDB.dart';
+import 'package:suno/model/Assinatura.dart';
 import 'package:suno/widgets/ContainerOption.dart';
 
 class AddAssinatura extends StatefulWidget {
@@ -10,6 +12,7 @@ class AddAssinatura extends StatefulWidget {
 
 class _AddAssinaturaState extends State<AddAssinatura> {
   double valueSlide;
+  double valor;
   bool planB, planP, planPr = false;
   bool recU, recM, recA = false;
   String urlLogo;
@@ -28,22 +31,32 @@ class _AddAssinaturaState extends State<AddAssinatura> {
     if(_controllerAssinatura.text != null && plano != null && recorrencia != null && valueSlide != 0 ){
 
       if(iconSelecionado != null || urlLogo != null){
-        print("Assinatura: ${_controllerAssinatura.text}\n");
-        print("Plano: ${plano}\n");
-        print("Recorrência: ${recorrencia}\n");
-        print("Nota: ${_controllerNota.text}\n");
-        print("Valor: ${valueSlide.toStringAsFixed(2).toString()}\n");
-        print("Data inicio: ${dataInicioPG}\n");
-        print("Método Pg: ${_controllerMetPG.text}\n");
-        print("Descricao: ${_controllerDesc.text}\n");
+        valor = double.parse(valueSlide.toStringAsFixed(2).toString());
+        Assinatura ass = Assinatura();
+        ass.assinaturaName = _controllerAssinatura.text;
+        ass.plano = plano;
+        ass.recorrencia = recorrencia;
+        ass.nota = _controllerNota.text;
+        ass.valor = valor;
+        ass.data = dataInicioPG;
+        ass.metodoPG = _controllerMetPG.text;
+        ass.descricao = _controllerDesc.text;
+        
 
         if(urlLogo == null ){
-          print("icon: ${iconSelecionado}\n");  
+          //print("icon: ${iconSelecionado}\n");  
            
         }else{
-          print("\nlogo: ${urlLogo}\n");
+          ass.urlLogo = urlLogo;
+          //print("\nlogo: ${urlLogo}\n");
+
         }
+        print(ass.toString());
+        
+          AssinaturaDB assDB = AssinaturaDB();
+          assDB.saveAssinatura(ass);
           print("\nSalvo");
+          Navigator.pop(context);
         } else{
           print("Preencha");
         }     
