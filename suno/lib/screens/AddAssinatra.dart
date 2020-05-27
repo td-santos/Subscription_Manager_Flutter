@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:intl/intl.dart';
 import 'package:suno/widgets/ContainerOption.dart';
 
 class AddAssinatura extends StatefulWidget {
@@ -11,12 +13,47 @@ class _AddAssinaturaState extends State<AddAssinatura> {
   bool planB, planP, planPr = false;
   bool recU, recM, recA = false;
   String urlLogo;
+  IconData iconSelecionado;
+  DateFormat format_ddMMyyy = DateFormat("dd/MM/yyyy");
+  String dataInicioPG;
 
   TextEditingController _controllerAssinatura = TextEditingController();
   TextEditingController _controllerDesc = TextEditingController();
   TextEditingController _controllerNota = TextEditingController();
   TextEditingController _controllerMetPG = TextEditingController();
   String plano, recorrencia;
+
+  salvar(){
+
+    if(_controllerAssinatura.text != null && plano != null && recorrencia != null && valueSlide != 0 ){
+
+      if(iconSelecionado != null || urlLogo != null){
+        print("Assinatura: ${_controllerAssinatura.text}\n");
+        print("Plano: ${plano}\n");
+        print("Recorrência: ${recorrencia}\n");
+        print("Nota: ${_controllerNota.text}\n");
+        print("Valor: ${valueSlide.toStringAsFixed(2).toString()}\n");
+        print("Data inicio: ${dataInicioPG}\n");
+        print("Método Pg: ${_controllerMetPG.text}\n");
+        print("Descricao: ${_controllerDesc.text}\n");
+
+        if(urlLogo == null ){
+          print("icon: ${iconSelecionado}\n");  
+           
+        }else{
+          print("\nlogo: ${urlLogo}\n");
+        }
+          print("\nSalvo");
+        } else{
+          print("Preencha");
+        }     
+
+    } else{
+      print("Preencha");
+    }
+    
+                   
+  }
 
   showDialogLogos() {
     showDialog(
@@ -31,44 +68,112 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                     color: Colors.grey[900],
                     borderRadius: BorderRadius.circular(17)),
                 child: SingleChildScrollView(
-                  child: SizedBox(
-                    height: 500,
-                    width: 400,
-                    child: GridView.builder(
-                      itemCount: mapLogos.length,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 3,
-                        crossAxisSpacing: 10,
-                        mainAxisSpacing: 10,
-                      ),
-                      itemBuilder: (context, index) {
-                        return GestureDetector(
-                          onTap: () {
-                            Navigator.pop(context);
-                            Future.delayed(Duration(milliseconds: 300), () {
-                              setState(() {
-                                urlLogo = mapLogos[index];
-                              });
-                            });
-                          },
-                          child: Container(
-                            height: 60,
-                            width: 60,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(15),
-                              child: Image.asset(
-                                mapLogos[index],
-                                fit: BoxFit.cover,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text("Padrão"),
+                      SizedBox(
+                        height: 60,
+                        width: 400,
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: mapIconLogos.length,
+                          itemBuilder: (context,index){
+                            return Padding(
+                              padding: EdgeInsets.only(right: 5),
+                              child: GestureDetector(
+                                onTap: (){
+                                  Navigator.pop(context);
+                                  Future.delayed(Duration(milliseconds: 300), () {
+                                    setState(() {
+                                      urlLogo =null;
+                                      iconSelecionado = mapIconLogos[index];
+                                    });
+                                  });
+                                },
+                              child: Container(
+                                height: 60,
+                                width: 60,                            
+                                decoration: BoxDecoration(
+                                  color: Colors.blue[900],
+                                  borderRadius: BorderRadius.circular(15), 
+                                ),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(15),
+                                  child: Icon(
+                                    mapIconLogos[index],
+                                    
+                                  ),
+                                ),
                               ),
                             ),
+                            );
+                          }
+                        ),
+                      ),
+                      SizedBox(height: 15,),
+                      Text('Teste'),
+                      SizedBox(height: 5,),
+                      SizedBox(
+                        height: 500,
+                        width: 400,
+                        child: GridView.builder(
+                          itemCount: mapLogos.length,
+                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 4,
+                            crossAxisSpacing: 10,
+                            mainAxisSpacing: 10,
                           ),
-                        );
-                      },
-                    ),
+                          itemBuilder: (context, index) {
+                            return GestureDetector(
+                              onTap: () {
+                                Navigator.pop(context);
+                                Future.delayed(Duration(milliseconds: 300), () {
+                                  setState(() {
+                                    urlLogo = mapLogos[index];
+                                  });
+                                });
+                              },
+                              child: Container(
+                                height: 60,
+                                width: 60,                            
+                                decoration: BoxDecoration(
+                                  color: Colors.blue[900],
+                                  borderRadius: BorderRadius.circular(15), 
+                                ),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(15),
+                                  child: Image.asset(
+                                    mapLogos[index],
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ));
         });
+  }
+
+  selectDate()async{
+    final dataPicker = await showDatePicker(
+      context: context, 
+      initialDate: DateTime.now(), 
+      firstDate: DateTime(2000), 
+      lastDate: DateTime(3000),
+      
+      );
+      if(dataPicker != null){
+        setState(() {
+          dataInicioPG = format_ddMMyyy.format(dataPicker);
+        });
+        
+      }
   }
 
   @override
@@ -76,6 +181,7 @@ class _AddAssinaturaState extends State<AddAssinatura> {
     // TODO: implement initState
     super.initState();
     valueSlide = 0;
+    dataInicioPG = format_ddMMyyy.format(DateTime.now());
   }
 
   @override
@@ -103,13 +209,7 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    print("Assinatura: ${_controllerAssinatura.text}\n");
-                    print("Plano: ${plano}\n");
-                    print("Recorrência: ${recorrencia}\n");
-                    print(
-                        "Valor: ${valueSlide.toStringAsFixed(2).toString()}\n");
-                    print("Descricao: ${_controllerDesc.text}\n");
-                    print("logo: ${urlLogo}\n");
+                    salvar();
                   },
                   child: Container(
                       padding: EdgeInsets.only(
@@ -172,7 +272,7 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                                 ]),
                             child: urlLogo == null
                                 ? Icon(
-                                    Icons.style,
+                                    iconSelecionado== null ? Icons.style: iconSelecionado,
                                     color: Colors.grey[850],
                                     size: 30,
                                   )
@@ -373,7 +473,7 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                                 Row(
                                   children: <Widget>[
                                     Text(
-                                      "22/05/2020",
+                                      dataInicioPG,
                                       style: TextStyle(
                                           fontSize: 17,
                                           color: Colors.white.withAlpha(170),
@@ -383,6 +483,9 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                                       width: 15,
                                     ),
                                     GestureDetector(
+                                      onTap: (){
+                                        selectDate();
+                                      },
                                       child: Icon(Icons.edit,color: Colors.white.withAlpha(170),),
                                     )
                                   ],
@@ -427,6 +530,26 @@ class _AddAssinaturaState extends State<AddAssinatura> {
   }
 }
 
+Map<int,dynamic> mapIconLogos ={
+  0: FontAwesomeIcons.music, //music
+  1: FontAwesomeIcons.gamepad,//game
+  2: FontAwesomeIcons.boxOpen,//misteryBox ou cube
+  3: FontAwesomeIcons.bookOpen,//livros
+  4: FontAwesomeIcons.palette,//design
+  5: FontAwesomeIcons.tv,//tv cabo
+  6: FontAwesomeIcons.graduationCap,//educaçao
+  7: FontAwesomeIcons.utensils,//comida
+  8: Icons.cast,//stream video
+  9: FontAwesomeIcons.users,//social media
+  10: FontAwesomeIcons.stethoscope,//saude
+  11: FontAwesomeIcons.googlePlay ,// apps
+  12: FontAwesomeIcons.cube,
+  13: FontAwesomeIcons.gem,
+  14: FontAwesomeIcons.question,
+  15: FontAwesomeIcons.rocketchat,
+  16: FontAwesomeIcons.wifi,
+};
+
 Map<int, String> mapLogos = {
   0: "assets/netflix.png",
   1: "assets/spotify.png",
@@ -455,4 +578,9 @@ Map<int, String> mapLogos = {
   24: "assets/disney_pluss.png",
   25: "assets/hulu.png",
   26: "assets/hbo.png",
+  27: "assets/slack.png",
+  28: "assets/figma.png",
+  29: "assets/sketch.png",
+  30: "assets/zoom2.png",
+  
 };

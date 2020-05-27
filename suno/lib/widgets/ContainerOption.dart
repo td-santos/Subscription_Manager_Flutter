@@ -9,18 +9,25 @@ class ContainerOption extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-                        height: 30,
-                        width: 60,
-                        decoration: BoxDecoration(
-                            color: Colors.grey[900],
-                            border:Border.all(color: selected ==true? Colors.amber[800]: Colors.transparent, width: 1),
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Center(
-                          child: Text(
-                            texto,
-                            style: TextStyle(fontSize: 10),
-                          ),
-                        ),
-                      );
+      height: 30,
+      width: 60,
+      decoration: BoxDecoration(
+          color: Colors.grey[900],
+          border: Border.all(
+              color: selected == true ? Colors.amber[800] : Colors.transparent,
+              width: 1),
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: selected == true ?[
+            BoxShadow(
+                offset: Offset(-3, 3), blurRadius: 7, color: Colors.black)
+          ]
+          :null),
+      child: Center(
+        child: Text(
+          texto,
+          style: TextStyle(fontSize: 10),
+        ),
+      ),
+    );
   }
 }
