@@ -17,7 +17,7 @@ class _HomeState extends State<Home> {
   var total;
   var formatMMyyyy = DateFormat("MM/yyyy");
   var dataAtual = new DateTime.now();
-  String totalAssinaturas;
+  String totalAssinaturas = "";
   
 
   String format(double n) {
@@ -49,7 +49,7 @@ class _HomeState extends State<Home> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    _allMovMes(formatMMyyyy.format(dataAtual));
+    //_allMovMes(formatMMyyyy.format(dataAtual));
   }
 
   @override
@@ -134,6 +134,10 @@ class _HomeState extends State<Home> {
                         valor: ass.valor.toString(),
                         plano: ass.plano,
                         recorrencia: ass.recorrencia,
+                        nota: ass.nota,
+                        metodoPG: ass.metodoPG,
+                        descricao: ass.descricao,
+                        data: ass.data,
 
                       );
                     }),

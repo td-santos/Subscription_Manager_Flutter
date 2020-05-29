@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:suno/screens/DetalheAssinatura.dart';
 
 class CardItemList extends StatelessWidget {
   final String imagemUrl;
@@ -6,13 +7,33 @@ class CardItemList extends StatelessWidget {
   final String valor;
   final String plano;
   final String recorrencia;
+  final String nota;
+  final String metodoPG;
+  final String descricao;
+  final String data;
 
-  const CardItemList({Key key, this.imagemUrl, this.nome, this.valor, this.plano, this.recorrencia}) : super(key: key);
+  const CardItemList({Key key, this.imagemUrl, this.nome, this.valor, this.plano, this.recorrencia, this.nota, this.metodoPG, this.descricao, this.data}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(padding: EdgeInsets.only(left: 15, bottom: 10, right: 15),
-    child: Container(
+    child: GestureDetector(
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(
+          builder: (context)=> DetalheAssinatura(
+            urlImage: imagemUrl,
+            valor: valor,
+            nome: nome,
+            plano: plano,
+            recorrencia: recorrencia,
+            nota: nota,
+            metodoPG: metodoPG,
+            descricao: descricao,
+            data: data
+          )
+          ));
+      },
+      child: Container(
       padding: EdgeInsets.all(15),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
@@ -80,6 +101,7 @@ class CardItemList extends StatelessWidget {
           )
         ],
       ),
+    ),
     ),
     );
   }
