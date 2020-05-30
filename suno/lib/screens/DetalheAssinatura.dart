@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:suno/controles/ControleBanco.dart';
 
 class DetalheAssinatura extends StatefulWidget {
   final String urlImage;
@@ -11,7 +12,17 @@ class DetalheAssinatura extends StatefulWidget {
   final String descricao;
   final String data;
 
-  const DetalheAssinatura({Key key, this.urlImage, this.valor, this.nome, this.plano, this.recorrencia, this.nota, this.metodoPG, this.descricao, this.data})
+  const DetalheAssinatura(
+      {Key key,
+      this.urlImage,
+      this.valor,
+      this.nome,
+      this.plano,
+      this.recorrencia,
+      this.nota,
+      this.metodoPG,
+      this.descricao,
+      this.data})
       : super(key: key);
 
   @override
@@ -19,6 +30,11 @@ class DetalheAssinatura extends StatefulWidget {
 }
 
 class _DetalheAssinaturaState extends State<DetalheAssinatura> {
+  delete() {
+    ControleBanco cb = ControleBanco();
+    cb.delete(context, widget.nome);
+  }
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -50,6 +66,9 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
                       Row(
                         children: <Widget>[
                           GestureDetector(
+                            onTap: () {
+                              delete();
+                            },
                             child: Container(
                                 padding: EdgeInsets.only(
                                     left: 16, right: 16, top: 4, bottom: 4),
@@ -63,7 +82,9 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
                                   ),
                                 )),
                           ),
-                          SizedBox(width: 10,),
+                          SizedBox(
+                            width: 10,
+                          ),
                           GestureDetector(
                             onTap: () {
                               //salvar();
@@ -155,7 +176,6 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
                                 ],
                               ),
                             ),
-
                             Divider(
                               color: Colors.grey[900],
                               height: 1,
@@ -224,6 +244,7 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
                                           color: Colors.white.withAlpha(80))),
                                   Text(
                                     widget.nota,
+                                    overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
                                         fontSize: 17,
                                         color: Colors.orange[700]),
@@ -252,7 +273,6 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
                                 ],
                               ),
                             ),
-
                             Divider(
                               color: Colors.grey[900],
                               height: 1,
@@ -267,10 +287,17 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
                                   Text("Descrição: ",
                                       style: TextStyle(
                                           color: Colors.white.withAlpha(80))),
-                                  Text(widget.descricao,
-                                      style: TextStyle(
-                                          fontSize: 17,
-                                          color: Colors.orange[700])),
+                                  Container(
+                                    //color: Colors.blue,
+                                    alignment: Alignment.centerRight,
+                                    width: width * 0.6,
+                                    child: Text(widget.descricao,
+                                        overflow: TextOverflow.ellipsis,
+                                         textAlign: TextAlign.right,
+                                        style: TextStyle(
+                                            fontSize: 17,
+                                            color: Colors.orange[700])),
+                                  ),
                                 ],
                               ),
                             ),

@@ -93,6 +93,9 @@ flutter:
     - assets/amazon_primevideo.jpg
     - assets/spotify.jpg
     - assets/spotify2.jpg
+    - assets/zoom.jpeg
+    - assets/apple_tv.jpg
+    - assets/slack.jpg
     
   #   - images/a_dot_ham.jpeg
 

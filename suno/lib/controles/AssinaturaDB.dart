@@ -51,9 +51,25 @@ class AssinaturaDB{
     return assinatura;
   }
 
+  Future<int> deleteAssinatura(String assinaturaName)async{
+    Database dbMovimentacoes = await db;
+    return await dbMovimentacoes.delete(assinaturaTABLE,
+      
+      where: "$assinaturaNameColumn =?",
+      whereArgs: [assinaturaName]
+    );
+  }
+
+ 
+
   Future<List> getAllAssinaturasPorMes(String data)async{
+    String dataDiaMes = data.substring(0,5);
+    //print(dataDiaMes);
     Database dbAssinaturas = await db;
-    List listMap = await dbAssinaturas.rawQuery("SELECT * FROM $assinaturaTABLE WHERE $dataColumn LIKE '%$data%'");
+    //List listMap = await dbAssinaturas.rawQuery("SELECT * FROM $assinaturaTABLE WHERE $dataColumn LIKE '%$data%'");
+    List listMap = await dbAssinaturas.rawQuery(
+      "SELECT * FROM $assinaturaTABLE WHERE ($recorrenciaColumn = 'mensal') OR ($recorrenciaColumn ='unica' AND  $dataColumn LIKE '%$data%') OR($recorrenciaColumn ='anual' AND  $dataColumn LIKE '%$dataDiaMes%')"
+      );
     List<Assinatura> listAssinaturas = List();
 
     for(Map m in listMap){

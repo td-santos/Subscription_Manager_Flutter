@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
-import 'package:suno/controles/AssinaturaDB.dart';
-import 'package:suno/model/Assinatura.dart';
+import 'package:suno/controles/ControleBanco.dart';
 import 'package:suno/widgets/ContainerOption.dart';
+import 'package:suno/widgets/DialogLogos.dart';
 
 class AddAssinatura extends StatefulWidget {
   @override
@@ -18,175 +18,66 @@ class _AddAssinaturaState extends State<AddAssinatura> {
   String urlLogo;
   IconData iconSelecionado;
   DateFormat format_ddMMyyy = DateFormat("dd/MM/yyyy");
+  DateFormat format_dd = DateFormat("dd");
+  DateFormat format_MM = DateFormat("MM");
+  DateFormat format_yyyy = DateFormat("yyyy");
   String dataInicioPG;
-
+  String plano, recorrencia;
   TextEditingController _controllerAssinatura = TextEditingController();
   TextEditingController _controllerDesc = TextEditingController();
   TextEditingController _controllerNota = TextEditingController();
   TextEditingController _controllerMetPG = TextEditingController();
-  String plano, recorrencia;
+  int dia,mes,ano;
 
-  salvar(){
+  salvar() {
 
-    if(_controllerAssinatura.text != null && plano != null && recorrencia != null && valueSlide != 0 ){
+    dia = int.parse(format_dd.format(DateTime.now()));
+    mes = int.parse(format_MM.format(DateTime.now()));
+    ano = int.parse(format_yyyy.format(DateTime.now()));
+    valor = double.parse(valueSlide.toStringAsFixed(2).toString());
 
-      if(iconSelecionado != null || urlLogo != null){
-        valor = double.parse(valueSlide.toStringAsFixed(2).toString());
-        Assinatura ass = Assinatura();
-        ass.assinaturaName = _controllerAssinatura.text;
-        ass.plano = plano;
-        ass.recorrencia = recorrencia;
-        ass.nota = _controllerNota.text;
-        ass.valor = valor;
-        ass.data = dataInicioPG;
-        ass.metodoPG = _controllerMetPG.text;
-        ass.descricao = _controllerDesc.text;
-        
-
-        if(urlLogo == null ){
-          //print("icon: ${iconSelecionado}\n");  
-           
-        }else{
-          ass.urlLogo = urlLogo;
-          //print("\nlogo: ${urlLogo}\n");
-
-        }
-        print(ass.toString());
-        
-          AssinaturaDB assDB = AssinaturaDB();
-          assDB.saveAssinatura(ass);
-          print("\nSalvo");
-          Navigator.pop(context);
-        } else{
-          print("Preencha");
-        }     
-
-    } else{
-      print("Preencha");
-    }
+    ControleBanco cb = ControleBanco();
+    cb.salvarDB(
+        context,
+        _controllerAssinatura.text,
+        plano,
+        recorrencia,
+        valor,
+        urlLogo,
+        _controllerNota.text,
+        dataInicioPG,
+        _controllerMetPG.text,
+        _controllerDesc.text,dia,mes,ano);
     
-                   
   }
 
   showDialogLogos() {
     showDialog(
         context: context,
         builder: (context) {
-          return AlertDialog(
-              backgroundColor: Colors.transparent,
-              //title: Text("Logos"),
-              content: Container(
-                padding: EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                    color: Colors.grey[900],
-                    borderRadius: BorderRadius.circular(17)),
-                child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text("Padrão"),
-                      SizedBox(
-                        height: 60,
-                        width: 400,
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: mapIconLogos.length,
-                          itemBuilder: (context,index){
-                            return Padding(
-                              padding: EdgeInsets.only(right: 5),
-                              child: GestureDetector(
-                                onTap: (){
-                                  Navigator.pop(context);
-                                  Future.delayed(Duration(milliseconds: 300), () {
-                                    setState(() {
-                                      urlLogo =null;
-                                      iconSelecionado = mapIconLogos[index];
-                                    });
-                                  });
-                                },
-                              child: Container(
-                                height: 60,
-                                width: 60,                            
-                                decoration: BoxDecoration(
-                                  color: Colors.blue[900],
-                                  borderRadius: BorderRadius.circular(15), 
-                                ),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(15),
-                                  child: Icon(
-                                    mapIconLogos[index],
-                                    
-                                  ),
-                                ),
-                              ),
-                            ),
-                            );
-                          }
-                        ),
-                      ),
-                      SizedBox(height: 15,),
-                      Text('Teste'),
-                      SizedBox(height: 5,),
-                      SizedBox(
-                        height: 500,
-                        width: 400,
-                        child: GridView.builder(
-                          itemCount: mapLogos.length,
-                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 4,
-                            crossAxisSpacing: 5,
-                            mainAxisSpacing: 5,
-                          ),
-                          itemBuilder: (context, index) {
-                            return GestureDetector(
-                              onTap: () {
-                                Navigator.pop(context);
-                                Future.delayed(Duration(milliseconds: 300), () {
-                                  setState(() {
-                                    urlLogo = mapLogos[index];
-                                  });
-                                });
-                              },
-                              child: Container(
-                                height: 60,
-                                width: 60,                            
-                                decoration: BoxDecoration(
-                                  color: Colors.blue[900],
-                                  borderRadius: BorderRadius.circular(15), 
-                                ),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(15),
-                                  child: Image.asset(
-                                    mapLogos[index],
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ));
-        });
+          return DiaogLogos();
+        }).then((value) {
+          print(value);
+          Future.delayed(Duration(milliseconds: 300), () {
+            setState(() {
+              urlLogo = value;
+            });
+          });
+    });
   }
 
-  selectDate()async{
+  selectDate() async {
     final dataPicker = await showDatePicker(
-      context: context, 
-      initialDate: DateTime.now(), 
-      firstDate: DateTime(2000), 
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2000),
       lastDate: DateTime(3000),
-      
-      );
-      if(dataPicker != null){
-        setState(() {
-          dataInicioPG = format_ddMMyyy.format(dataPicker);
-        });
-        
-      }
+    );
+    if (dataPicker != null) {
+      setState(() {
+        dataInicioPG = format_ddMMyyy.format(dataPicker);
+      });
+    }
   }
 
   @override
@@ -215,7 +106,8 @@ class _AddAssinaturaState extends State<AddAssinatura> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 GestureDetector(
-                  child: Icon(Icons.arrow_back_ios),
+                  child: Icon(FontAwesomeIcons.angleLeft),
+                  //child: Icon(Icons.arrow_back_ios),
                   onTap: () {
                     Navigator.pop(context);
                   },
@@ -242,7 +134,6 @@ class _AddAssinaturaState extends State<AddAssinatura> {
             SizedBox(
               height: 25,
             ),
-            
             Container(
               padding:
                   EdgeInsets.only(top: 20, left: 15, right: 15, bottom: 20),
@@ -285,7 +176,9 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                                 ]),
                             child: urlLogo == null
                                 ? Icon(
-                                    iconSelecionado== null ? Icons.style: iconSelecionado,
+                                    iconSelecionado == null
+                                        ? Icons.style
+                                        : iconSelecionado,
                                     color: Colors.grey[850],
                                     size: 30,
                                   )
@@ -375,7 +268,7 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                             recU = true;
                             recM = false;
                             recA = false;
-                            recorrencia = "Única";
+                            recorrencia = "unica";
                           });
                         },
                         child: ContainerOption(
@@ -392,7 +285,7 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                             recU = false;
                             recM = true;
                             recA = false;
-                            recorrencia = "Mensal";
+                            recorrencia = "mensal";
                           });
                         },
                         child: ContainerOption(
@@ -409,7 +302,7 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                             recU = false;
                             recM = false;
                             recA = true;
-                            recorrencia = "Anual";
+                            recorrencia = "anual";
                           });
                         },
                         child: ContainerOption(
@@ -438,9 +331,9 @@ class _AddAssinaturaState extends State<AddAssinatura> {
             SizedBox(
               height: 30,
             ),
-            
             Container(
-              padding: EdgeInsets.only(top: 20, left: 15, right: 15, bottom: 20),
+              padding:
+                  EdgeInsets.only(top: 20, left: 15, right: 15, bottom: 20),
               decoration: BoxDecoration(
                   color: Colors.grey[850],
                   borderRadius: BorderRadius.circular(15)),
@@ -478,11 +371,17 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                                 )
                               ],
                             ),
-                            SizedBox(height: 20,),
+                            SizedBox(
+                              height: 20,
+                            ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
-                                Text("Primeiro pagamento:  ",style: TextStyle(color: Colors.white.withAlpha(80)),),
+                                Text(
+                                  "Primeiro pagamento:  ",
+                                  style: TextStyle(
+                                      color: Colors.white.withAlpha(80)),
+                                ),
                                 Row(
                                   children: <Widget>[
                                     Text(
@@ -496,10 +395,14 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                                       width: 15,
                                     ),
                                     GestureDetector(
-                                      onTap: (){
+                                      onTap: () {
                                         selectDate();
                                       },
-                                      child: Icon(Icons.edit,color: Colors.white.withAlpha(170),),
+                                      child: Icon(
+                                        FontAwesomeIcons.calendarAlt,
+                                        //Icons.edit,
+                                        color: Colors.white.withAlpha(170),
+                                      ),
                                     )
                                   ],
                                 )
@@ -542,59 +445,3 @@ class _AddAssinaturaState extends State<AddAssinatura> {
     );
   }
 }
-
-Map<int,dynamic> mapIconLogos ={
-  0: FontAwesomeIcons.music, //music
-  1: FontAwesomeIcons.gamepad,//game
-  2: FontAwesomeIcons.boxOpen,//misteryBox ou cube
-  3: FontAwesomeIcons.bookOpen,//livros
-  4: FontAwesomeIcons.palette,//design
-  5: FontAwesomeIcons.tv,//tv cabo
-  6: FontAwesomeIcons.graduationCap,//educaçao
-  7: FontAwesomeIcons.utensils,//comida
-  8: Icons.cast,//stream video
-  9: FontAwesomeIcons.users,//social media
-  10: FontAwesomeIcons.stethoscope,//saude
-  11: FontAwesomeIcons.googlePlay ,// apps
-  12: FontAwesomeIcons.cube,
-  13: FontAwesomeIcons.gem,
-  14: FontAwesomeIcons.question,
-  15: FontAwesomeIcons.rocketchat,
-  16: FontAwesomeIcons.wifi,
-};
-
-Map<int, String> mapLogos = {
-  0: "assets/netflix.png",
-  1: "assets/spotify.jpg",//png
-  2: "assets/adobe_creative.jpeg",
-  3: "assets/amazon_primevideo.jpg",//png
-  4: "assets/apple_music.png",//jpg
-  5: "assets/apple_tv.png",
-  6: "assets/crunchyroll.jpg",//png
-  7: "assets/deezer.jpg",//png
-  8: "assets/globoplay.png",
-  9: "assets/looke.png",
-  10: "assets/office.jpg",//png
-  11: "assets/telecine.jpg",//telecineplay.png
-  12: "assets/youtube_music.png",//jpg
-  13: "assets/youtube_premium.jpg",
-  14: "assets/linkedin_premium.jpg",//jpeg
-  15: "assets/kindle_unlimited.jpg",//png
-  16: "assets/viki.png",
-  17: "assets/apple_arcade.jpeg",
-  18: "assets/stadia.jpg",
-  19: "assets/psn.png",
-  20: "assets/xbox_live.jpg",
-  21: "assets/ea_access.jpg",//png
-  22: "assets/xbox_gamepass.jpg",
-  23: "assets/nintendo_online.jpg",
-  24: "assets/disney_pluss.png",
-  25: "assets/hulu.png",
-  26: "assets/hbo.png",
-  27: "assets/slack.png",
-  28: "assets/figma.png",
-  29: "assets/sketch.png",
-  30: "assets/zoom2.png",
-  31: "assets/adobe_logo.png",
-  
-};

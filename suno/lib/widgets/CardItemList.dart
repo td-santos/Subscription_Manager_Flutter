@@ -36,6 +36,7 @@ class CardItemList extends StatelessWidget {
       child: Container(
       padding: EdgeInsets.all(15),
       decoration: BoxDecoration(
+          //border: Border.all(width: 0.2,color: Colors.cyan[700]),
           borderRadius: BorderRadius.circular(15),
           color: Colors.grey[850],
           boxShadow: [BoxShadow(
@@ -57,7 +58,8 @@ class CardItemList extends StatelessWidget {
                     height: 50,
                     width: 50,
                     decoration: BoxDecoration(
-                        color: Colors.red[300],
+                        //color: Colors.red[300],
+                        
                         borderRadius: BorderRadius.circular(15),
                         boxShadow: [
                           BoxShadow(offset: 
