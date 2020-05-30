@@ -134,8 +134,8 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                           itemCount: mapLogos.length,
                           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 4,
-                            crossAxisSpacing: 10,
-                            mainAxisSpacing: 10,
+                            crossAxisSpacing: 5,
+                            mainAxisSpacing: 5,
                           ),
                           itemBuilder: (context, index) {
                             return GestureDetector(
@@ -565,27 +565,27 @@ Map<int,dynamic> mapIconLogos ={
 
 Map<int, String> mapLogos = {
   0: "assets/netflix.png",
-  1: "assets/spotify.png",
+  1: "assets/spotify.jpg",//png
   2: "assets/adobe_creative.jpeg",
-  3: "assets/amazon_primevideo.png",
-  4: "assets/apple_music.jpg",
+  3: "assets/amazon_primevideo.jpg",//png
+  4: "assets/apple_music.png",//jpg
   5: "assets/apple_tv.png",
-  6: "assets/crunchyroll.png",
-  7: "assets/deezer.jpg",
+  6: "assets/crunchyroll.jpg",//png
+  7: "assets/deezer.jpg",//png
   8: "assets/globoplay.png",
   9: "assets/looke.png",
-  10: "assets/office.png",
-  11: "assets/telecineplay.png",
-  12: "assets/youtube_music.jpg",
+  10: "assets/office.jpg",//png
+  11: "assets/telecine.jpg",//telecineplay.png
+  12: "assets/youtube_music.png",//jpg
   13: "assets/youtube_premium.jpg",
-  14: "assets/linkedin_premium.jpeg",
-  15: "assets/kindle_unlimited.png",
+  14: "assets/linkedin_premium.jpg",//jpeg
+  15: "assets/kindle_unlimited.jpg",//png
   16: "assets/viki.png",
   17: "assets/apple_arcade.jpeg",
   18: "assets/stadia.jpg",
   19: "assets/psn.png",
   20: "assets/xbox_live.jpg",
-  21: "assets/ea_access.png",
+  21: "assets/ea_access.jpg",//png
   22: "assets/xbox_gamepass.jpg",
   23: "assets/nintendo_online.jpg",
   24: "assets/disney_pluss.png",
@@ -595,5 +595,6 @@ Map<int, String> mapLogos = {
   28: "assets/figma.png",
   29: "assets/sketch.png",
   30: "assets/zoom2.png",
+  31: "assets/adobe_logo.png",
   
 };

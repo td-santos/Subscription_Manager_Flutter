@@ -80,6 +80,19 @@ flutter:
     - assets/figma.png
     - assets/sketch.png
     - assets/zoom2.png
+    - assets/apple_music.png
+    - assets/crunchyroll.jpg
+    - assets/deezer.png
+    - assets/ea_access.jpg
+    - assets/linkedin_premium.jpg
+    - assets/office.jpg
+    - assets/telecine.jpg
+    - assets/youtube_music.png
+    - assets/adobe_logo.png
+    - assets/kindle_unlimited.jpg
+    - assets/amazon_primevideo.jpg
+    - assets/spotify.jpg
+    - assets/spotify2.jpg
     
   #   - images/a_dot_ham.jpeg
 
