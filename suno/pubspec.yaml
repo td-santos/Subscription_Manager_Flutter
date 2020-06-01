@@ -49,40 +49,26 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/netflix.png
-    - assets/spotify.png
-    - assets/adobe_creative.jpeg
-    - assets/amazon_primevideo.png
-    - assets/apple_music.jpg
-    - assets/apple_tv.png
-    - assets/crunchyroll.png
+    - assets/netflix.png    
+    - assets/adobe_creative.jpeg    
+    - assets/apple_music.jpg 
     - assets/deezer.jpg
     - assets/globoplay.png
-    - assets/looke.png
-    - assets/office.png
-    - assets/telecineplay.png
-    - assets/youtube_music.jpg
-    - assets/youtube_premium.jpg
-    - assets/linkedin_premium.jpeg
-    - assets/kindle_unlimited.png
+    - assets/looke.png    
+    - assets/youtube_premium.jpg    
     - assets/viki.png
     - assets/apple_arcade.jpeg
     - assets/stadia.jpg
     - assets/psn.png
-    - assets/xbox_live.jpg
-    - assets/ea_access.png
+    - assets/xbox_live.jpg    
     - assets/xbox_gamepass.jpg
     - assets/nintendo_online.jpg
     - assets/disney_pluss.png
     - assets/hulu.png
-    - assets/hbo.png
-    - assets/slack.png
+    - assets/hbo.png    
     - assets/figma.png
-    - assets/sketch.png
-    - assets/zoom2.png
-    - assets/apple_music.png
-    - assets/crunchyroll.jpg
-    - assets/deezer.png
+    - assets/sketch.png       
+    - assets/crunchyroll.jpg    
     - assets/ea_access.jpg
     - assets/linkedin_premium.jpg
     - assets/office.jpg
@@ -91,11 +77,21 @@ flutter:
     - assets/adobe_logo.png
     - assets/kindle_unlimited.jpg
     - assets/amazon_primevideo.jpg
-    - assets/spotify.jpg
-    - assets/spotify2.jpg
+    - assets/spotify.jpg    
     - assets/zoom.jpeg
     - assets/apple_tv.jpg
     - assets/slack.jpg
+    - assets/google_playmusic.png
+    - assets/amazon_music.jpg    
+    - assets/claro_musica.png
+    - assets/napster.jpg
+    - assets/rdio.jpg
+    - assets/crackle.jpg
+    - assets/fox_play.jpg
+    - assets/tidal.png
+    - assets/canva.jpg
+    - assets/dribbble.png
+    - assets/gsuite.jpg
     
   #   - images/a_dot_ham.jpeg
 

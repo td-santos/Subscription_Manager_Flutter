@@ -12,7 +12,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
   AssinaturaDB assDB = AssinaturaDB();
   List<Assinatura> listaAssinaturas = List();
   var total;
@@ -23,46 +22,34 @@ class _HomeState extends State<Home> {
   DateFormat format_dd = DateFormat("dd");
   DateFormat format_MM = DateFormat("MM");
   DateFormat format_yyyy = DateFormat("yyyy");
-  
 
   String format(double n) {
     return n.toStringAsFixed(n.truncateToDouble() == n ? 0 : 2);
   }
-
-  
 
   _allMovMes(String data) {
     assDB.getAllAssinaturasPorMes(data).then((list) {
       if (list.isNotEmpty) {
         setState(() {
           listaAssinaturas = list;
-          
         });
-        total = listaAssinaturas.map((item) => item.valor).reduce((a, b) => a + b);
+        total =
+            listaAssinaturas.map((item) => item.valor).reduce((a, b) => a + b);
         totalAssinaturas = format(total).toString();
       } else {
-
-        
-
-
         setState(() {
           listaAssinaturas.clear();
           total = 0;
           totalAssinaturas = total.toString();
         });
       }
-
-      
     });
   }
 
-
-  
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    
   }
 
   @override
@@ -71,7 +58,7 @@ class _HomeState extends State<Home> {
     double height = MediaQuery.of(context).size.height;
 
     _allMovMes(formatMMyyyy.format(dataAtual));
-    
+
     return Scaffold(
       backgroundColor: Colors.grey[900],
       appBar: AppBar(
@@ -111,14 +98,14 @@ class _HomeState extends State<Home> {
                   padding:
                       EdgeInsets.only(top: 30, bottom: 30, left: 15, right: 15),
                   decoration: BoxDecoration(
-                    color: Colors.black,
-                    border: Border.all(width: 0.2,color: Colors.orange[700]),
+                    color: Colors.grey[900],
+                    border: Border.all(width: 0.2, color: Colors.orange[700]),
                     borderRadius: BorderRadius.circular(15),
                     boxShadow: [
                       BoxShadow(
-                        offset: Offset(0, 0),
-                        spreadRadius: 0,
-                        blurRadius: 0,
+                        offset: Offset(-3, 3),
+                        spreadRadius: 2,
+                        blurRadius: 5,
                       )
                     ],
                   ),
@@ -152,7 +139,6 @@ class _HomeState extends State<Home> {
                         metodoPG: ass.metodoPG,
                         descricao: ass.descricao,
                         data: ass.data,
-
                       );
                     }),
               )

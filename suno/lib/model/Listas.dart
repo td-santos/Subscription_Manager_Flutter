@@ -38,6 +38,66 @@ Map<int, String> mapLogos = {
   
 };
 
+
+Map<int,String> mapLogoOutros ={
+  0: "assets/office.jpg",
+  1: "assets/slack.jpg",
+  2: "assets/zoom.jpeg",
+  3: "assets/linkedin_premium.jpg",
+  4: "assets/kindle_unlimited.jpg",
+  5: "assets/gsuite.jpg",
+};
+
+Map<int,String> mapLogoGames ={
+  0: "assets/apple_arcade.jpeg",
+  1: "assets/stadia.jpg",
+  2: "assets/psn.png",
+  3: "assets/xbox_live.jpg",
+  4: "assets/ea_access.jpg",
+  5: "assets/xbox_gamepass.jpg",
+  6: "assets/nintendo_online.jpg",
+};
+
+Map<int,String> mapLogoMusic ={
+  0: "assets/spotify.jpg",
+  1: "assets/apple_music.jpg",
+  2: "assets/deezer.jpg",
+  3: "assets/youtube_music.png",
+  4: "assets/youtube_premium.jpg",// ver
+  5: "assets/google_playmusic.png",
+  6: "assets/amazon_music.jpg",
+  7: "assets/claro_musica.png",
+  8: "assets/napster.jpg",
+  9: "assets/rdio.jpg",
+  10: "assets/tidal.png",
+};
+
+Map<int,String> mapLogoVideo ={
+  0: "assets/netflix.png",
+  1: "assets/amazon_primevideo.jpg",
+  2: "assets/apple_tv.jpg",
+  3: "assets/crunchyroll.jpg",
+  4: "assets/globoplay.png",
+  5: "assets/looke.png",
+  6: "assets/telecine.jpg",
+  7: "assets/viki.png",
+  8: "assets/hulu.png",
+  9: "assets/hbo.png",
+  10: "assets/disney_pluss.png",
+  11: "assets/crackle.jpg",
+  12: "assets/fox_play.jpg",
+  
+};
+Map<int,String> mapLogoDesign ={
+  0: "assets/adobe_creative.jpeg",
+  1: "assets/figma.png",
+  2: "assets/sketch.png",
+  3: "assets/adobe_logo.png",
+  4: "assets/canva.jpg",
+  5: "assets/dribbble.png",
+};
+
+
 Map<int, dynamic> mapIconLogos = {
   0: FontAwesomeIcons.music, //music
   1: FontAwesomeIcons.gamepad, //game

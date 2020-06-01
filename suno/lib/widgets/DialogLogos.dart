@@ -7,7 +7,7 @@ class DiaogLogos extends StatefulWidget {
   _DiaogLogosState createState() => _DiaogLogosState();
 }
 
-class _DiaogLogosState extends State<DiaogLogos> {
+class _DiaogLogosState extends State<DiaogLogos> { 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(

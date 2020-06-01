@@ -5,6 +5,8 @@ import 'package:suno/controles/ControleBanco.dart';
 import 'package:suno/widgets/ContainerOption.dart';
 import 'package:suno/widgets/DialogLogos.dart';
 
+import 'LogoScreen.dart';
+
 class AddAssinatura extends StatefulWidget {
   @override
   _AddAssinaturaState createState() => _AddAssinaturaState();
@@ -27,10 +29,9 @@ class _AddAssinaturaState extends State<AddAssinatura> {
   TextEditingController _controllerDesc = TextEditingController();
   TextEditingController _controllerNota = TextEditingController();
   TextEditingController _controllerMetPG = TextEditingController();
-  int dia,mes,ano;
+  int dia, mes, ano;
 
   salvar() {
-
     dia = int.parse(format_dd.format(DateTime.now()));
     mes = int.parse(format_MM.format(DateTime.now()));
     ano = int.parse(format_yyyy.format(DateTime.now()));
@@ -47,8 +48,10 @@ class _AddAssinaturaState extends State<AddAssinatura> {
         _controllerNota.text,
         dataInicioPG,
         _controllerMetPG.text,
-        _controllerDesc.text,dia,mes,ano);
-    
+        _controllerDesc.text,
+        dia,
+        mes,
+        ano);
   }
 
   showDialogLogos() {
@@ -57,12 +60,12 @@ class _AddAssinaturaState extends State<AddAssinatura> {
         builder: (context) {
           return DiaogLogos();
         }).then((value) {
-          print(value);
-          Future.delayed(Duration(milliseconds: 300), () {
-            setState(() {
-              urlLogo = value;
-            });
-          });
+      print(value);
+      Future.delayed(Duration(milliseconds: 300), () {
+        setState(() {
+          urlLogo = value;
+        });
+      });
     });
   }
 
@@ -159,7 +162,17 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                         padding: EdgeInsets.only(left: 10),
                         child: GestureDetector(
                           onTap: () {
-                            showDialogLogos();
+                            Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => LogoScreen()))
+                                .then((value) {
+                              print(value);
+                              setState(() {
+                                  urlLogo = value;
+                                });
+                            });
+                            //showDialogLogos();
                           },
                           child: Container(
                             height: 45,
