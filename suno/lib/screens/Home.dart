@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:suno/controles/AssinaturaDB.dart';
 import 'package:suno/controles/ControleBanco.dart';
 import 'package:suno/model/Assinatura.dart';
+import 'package:suno/widgets/AppDrawer.dart';
 import 'package:suno/widgets/CardItemList.dart';
 import 'AddAssinatra.dart';
 
@@ -87,6 +88,7 @@ class _HomeState extends State<Home> {
           )
         ],
       ),
+      drawer: AppDrawer(),
       body: SafeArea(
         child: Container(
           height: height,
