@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:suno/controles/AssinaturaDB.dart';
 import 'package:suno/model/Assinatura.dart';
 import 'package:suno/screens/DetalheAssinatura.dart';
+import 'package:suno/screens/InfoScreen.dart';
 
 import 'CardItemList.dart';
 
@@ -259,7 +260,14 @@ class _AppDrawerState extends State<AppDrawer> with TickerProviderStateMixin {
                       Padding(
                         padding: EdgeInsets.only(
                             left: 20, bottom: 40, right: 20, top: 20),
-                        child: Row(
+                        child: GestureDetector(
+                          onTap: (){
+                            Navigator.pop(context);
+                            Navigator.push(context, MaterialPageRoute(
+                              builder: (context)=> InfoScreen()
+                              ));
+                          },
+                          child: Row(
                           children: <Widget>[
                             Icon(
                               FontAwesomeIcons.info,
@@ -271,6 +279,7 @@ class _AppDrawerState extends State<AppDrawer> with TickerProviderStateMixin {
                             ),
                           ],
                         ),
+                        )
                       ),
                     ],
                   )

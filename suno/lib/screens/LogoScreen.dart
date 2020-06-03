@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:suno/model/Listas.dart';
 
 class LogoScreen extends StatefulWidget {
@@ -16,6 +17,15 @@ class _LogoScreenState extends State<LogoScreen> {
     return Scaffold(
       
       backgroundColor: Colors.grey[900],
+      appBar: AppBar(
+        elevation: 0,
+        // leading: GestureDetector(
+        //   onTap: (){
+        //     Navigator.pop(context);
+        //   },
+        //   child: Icon(FontAwesomeIcons.angleLeft),
+        // )
+      ),
 
       body: SafeArea(
         child: SingleChildScrollView(
@@ -26,13 +36,16 @@ class _LogoScreenState extends State<LogoScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Padding(padding: EdgeInsets.only(left: 0,right: 0,bottom: 10,top: 30),
+
+              
+              Padding(padding: EdgeInsets.only(left: 0,right: 0,bottom: 10,top: 10),
                 child: Text("Music", style: TextStyle(fontSize: 20,fontWeight: FontWeight.w500 ),),
               ),
-              SizedBox(
+              SizedBox(                
                   height: 250,
-                  //width: 400,
+                  width: width,
                   child: GridView.builder(
+                    padding: EdgeInsets.all(10),
                     itemCount: mapLogoMusic.length,
                     physics: NeverScrollableScrollPhysics(),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -52,6 +65,10 @@ class _LogoScreenState extends State<LogoScreen> {
                           decoration: BoxDecoration(
                             color: Colors.blue[900],
                             borderRadius: BorderRadius.circular(15),
+                            boxShadow: [BoxShadow(
+                              offset: Offset(-3,3),
+                              blurRadius: 4
+                            )]
                           ),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(15),
@@ -72,6 +89,7 @@ class _LogoScreenState extends State<LogoScreen> {
                   height: 250,
                   //width: 400,
                   child: GridView.builder(
+                    padding: EdgeInsets.all(10),
                     itemCount: mapLogoVideo.length,
                     physics: NeverScrollableScrollPhysics(),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -91,6 +109,10 @@ class _LogoScreenState extends State<LogoScreen> {
                           decoration: BoxDecoration(
                             color: Colors.blue[900],
                             borderRadius: BorderRadius.circular(15),
+                            boxShadow: [BoxShadow(
+                              offset: Offset(-3,3),
+                              blurRadius: 4
+                            )]
                           ),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(15),
@@ -111,6 +133,7 @@ class _LogoScreenState extends State<LogoScreen> {
                   height: 160,
                   //width: 400,
                   child: GridView.builder(
+                    padding: EdgeInsets.all(10),
                     itemCount: mapLogoGames.length,
                     physics: NeverScrollableScrollPhysics(),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -130,6 +153,10 @@ class _LogoScreenState extends State<LogoScreen> {
                           decoration: BoxDecoration(
                             color: Colors.blue[900],
                             borderRadius: BorderRadius.circular(15),
+                            boxShadow: [BoxShadow(
+                              offset: Offset(-3,3),
+                              blurRadius: 4
+                            )]
                           ),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(15),
@@ -150,6 +177,7 @@ class _LogoScreenState extends State<LogoScreen> {
                   height: 150,
                   //width: 400,
                   child: GridView.builder(
+                    padding: EdgeInsets.all(10),
                     itemCount: mapLogoDesign.length,
                     physics: NeverScrollableScrollPhysics(),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -169,6 +197,10 @@ class _LogoScreenState extends State<LogoScreen> {
                           decoration: BoxDecoration(
                             color: Colors.blue[900],
                             borderRadius: BorderRadius.circular(15),
+                            boxShadow: [BoxShadow(
+                              offset: Offset(-3,3),
+                              blurRadius: 4
+                            )]
                           ),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(15),
@@ -190,6 +222,7 @@ class _LogoScreenState extends State<LogoScreen> {
                   height: 150,
                   //width: 400,
                   child: GridView.builder(
+                    padding: EdgeInsets.all(10),
                     itemCount: mapLogoOutros.length,
                     physics: NeverScrollableScrollPhysics(),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -209,6 +242,10 @@ class _LogoScreenState extends State<LogoScreen> {
                           decoration: BoxDecoration(
                             color: Colors.blue[900],
                             borderRadius: BorderRadius.circular(15),
+                            boxShadow: [BoxShadow(
+                              offset: Offset(-3,3),
+                              blurRadius: 4
+                            )]
                           ),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(15),
