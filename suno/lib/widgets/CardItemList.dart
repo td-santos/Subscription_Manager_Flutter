@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:suno/screens/DetalheAssinatura.dart';
 
 class CardItemList extends StatelessWidget {
+  final int id;
   final String imagemUrl;
   final String nome;
   final String valor;
@@ -12,15 +13,20 @@ class CardItemList extends StatelessWidget {
   final String descricao;
   final String data;
 
-  const CardItemList({Key key, this.imagemUrl, this.nome, this.valor, this.plano, this.recorrencia, this.nota, this.metodoPG, this.descricao, this.data}) : super(key: key);
+  const CardItemList({Key key, this.imagemUrl, this.nome, this.valor, this.plano, this.recorrencia, this.nota, this.metodoPG, this.descricao, this.data, this.id}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+
     return Padding(padding: EdgeInsets.only(left: 15, bottom: 10, right: 15),
     child: GestureDetector(
       onTap: (){
         Navigator.push(context, MaterialPageRoute(
           builder: (context)=> DetalheAssinatura(
+            id: id,
             urlImage: imagemUrl,
             valor: valor,
             nome: nome,
@@ -68,26 +74,37 @@ class CardItemList extends StatelessWidget {
                             color: Colors.grey[900]
                           )
                         ]),
-                    child: ClipRRect(
+                    child: Hero(
+                      tag: id,
+                      child: ClipRRect(
                       borderRadius: BorderRadius.circular(15),
                       child: Image.asset(
                         "$imagemUrl",
                         fit: BoxFit.cover,
                       ),
                     ),
+                    ),
                   ),
                   SizedBox(
                     width: 10,
                   ),
-                  Text(
-                    "$nome",
-                    style: TextStyle(fontSize: 20),
+                  Container(
+                    //color: Colors.black,
+                    width: width * 0.5,
+                    child: Text(
+                      "$nome",overflow: TextOverflow.ellipsis,
+                      style: TextStyle(fontSize: 20),
+                    ),
                   )
                 ],
               ),
-              Text(
-                "$valor",
-                style: TextStyle(fontSize: 20),
+              Container(
+                //color: Colors.black,
+                //width: width * 0.5,
+                child: Text(
+                  "$valor",
+                  style: TextStyle(fontSize: 20),
+                ),
               )
             ],
           ),

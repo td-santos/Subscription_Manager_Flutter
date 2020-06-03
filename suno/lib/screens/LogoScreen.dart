@@ -14,6 +14,7 @@ class _LogoScreenState extends State<LogoScreen> {
     double height = MediaQuery.of(context).size.height;
 
     return Scaffold(
+      
       backgroundColor: Colors.grey[900],
 
       body: SafeArea(

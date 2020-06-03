@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:suno/controles/ControleBanco.dart';
 
 class DetalheAssinatura extends StatefulWidget {
+  final int id;
   final String urlImage;
   final String valor;
   final String nome;
@@ -22,7 +23,7 @@ class DetalheAssinatura extends StatefulWidget {
       this.nota,
       this.metodoPG,
       this.descricao,
-      this.data})
+      this.data, this.id})
       : super(key: key);
 
   @override
@@ -119,12 +120,16 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
                           decoration: BoxDecoration(
                               //color: Colors.pink
                               ),
-                          child: ClipRRect(
+                          child: Hero(
+                            tag: widget.id,
+                            child: ClipRRect(
                               borderRadius: BorderRadius.circular(25),
                               child: Image.asset(
                                 widget.urlImage,
                                 fit: BoxFit.cover,
-                              ))),
+                              )),
+                          )
+                              ),
                       SizedBox(
                         height: 20,
                       ),

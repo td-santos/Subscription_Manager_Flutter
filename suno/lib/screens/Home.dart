@@ -15,6 +15,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   AssinaturaDB assDB = AssinaturaDB();
   List<Assinatura> listaAssinaturas = List();
+  
   var total;
   var formatMMyyyy = DateFormat("MM/yyyy");
   var dataAtual = new DateTime.now();
@@ -108,7 +109,8 @@ class _HomeState extends State<Home> {
                         offset: Offset(-3, 3),
                         spreadRadius: 2,
                         blurRadius: 5,
-                      )
+                      ),
+                      
                     ],
                   ),
                   child: Center(
@@ -132,6 +134,7 @@ class _HomeState extends State<Home> {
                     itemBuilder: (context, index) {
                       Assinatura ass = listaAssinaturas[index];
                       return CardItemList(
+                        id: ass.id,
                         nome: ass.assinaturaName,
                         imagemUrl: ass.urlLogo,
                         valor: ass.valor.toString(),
