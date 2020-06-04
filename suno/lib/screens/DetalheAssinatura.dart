@@ -47,14 +47,12 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
         child: Padding(
           padding: EdgeInsets.only(left: 15, top: 15, right: 15),
           child: Container(
-            height: height,
+           // height: height,
             width: width,
-            child: Stack(
+            child: Column(
               children: <Widget>[
-                Positioned(
-                  top: 0,
-                  left: 0,
-                  right: 0,
+                Padding(
+                  padding: EdgeInsets.only(bottom: 15),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
@@ -106,13 +104,10 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
                         ],
                       )
                     ],
-                  ),
+                  ),                  
                 ),
-                Positioned(
-                  top: 70,
-                  right: 0,
-                  left: 0,
-                  child: Column(
+                
+                Column(
                     children: <Widget>[
                       Container(
                           width: width,
@@ -151,12 +146,21 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
                                   Text("Assinatura: ",
                                       style: TextStyle(
                                           color: Colors.white.withAlpha(80))),
-                                  Text(
+                                  Container(
+                                    width: width* 0.6,
+                                    child: ListTile(
+                                      contentPadding: EdgeInsets.all(0),
+                                      
+                                      title: Text(
                                     widget.nome,
+                                    textAlign: TextAlign.right,
                                     style: TextStyle(
                                         fontSize: 17,
                                         color: Colors.orange[700]),
                                   ),
+                                    ),
+                                  )
+                                  
                                 ],
                               ),
                             ),
@@ -247,13 +251,21 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
                                   Text("Nota: ",
                                       style: TextStyle(
                                           color: Colors.white.withAlpha(80))),
-                                  Text(
+                                  Container(
+                                    width: width *0.6,
+                                    child: ListTile(
+                                      contentPadding: EdgeInsets.all(0),
+                                      title: Text(
                                     widget.nota,
-                                    overflow: TextOverflow.ellipsis,
+                                    //overflow: TextOverflow.ellipsis,
+                                    textAlign: TextAlign.right,
                                     style: TextStyle(
                                         fontSize: 17,
                                         color: Colors.orange[700]),
                                   ),
+                                    ),
+                                  )
+                                  
                                 ],
                               ),
                             ),
@@ -268,13 +280,22 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: <Widget>[
-                                  Text("Matodo PG: ",
+                                  Text("Método PG: ",
                                       style: TextStyle(
                                           color: Colors.white.withAlpha(80))),
-                                  Text(widget.metodoPG,
+                                  Container(                                    
+                                    width: width * 0.6,
+                                    child: ListTile(
+                                      contentPadding: EdgeInsets.all(0),
+                                      title: Text(widget.metodoPG,
+                                    //overflow: TextOverflow.ellipsis,
+                                    textAlign: TextAlign.right,
                                       style: TextStyle(
                                           fontSize: 17,
                                           color: Colors.orange[700])),
+                                    )
+                                  )
+                                  
                                 ],
                               ),
                             ),
@@ -296,12 +317,15 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
                                     //color: Colors.blue,
                                     alignment: Alignment.centerRight,
                                     width: width * 0.6,
-                                    child: Text(widget.descricao,
-                                        overflow: TextOverflow.ellipsis,
+                                    child: ListTile(
+                                      contentPadding: EdgeInsets.all(0),
+                                      title: Text(widget.descricao,
+                                        //overflow: TextOverflow.ellipsis,
                                          textAlign: TextAlign.right,
                                         style: TextStyle(
                                             fontSize: 17,
                                             color: Colors.orange[700])),
+                                    )
                                   ),
                                 ],
                               ),
@@ -329,14 +353,17 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
                             ),
                           ],
                         ),
-                      )
+                      ),
+                      
                     ],
                   ),
-                ),
+                  SizedBox(height: 100,)
+                
               ],
             ),
           ),
         ),
+
       )),
     );
   }

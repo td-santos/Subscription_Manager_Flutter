@@ -7,6 +7,8 @@ import 'package:suno/screens/MySplash.dart';
 
 void main() {
   runApp(MaterialApp(
+
+    
     
     home: MySplash(),
     debugShowCheckedModeBanner: false,

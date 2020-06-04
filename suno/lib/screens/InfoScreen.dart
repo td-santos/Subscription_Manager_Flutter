@@ -1,6 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 
 class InfoScreen extends StatelessWidget {
+
+  Future<void> openURL(String url) async {
+    
+    if(await canLaunch(url)){
+      await launch(
+        url,
+        forceSafariVC: false,
+        forceWebView: false,
+        headers: <String, String>{'header_key':'header_value'},
+      );
+
+    }else{
+      
+    }
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,44 +45,78 @@ class InfoScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.only(left: 20,right: 20,top: 20,bottom: 5),
-              child: Text("Nome",style: TextStyle(
-                fontSize: 20
-              ),),
+              padding: EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 5),
+              child: Text(
+                "Nome",
+                style: TextStyle(fontSize: 20),
+              ),
             ),
             Padding(
-              padding: EdgeInsets.only(left: 20,right: 20,bottom: 10),
-              child: Text("Suno - Gestor de Assinaturas",style: TextStyle(
-                fontSize: 20
-              ),),
+              padding: EdgeInsets.only(left: 20, right: 20, bottom: 10),
+              child: Text(
+                "Suno - Gestor de Assinaturas",
+                style: TextStyle(fontSize: 20),
+              ),
             ),
-            Divider(color: Colors.grey,),
-            Padding(
-              padding: EdgeInsets.only(left: 20,right: 20,top: 10,bottom: 5),
-              child: Text("Versão do App",style: TextStyle(
-                fontSize: 20
-              ),),
+            Divider(
+              color: Colors.grey,
             ),
             Padding(
-              padding: EdgeInsets.only(left: 20,right: 20,bottom: 10),
-              child: Text("1.0.0",style: TextStyle(
-                fontSize: 20
-              ),),
-            ),
-            Divider(color: Colors.grey,),
-            Padding(
-              padding: EdgeInsets.only(left: 20,right: 20,top: 10,bottom: 5),
-              child: Text("Sobre",style: TextStyle(
-                fontSize: 20
-              ),),
+              padding: EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 5),
+              child: Text(
+                "Versão do App",
+                style: TextStyle(fontSize: 20),
+              ),
             ),
             Padding(
-              padding: EdgeInsets.only(left: 20,right: 20,bottom: 10),
-              child: Text("Aplicativo de gerenciamento financeiro focado em gestão de assinaturas contratadas.",style: TextStyle(
-                fontSize: 20
-              ),),
+              padding: EdgeInsets.only(left: 20, right: 20, bottom: 10),
+              child: Text(
+                "1.0.0",
+                style: TextStyle(fontSize: 20),
+              ),
             ),
-            Divider(color: Colors.grey,),
+            Divider(
+              color: Colors.grey,
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 5),
+              child: Text(
+                "Sobre",
+                style: TextStyle(fontSize: 20),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 20, right: 20, bottom: 10),
+              child: Text(
+                "Aplicativo de gerenciamento financeiro focado em gestão de assinaturas contratadas.",
+                style: TextStyle(fontSize: 20),
+              ),
+            ),
+            Divider(
+              color: Colors.grey,
+            ),
+            Padding(
+              padding:
+                  EdgeInsets.only(left: 20, right: 20, bottom: 10, top: 30),
+              child: GestureDetector(
+                onTap: () {
+                  String url = 'https://play.google.com/store/apps/collection/cluster?clp=igM4ChkKEzYxMzI1MDQ2Mzg0NDA4MzQxNzQQCBgDEhkKEzYxMzI1MDQ2Mzg0NDA4MzQxNzQQCBgDGAA%3D:S:ANO1ljL28v4&gsr=CjuKAzgKGQoTNjEzMjUwNDYzODQ0MDgzNDE3NBAIGAMSGQoTNjEzMjUwNDYzODQ0MDgzNDE3NBAIGAMYAA%3D%3D:S:ANO1ljIEZ0Q';
+                  openURL(url);
+                },
+                child: Container(
+                  padding: EdgeInsets.only(bottom: 10, top: 10),
+                  decoration: BoxDecoration(
+                      border: Border.all(width: 1, color: Colors.blue),
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Center(
+                    child: Text(
+                      "Conheça nossos apps !",
+                      style: TextStyle(color: Colors.blue),
+                    ),
+                  ),
+                ),
+              ),
+            )
           ],
         ),
       )),

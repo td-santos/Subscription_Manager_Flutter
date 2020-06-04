@@ -366,7 +366,7 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                               children: <Widget>[
                                 Text(
                                   "${valueSlide.toStringAsFixed(2)}",
-                                  style: TextStyle(fontSize: 37),
+                                  style: TextStyle(fontSize: width * 0.07),
                                 ),
                                 Column(
                                   children: <Widget>[
