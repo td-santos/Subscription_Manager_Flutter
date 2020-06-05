@@ -16,9 +16,10 @@ class _LogoScreenState extends State<LogoScreen> {
 
     return Scaffold(
       
-      backgroundColor: Colors.grey[900],
+      backgroundColor: Colors.black,
       appBar: AppBar(
         elevation: 0,
+        backgroundColor: Colors.black,
         // leading: GestureDetector(
         //   onTap: (){
         //     Navigator.pop(context);
@@ -30,7 +31,7 @@ class _LogoScreenState extends State<LogoScreen> {
       body: SafeArea(
         child: SingleChildScrollView(
         child: Container(
-          padding: EdgeInsets.only(left: 20,right: 20),
+          padding: EdgeInsets.only(left: 20,right: 0),
           //height: height,
           width: width,
           child: Column(
@@ -41,9 +42,15 @@ class _LogoScreenState extends State<LogoScreen> {
               Padding(padding: EdgeInsets.only(left: 0,right: 0,bottom: 10,top: 10),
                 child: Text("Music", style: TextStyle(fontSize: 20,fontWeight: FontWeight.w500 ),),
               ),
-              SizedBox(                
+              Container(
+                               
                   height: 250,
                   width: width,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[900], 
+                    borderRadius: BorderRadius.circular(15),
+                    
+                  ),
                   child: GridView.builder(
                     padding: EdgeInsets.all(10),
                     itemCount: mapLogoMusic.length,
@@ -85,9 +92,12 @@ class _LogoScreenState extends State<LogoScreen> {
                 Padding(padding: EdgeInsets.only(left: 0,right: 0,bottom: 10,top: 20),
                 child: Text("Stream Video", style: TextStyle(fontSize: 20,fontWeight: FontWeight.w500 ),),
               ),
-              SizedBox(
+              Container(
                   height: 250,
                   //width: 400,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[900], 
+                    borderRadius: BorderRadius.circular(15),),
                   child: GridView.builder(
                     padding: EdgeInsets.all(10),
                     itemCount: mapLogoVideo.length,
@@ -129,9 +139,12 @@ class _LogoScreenState extends State<LogoScreen> {
                 Padding(padding: EdgeInsets.only(left: 0,right: 0,bottom: 10,top: 20),
                 child: Text("Games", style: TextStyle(fontSize: 20,fontWeight: FontWeight.w500 ),),
               ),
-              SizedBox(
+              Container(
                   height: 160,
                   //width: 400,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[900], 
+                    borderRadius: BorderRadius.circular(15),),
                   child: GridView.builder(
                     padding: EdgeInsets.all(10),
                     itemCount: mapLogoGames.length,
@@ -173,9 +186,12 @@ class _LogoScreenState extends State<LogoScreen> {
                 Padding(padding: EdgeInsets.only(left: 0,right: 0,bottom: 10,top: 20),
                 child: Text("Design", style: TextStyle(fontSize: 20,fontWeight: FontWeight.w500 ),),
               ),
-              SizedBox(
+              Container(
                   height: 150,
                   //width: 400,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[900], 
+                    borderRadius: BorderRadius.circular(15),),
                   child: GridView.builder(
                     padding: EdgeInsets.all(10),
                     itemCount: mapLogoDesign.length,
@@ -218,9 +234,12 @@ class _LogoScreenState extends State<LogoScreen> {
                 Padding(padding: EdgeInsets.only(left: 0,right: 0,bottom: 10,top: 20),
                 child: Text("Outros", style: TextStyle(fontSize: 20,fontWeight: FontWeight.w500 ),),
               ),
-              SizedBox(
+              Container(
                   height: 150,
                   //width: 400,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[900], 
+                    borderRadius: BorderRadius.circular(15),),
                   child: GridView.builder(
                     padding: EdgeInsets.all(10),
                     itemCount: mapLogoOutros.length,
@@ -259,6 +278,8 @@ class _LogoScreenState extends State<LogoScreen> {
                     },
                   ),
                 ),
+
+                SizedBox(height: 100,)
             ],
           ),
         ),

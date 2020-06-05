@@ -63,7 +63,7 @@ class AssinaturaDB{
  
 
   Future<List> getAllAssinaturasPorMes(String data)async{//parametro MM/yyyy
-    String dataDiaMes = data.substring(0,5);//0,5 MM/yy
+    String dataDiaMes = data.substring(0,2);//0,5 MM/yy
     //print("DATA-DIA-MES: $dataDiaMes");
     //print("DATA-PARAM: $data");
     Database dbAssinaturas = await db;
@@ -71,7 +71,7 @@ class AssinaturaDB{
     List listMap = await dbAssinaturas.rawQuery(
       "SELECT * FROM $assinaturaTABLE WHERE ($recorrenciaColumn = 'mensal'  ) "
       +"OR ($recorrenciaColumn ='unica' AND  $dataColumn LIKE '%$data%') "
-      +"OR($recorrenciaColumn ='anual' AND  $dataColumn LIKE '%$dataDiaMes%')"
+      +"OR($recorrenciaColumn ='anual' AND  $dataColumn LIKE '%/${dataDiaMes}/%')"
       );
     List<Assinatura> listAssinaturas = List();
 

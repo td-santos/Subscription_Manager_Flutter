@@ -71,6 +71,7 @@ class _AddAssinaturaState extends State<AddAssinatura> {
 
   selectDate() async {
     final dataPicker = await showDatePicker(
+      locale: Locale("pt","BR"),
       context: context,
       initialDate: DateTime.now(),
       firstDate: DateTime(2000),
