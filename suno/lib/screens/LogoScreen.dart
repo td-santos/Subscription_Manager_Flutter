@@ -8,6 +8,7 @@ class LogoScreen extends StatefulWidget {
 }
 
 class _LogoScreenState extends State<LogoScreen> {
+  Color cinzaEscuro2 = Color(0xff2E3035);
   @override
   Widget build(BuildContext context) {
 
@@ -16,8 +17,8 @@ class _LogoScreenState extends State<LogoScreen> {
 
     return Scaffold(
       
-      backgroundColor: Colors.black,
-      appBar: AppBar(
+      //backgroundColor: Colors.black,
+      /*appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.black,
         // leading: GestureDetector(
@@ -26,7 +27,7 @@ class _LogoScreenState extends State<LogoScreen> {
         //   },
         //   child: Icon(FontAwesomeIcons.angleLeft),
         // )
-      ),
+      ),*/
 
       body: SafeArea(
         child: SingleChildScrollView(
@@ -34,10 +35,41 @@ class _LogoScreenState extends State<LogoScreen> {
           padding: EdgeInsets.only(left: 20,right: 0),
           //height: height,
           width: width,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [cinzaEscuro2, Colors.grey[900]]),
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-
+              Padding(
+                padding: EdgeInsets.only(left: 0,right: 10,top: 15,bottom: 15),
+                child: Row(                  
+                  children: <Widget>[
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Icon(Icons.arrow_back_ios),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 15),
+                      child: Container(                      
+                      child: Text(
+                        "Logos",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: width * 0.07,
+                          fontWeight: FontWeight.w200,
+                        ),
+                      ),
+                    ),
+                    ),
+                  ],
+                ),
+              ),
               
               Padding(padding: EdgeInsets.only(left: 0,right: 0,bottom: 10,top: 10),
                 child: Text("Music", style: TextStyle(fontSize: 20,fontWeight: FontWeight.w500 ),),

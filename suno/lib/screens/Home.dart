@@ -26,6 +26,9 @@ class _HomeState extends State<Home> {
   DateFormat format_dd = DateFormat("dd");
   DateFormat format_MM = DateFormat("MM");
   DateFormat format_yyyy = DateFormat("yyyy");
+  DateFormat format_Mes = DateFormat("MMMM", "pt_BR");
+  GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
+  Color cinzaEscuro2 = Color(0xff2E3035);
 
   String format(double n) {
     return n.toStringAsFixed(n.truncateToDouble() == n ? 0 : 2);
@@ -37,7 +40,6 @@ class _HomeState extends State<Home> {
       listaAssinaturasMesCorrente.clear();
 
       if (list.isNotEmpty) {
-
         for (int i = 0; i < list.length; i++) {
           Assinatura ass = list[i];
           int mesAss = int.parse(ass.data.substring(3, 5));
@@ -48,34 +50,32 @@ class _HomeState extends State<Home> {
           //  print("DATA: ${data.substring(0,2)}");
           //print("ASS Ano: ${anoAss}");
           //print("DATA Ano: ${anoParam}");
-          
+
           if (ass.recorrencia == 'mensal') {
-            if (mesAss <= mesParam  ) {
-              if(anoAss <= anoParam){
+            if (mesAss <= mesParam) {
+              if (anoAss <= anoParam) {
                 listaAssinaturasMesCorrente.add(ass);
-              }              
-            } 
-            if (mesAss >= mesParam  ) {
-              if(anoAss < anoParam){
+              }
+            }
+            if (mesAss >= mesParam) {
+              if (anoAss < anoParam) {
                 listaAssinaturasMesCorrente.remove(ass);
                 listaAssinaturasMesCorrente.add(ass);
-              }              
-            } 
-
+              }
+            }
           }
           if (ass.recorrencia == 'anual' || ass.recorrencia == 'unica') {
             listaAssinaturasMesCorrente.add(ass);
           }
-
         }
         setState(() {
           listaAssinaturas = listaAssinaturasMesCorrente;
           //listaAssinaturas = list;
         });
 
-        total = listaAssinaturas.map((item) => item.valor).reduce((a, b) => a + b);
+        total =
+            listaAssinaturas.map((item) => item.valor).reduce((a, b) => a + b);
         totalAssinaturas = format(total).toString();
-
       } else {
         setState(() {
           listaAssinaturas.clear();
@@ -101,69 +101,100 @@ class _HomeState extends State<Home> {
     _allMovMes(formatMMyyyy.format(dataAtual));
 
     return Scaffold(
-      backgroundColor: Colors.grey[900],
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        centerTitle: false,
-        title: Padding(
-          padding: EdgeInsets.only(left: 5),
-          child: Text(
-            "Assinaturas",
-            style: TextStyle(
-              fontSize: 30,
-              fontWeight: FontWeight.w200,
-            ),
-          ),
-        ),
-        actions: <Widget>[
-          Padding(
-            padding: EdgeInsets.only(right: 10),
-            child: IconButton(
-                icon: Icon(Icons.add),
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => AddAssinatura()));
-                }),
-          )
-        ],
-      ),
+      //backgroundColor: Colors.grey[900],
+      key: _scaffoldKey,
       drawer: AppDrawer(),
       body: SafeArea(
-        child: Container(          
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [cinzaEscuro2, Colors.grey[900]]
+            ),
+          ),
           height: height,
           child: Column(
+            
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.all(15),
+                padding: EdgeInsets.only(left: 10,right: 10,top: 15,bottom: 15),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    GestureDetector(
+                      onTap: () {
+                        _scaffoldKey.currentState.openDrawer();
+                      },
+                      child: Icon(Icons.sort),
+                    ),
+                    Container(
+                      //width: width,
+                      child: Text("Assinaturas",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.w100)),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => AddAssinatura()));
+                      },
+                      child: Icon(Icons.add),
+                    )
+                  ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 10,right: 10,top: 15,bottom: 15),
                 child: Container(
-                  padding:
-                      EdgeInsets.only(top: 30, bottom: 30, left: 15, right: 15),
+                  padding: EdgeInsets.all(20),
+                  //height: 150,
                   decoration: BoxDecoration(
-                    color: Colors.grey[900],
-                    border: Border.all(width: 0.2, color: Colors.orange[700]),
-                    borderRadius: BorderRadius.circular(15),
-                    
-                    boxShadow: [
-                      BoxShadow(
-                        offset: Offset(-3, 3),
-                        spreadRadius: 2,
-                        blurRadius: 5,
+                    borderRadius: BorderRadius.circular(20),
+                    gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [Colors.deepPurple[300],Colors.deepPurple[600]],),
+                  ),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Column(
+                        //crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text("Mês Corrente",
+                            style: TextStyle(
+                                fontSize: 15, fontWeight: FontWeight.w100)),
+                          Text("${format_Mes.format(dataAtual)}",
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.w100)),
+                        ],
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 0),
+                        child: Container(
+                          //width: width,
+
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text("R\$",style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.w100)),
+                              Text(
+                                "${totalAssinaturas.replaceAll(".", ",")}",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 30, fontWeight: FontWeight.w100),
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
                     ],
-                  ),
-                  child: Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Text("Total: ",
-                            style: TextStyle(fontSize: 25, color: Colors.grey)),
-                        Text(
-                          totalAssinaturas,
-                          style: TextStyle(fontSize: 40, color: Colors.grey),
-                        ),
-                      ],
-                    ),
                   ),
                 ),
               ),

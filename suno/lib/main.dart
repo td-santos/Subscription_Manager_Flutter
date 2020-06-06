@@ -23,7 +23,7 @@ void main() {
     debugShowCheckedModeBanner: false,
     theme: ThemeData(
       brightness: Brightness.dark,
-      accentColor: Colors.amber[700]
+      accentColor: Colors.deepPurple[600]
     ),
   ));
 }

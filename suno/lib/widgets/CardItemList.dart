@@ -15,13 +15,16 @@ class CardItemList extends StatelessWidget {
 
   const CardItemList({Key key, this.imagemUrl, this.nome, this.valor, this.plano, this.recorrencia, this.nota, this.metodoPG, this.descricao, this.data, this.id}) : super(key: key);
 
+  
   @override
   Widget build(BuildContext context) {
 
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    Color cinzaEscuro = Color(0xff383844);
+    Color cinzaEscuro2 = Color(0xff2E3035);
 
-    return Padding(padding: EdgeInsets.only(left: 15, bottom: 10, right: 15),
+    return Padding(padding: EdgeInsets.only(left: 10, bottom: 10, right: 10),
     child: GestureDetector(
       onTap: (){
         Navigator.push(context, MaterialPageRoute(
@@ -40,11 +43,17 @@ class CardItemList extends StatelessWidget {
           ));
       },
       child: Container(
-      padding: EdgeInsets.all(15),
+      padding: EdgeInsets.only(left: 10,right: 10, top: 10,bottom: 10),
       decoration: BoxDecoration(
           //border: Border.all(width: 0.2,color: Colors.cyan[700]),
-          borderRadius: BorderRadius.circular(15),
-          color: Colors.grey[850],
+          borderRadius: BorderRadius.circular(width * 0.045),
+          //color: Colors.grey[850],
+          //color: cinzaEscuro,
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [cinzaEscuro2, Colors.grey[900]]
+            ),
           boxShadow: [BoxShadow(
             offset: Offset(-2, 2), 
             blurRadius: 3,
@@ -89,21 +98,21 @@ class CardItemList extends StatelessWidget {
                     width: 10,
                   ),
                   Container(
-                    //color: Colors.black,
-                    width: width * 0.5,
+                    //color: Colors.blue,
+                    width: width * 0.42,
                     child: Text(
                       "$nome",overflow: TextOverflow.ellipsis,
-                      style: TextStyle(fontSize: 20),
+                      style: TextStyle(fontSize: width * 0.045),
                     ),
                   )
                 ],
               ),
               Container(
-                //color: Colors.black,
+                //color: Colors.red,
                 //width: width * 0.5,
                 child: Text(
-                  "$valor",
-                  style: TextStyle(fontSize: 20),
+                  "R\$ ${valor.replaceAll(".", ",")}",
+                  style: TextStyle(fontSize: width * 0.05,),
                 ),
               )
             ],
@@ -115,7 +124,26 @@ class CardItemList extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Text("Plano: $plano"),
-              Text("Recorrencia: $recorrencia")
+              Container(
+                padding: EdgeInsets.only(left: 15,right: 15,top: 5,bottom: 5),
+                decoration: BoxDecoration(
+                  color: Colors.pink[200],
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [Colors.pink[300],Colors.purple[400]]),
+                  borderRadius: BorderRadius.circular(width * 0.02)
+                ),
+                child: Row(
+                  children: <Widget>[
+                    Text("Recorrencia: "),
+                    Text("$recorrencia",style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: width * 0.035
+                    ),),
+                  ],
+                )
+                )
             ],
           )
         ],
