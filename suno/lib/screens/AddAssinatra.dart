@@ -100,400 +100,405 @@ class _AddAssinaturaState extends State<AddAssinatura> {
 
     return Scaffold(
       //backgroundColor: Colors.grey[850],
-      body: SafeArea(
-          child: SingleChildScrollView(
-              child: Container(
-        decoration: BoxDecoration(
+      appBar: AppBar(
+        elevation: 0,
+        actions: <Widget>[
+          Row(
+            children: <Widget>[
+              GestureDetector(
+                onTap: () {
+                  salvar();
+                },
+                child: Container(
+                  height: 25, width: 65,
+                  //padding: EdgeInsets.only(left: 16, right: 16, top: 4, bottom: 4),
+                  decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: [
+                            Colors.deepPurple[300],
+                            Colors.deepPurple[600]
+                          ]),
+                      color: Colors.amber[700],
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Center(
+                    child: Text(
+                      "Save",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                width: 15,
+              )
+            ],
+          ),
+        ],
+      ),
+      body: SingleChildScrollView(
+        physics: ClampingScrollPhysics(),
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [Colors.grey[900], Colors.black]),
+          ),
+          child: Padding(
+            padding: EdgeInsets.only(left: 15, right: 15, bottom: 15, top: 15),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                container1(),
+                SizedBox(
+                  height: 30,
+                ),
+                container2(width),
+                Container(
+                  //color: Colors.yellow,
+                  height: 100,
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget container1() {
+    return Container(
+      padding: EdgeInsets.only(top: 20, left: 15, right: 15, bottom: 20),
+      decoration: BoxDecoration(
           gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              colors: [Colors.grey[900], Colors.black]),
-        ),
-        child: Padding(
-          padding: EdgeInsets.all(15),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+              colors: [cinzaEscuro2, Colors.grey[900]]),
+          //color: Colors.grey[850],
+          borderRadius: BorderRadius.circular(15)),
+      child: Column(
+        children: <Widget>[
+          Row(
             children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  GestureDetector(
-                    //child: Icon(FontAwesomeIcons.angleLeft),
-                    child: Icon(Icons.arrow_back_ios),
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      salvar();
-                    },
-                    child: Container(
-                        padding: EdgeInsets.only(
-                            left: 16, right: 16, top: 4, bottom: 4),
-                        decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                                begin: Alignment.topLeft,
-                                end: Alignment.bottomRight,
-                                colors: [
-                                  Colors.deepPurple[300],
-                                  Colors.deepPurple[600]
-                                ]),
-                            color: Colors.amber[700],
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Center(
-                          child: Text(
-                            "Save",
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        )),
-                  )
-                ],
+              Flexible(
+                child: TextField(
+                  controller: _controllerAssinatura,
+                  keyboardType: TextInputType.text,
+                  decoration: InputDecoration(
+                      hintText: "Assinatura",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      )),
+                ),
               ),
-              SizedBox(
-                height: 25,
-              ),
-              Container(
-                padding:
-                    EdgeInsets.only(top: 20, left: 15, right: 15, bottom: 20),
-                decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        colors: [cinzaEscuro2, Colors.grey[900]]),
-                    //color: Colors.grey[850],
-                    borderRadius: BorderRadius.circular(15)),
-                child: Column(
-                  children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        Flexible(
-                          child: TextField(
-                            controller: _controllerAssinatura,
-                            keyboardType: TextInputType.text,
-                            decoration: InputDecoration(
-                                hintText: "Assinatura",
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(15),
-                                )),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(left: 10),
-                          child: GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => LogoScreen()))
-                                  .then((value) {
-                                print(value);
-                                setState(() {
-                                  urlLogo = value;
-                                });
-                              });
-                              //showDialogLogos();
-                            },
-                            child: Container(
-                              height: 45,
-                              width: 45,
-                              decoration: BoxDecoration(
-                                  //color: Colors.amber[700],
-                                  gradient: LinearGradient(
-                                      begin: Alignment.topLeft,
-                                      end: Alignment.bottomRight,
-                                      colors: [
-                                        Colors.deepPurple[300],
-                                        Colors.deepPurple[600]
-                                      ]),
-                                  //border: Border.all(color: Colors.amber[700]),
-                                  borderRadius: BorderRadius.circular(15),
-                                  boxShadow: [
-                                    BoxShadow(
-                                        offset: Offset(-3, 3),
-                                        blurRadius: 7,
-                                        color: Colors.grey[900])
-                                  ]),
-                              child: urlLogo == null
-                                  ? Icon(
-                                      iconSelecionado == null
-                                          ? Icons.style
-                                          : iconSelecionado,
-                                      color: Colors.grey[850],
-                                      size: 30,
-                                    )
-                                  : ClipRRect(
-                                      borderRadius: BorderRadius.circular(15),
-                                      child: Image.asset(
-                                        urlLogo,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
+              Padding(
+                padding: EdgeInsets.only(left: 10),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => LogoScreen())).then((value) {
+                      print(value);
+                      setState(() {
+                        urlLogo = value;
+                      });
+                    });
+                    //showDialogLogos();
+                  },
+                  child: Container(
+                    height: 45,
+                    width: 45,
+                    decoration: BoxDecoration(
+                        //color: Colors.amber[700],
+                        gradient: LinearGradient(
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                            colors: [
+                              Colors.deepPurple[300],
+                              Colors.deepPurple[600]
+                            ]),
+                        //border: Border.all(color: Colors.amber[700]),
+                        borderRadius: BorderRadius.circular(15),
+                        boxShadow: [
+                          BoxShadow(
+                              offset: Offset(-3, 3),
+                              blurRadius: 7,
+                              color: Colors.grey[900])
+                        ]),
+                    child: urlLogo == null
+                        ? Icon(
+                            iconSelecionado == null
+                                ? Icons.style
+                                : iconSelecionado,
+                            color: Colors.grey[850],
+                            size: 30,
+                          )
+                        : ClipRRect(
+                            borderRadius: BorderRadius.circular(15),
+                            child: Image.asset(
+                              urlLogo,
+                              fit: BoxFit.cover,
                             ),
                           ),
-                        )
-                      ],
-                    ),
-                    SizedBox(
-                      height: 40,
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Text("Plano: "),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              planP = false;
-                              planPr = false;
-                              planB = true;
-                              plano = "Básico";
-                            });
-                          },
-                          child: ContainerOption(
-                            selected: planB,
-                            texto: "Básico",
-                          ),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              planP = true;
-                              planPr = false;
-                              planB = false;
-                              plano = "Padrao";
-                            });
-                          },
-                          child: ContainerOption(
-                            selected: planP,
-                            texto: "Padrão",
-                          ),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              planP = false;
-                              planPr = true;
-                              planB = false;
-                              plano = "Premium";
-                            });
-                          },
-                          child: ContainerOption(
-                            selected: planPr,
-                            texto: "Premium",
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 25,
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Text("Recorrência: "),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              recU = true;
-                              recM = false;
-                              recA = false;
-                              recorrencia = "unica";
-                            });
-                          },
-                          child: ContainerOption(
-                            selected: recU,
-                            texto: "Única",
-                          ),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              recU = false;
-                              recM = true;
-                              recA = false;
-                              recorrencia = "mensal";
-                            });
-                          },
-                          child: ContainerOption(
-                            selected: recM,
-                            texto: "Mensal",
-                          ),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              recU = false;
-                              recM = false;
-                              recA = true;
-                              recorrencia = "anual";
-                            });
-                          },
-                          child: ContainerOption(
-                            selected: recA,
-                            texto: "Anual",
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 25,
-                    ),
-                    TextField(
-                      controller: _controllerNota,
-                      maxLines: 2,
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                          hintText: "Nota (opicional)",
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15),
-                          )),
-                    ),
-                  ],
+                  ),
+                ),
+              )
+            ],
+          ),
+          SizedBox(
+            height: 40,
+          ),
+          Row(
+            children: <Widget>[
+              Text("Plano: "),
+              SizedBox(
+                width: 10,
+              ),
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    planP = false;
+                    planPr = false;
+                    planB = true;
+                    plano = "Básico";
+                  });
+                },
+                child: ContainerOption(
+                  selected: planB,
+                  texto: "Básico",
                 ),
               ),
               SizedBox(
-                height: 30,
+                width: 10,
               ),
-              Container(
-                padding:
-                    EdgeInsets.only(top: 20, left: 15, right: 15, bottom: 20),
-                decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        colors: [cinzaEscuro2, Colors.grey[900]]),
-                    //color: Colors.grey[850],
-                    borderRadius: BorderRadius.circular(15)),
-                child: Column(
-                  children: <Widget>[
-                    Container(
-                      width: width,
-                      decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomRight,
-                              colors: [Colors.black, Colors.grey[900]]),
-                          //color: Colors.grey[900],
-                          borderRadius: BorderRadius.circular(15)),
-                      child: Padding(
-                          padding: EdgeInsets.all(15),
-                          child: Column(
-                            children: <Widget>[
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: <Widget>[
-                                  Text(
-                                    "${valueSlide.toStringAsFixed(2)}",
-                                    style: TextStyle(fontSize: width * 0.07),
-                                  ),
-                                  Column(
-                                    children: <Widget>[
-                                      Slider(
-                                        //activeColor: Colors.amber[700],
-                                        activeColor: Colors.deepPurple[300],
-                                        max: 200,
-                                        value: valueSlide,
-                                        onChanged: (value) {
-                                          setState(() {
-                                            valueSlide = value;
-                                          });
-                                        },
-                                      ),
-                                    ],
-                                  )
-                                ],
-                              ),
-                              SizedBox(
-                                height: 20,
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: <Widget>[
-                                  Text(
-                                    "Primeiro pagamento:  ",
-                                    style: TextStyle(
-                                        color: Colors.white.withAlpha(80)),
-                                  ),
-                                  Row(
-                                    children: <Widget>[
-                                      Text(
-                                        dataInicioPG,
-                                        style: TextStyle(
-                                            fontSize: 17,
-                                            color: Colors.white.withAlpha(170),
-                                            fontWeight: FontWeight.w600),
-                                      ),
-                                      SizedBox(
-                                        width: 15,
-                                      ),
-                                      GestureDetector(
-                                        onTap: () {
-                                          selectDate();
-                                        },
-                                        child: Icon(
-                                          FontAwesomeIcons.calendarAlt,
-                                          //Icons.edit,
-                                          color: Colors.white.withAlpha(170),
-                                        ),
-                                      )
-                                    ],
-                                  )
-                                ],
-                              ),
-                            ],
-                          )),
-                    ),
-                    SizedBox(
-                      height: 25,
-                    ),
-                    TextField(
-                      controller: _controllerMetPG,
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                          hintText: "Método de pagamento  (opicional)",
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15),
-                          )),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    TextField(
-                      controller: _controllerDesc,
-                      maxLines: 4,
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                          hintText: "Descriçao (opicional)",
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15),
-                          )),
-                    ),
-                  ],
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    planP = true;
+                    planPr = false;
+                    planB = false;
+                    plano = "Padrao";
+                  });
+                },
+                child: ContainerOption(
+                  selected: planP,
+                  texto: "Padrão",
+                ),
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    planP = false;
+                    planPr = true;
+                    planB = false;
+                    plano = "Premium";
+                  });
+                },
+                child: ContainerOption(
+                  selected: planPr,
+                  texto: "Premium",
                 ),
               ),
             ],
           ),
-        ),
-      ))),
+          SizedBox(
+            height: 25,
+          ),
+          Row(
+            children: <Widget>[
+              Text("Recorrência: "),
+              SizedBox(
+                width: 10,
+              ),
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    recU = true;
+                    recM = false;
+                    recA = false;
+                    recorrencia = "unica";
+                  });
+                },
+                child: ContainerOption(
+                  selected: recU,
+                  texto: "Única",
+                ),
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    recU = false;
+                    recM = true;
+                    recA = false;
+                    recorrencia = "mensal";
+                  });
+                },
+                child: ContainerOption(
+                  selected: recM,
+                  texto: "Mensal",
+                ),
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    recU = false;
+                    recM = false;
+                    recA = true;
+                    recorrencia = "anual";
+                  });
+                },
+                child: ContainerOption(
+                  selected: recA,
+                  texto: "Anual",
+                ),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 25,
+          ),
+          TextField(
+            controller: _controllerNota,
+            maxLines: 2,
+            keyboardType: TextInputType.text,
+            decoration: InputDecoration(
+                hintText: "Nota (opicional)",
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15),
+                )),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget container2(double width) {
+    return Container(
+      padding: EdgeInsets.only(top: 20, left: 15, right: 15, bottom: 20),
+      decoration: BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [cinzaEscuro2, Colors.grey[900]]),
+          //color: Colors.grey[850],
+          borderRadius: BorderRadius.circular(15)),
+      child: Column(
+        children: <Widget>[
+          Container(
+            width: width,
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [Colors.black, Colors.grey[900]]),
+                //color: Colors.grey[900],
+                borderRadius: BorderRadius.circular(15)),
+            child: Padding(
+                padding: EdgeInsets.all(15),
+                child: Column(
+                  children: <Widget>[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(
+                          "${valueSlide.toStringAsFixed(2)}",
+                          style: TextStyle(fontSize: width * 0.07),
+                        ),
+                        Column(
+                          children: <Widget>[
+                            Slider(
+                              //activeColor: Colors.amber[700],
+                              activeColor: Colors.deepPurple[300],
+                              max: 200,
+                              value: valueSlide,
+                              onChanged: (value) {
+                                setState(() {
+                                  valueSlide = value;
+                                });
+                              },
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(
+                          "Primeiro pagamento:  ",
+                          style: TextStyle(color: Colors.white.withAlpha(80)),
+                        ),
+                        Row(
+                          children: <Widget>[
+                            Text(
+                              dataInicioPG,
+                              style: TextStyle(
+                                  fontSize: 17,
+                                  color: Colors.white.withAlpha(170),
+                                  fontWeight: FontWeight.w600),
+                            ),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                selectDate();
+                              },
+                              child: Icon(
+                                FontAwesomeIcons.calendarAlt,
+                                //Icons.edit,
+                                color: Colors.white.withAlpha(170),
+                              ),
+                            )
+                          ],
+                        )
+                      ],
+                    ),
+                  ],
+                )),
+          ),
+          SizedBox(
+            height: 25,
+          ),
+          TextField(
+            controller: _controllerMetPG,
+            keyboardType: TextInputType.text,
+            decoration: InputDecoration(
+                hintText: "Método de pagamento  (opicional)",
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15),
+                )),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          TextField(
+            controller: _controllerDesc,
+            maxLines: 4,
+            keyboardType: TextInputType.text,
+            decoration: InputDecoration(
+                hintText: "Descriçao (opicional)",
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15),
+                )),
+          ),
+        ],
+      ),
     );
   }
 }

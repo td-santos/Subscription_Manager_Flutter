@@ -77,7 +77,7 @@ class _AppDrawerState extends State<AppDrawer> with TickerProviderStateMixin {
             child: Container(
               alignment: Alignment.centerLeft,
               child: Text(
-                "    Suno",
+                "    SUNO",
                 style: TextStyle(
                     fontSize: 60,
                     color: Colors.grey,
@@ -126,7 +126,7 @@ class _AppDrawerState extends State<AppDrawer> with TickerProviderStateMixin {
                             Container(
                               padding: EdgeInsets.only(left: 15, right: 15, top: 6, bottom: 6),
                               decoration: BoxDecoration(
-                                  border: Border.all(width: 0.5, color: Colors.deepPurple[400]),
+                                  border: Border.all(width: 0.5, color: Colors.blue[400]),
                                   borderRadius: BorderRadius.circular(10)),
                               child: Text(
                                 "$totalAssinaturas",

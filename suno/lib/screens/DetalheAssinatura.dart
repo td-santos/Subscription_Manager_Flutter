@@ -23,7 +23,8 @@ class DetalheAssinatura extends StatefulWidget {
       this.nota,
       this.metodoPG,
       this.descricao,
-      this.data, this.id})
+      this.data,
+      this.id})
       : super(key: key);
 
   @override
@@ -38,333 +39,288 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
 
   @override
   Widget build(BuildContext context) {
+    Color cinzaEscuro2 = Color(0xff2E3035);
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+
     return Scaffold(
-      backgroundColor: Colors.grey[900],
-      body: SafeArea(
-          child: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.only(left: 15, top: 15, right: 15),
-          child: Container(
-           // height: height,
-            width: width,
-            child: Column(
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.only(bottom: 15),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      GestureDetector(
-                        child: Icon(Icons.arrow_back_ios),
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                      ),
-                      Row(
-                        children: <Widget>[
-                          GestureDetector(
-                            onTap: () {
-                              delete();
-                            },
-                            child: Container(
-                                padding: EdgeInsets.only(
-                                    left: 16, right: 16, top: 4, bottom: 4),
-                                decoration: BoxDecoration(
-                                    color: Colors.red[700],
-                                    borderRadius: BorderRadius.circular(10)),
-                                child: Center(
-                                  child: Text(
-                                    "Delete",
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                )),
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              //salvar();
-                            },
-                            child: Container(
-                                padding: EdgeInsets.only(
-                                    left: 16, right: 16, top: 4, bottom: 4),
-                                decoration: BoxDecoration(
-                                    color: Colors.amber[700],
-                                    borderRadius: BorderRadius.circular(10)),
-                                child: Center(
-                                  child: Text(
-                                    "Edit",
-                                    style: TextStyle(color: Colors.grey[900]),
-                                  ),
-                                )),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),                  
-                ),
-                
-                Column(
-                    children: <Widget>[
-                      Container(
-                          width: width,
-                          height: height * 0.2,
-                          decoration: BoxDecoration(
-                              //color: Colors.pink
-                              ),
-                          child: Hero(
-                            tag: widget.id,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(25),
-                              child: Image.asset(
-                                widget.urlImage,
-                                fit: BoxFit.cover,
-                              )),
-                          )
-                              ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Container(
-                        width: width,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            color: Colors.grey[850]),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Padding(
-                              padding: EdgeInsets.only(
-                                  top: 15, left: 15, right: 15, bottom: 15),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: <Widget>[
-                                  Text("Assinatura: ",
-                                      style: TextStyle(
-                                          color: Colors.white.withAlpha(80))),
-                                  Container(
-                                    width: width* 0.6,
-                                    child: ListTile(
-                                      contentPadding: EdgeInsets.all(0),
-                                      
-                                      title: Text(
-                                    widget.nome,
-                                    textAlign: TextAlign.right,
-                                    style: TextStyle(
-                                        fontSize: 17,
-                                        color: Colors.orange[700]),
-                                  ),
-                                    ),
-                                  )
-                                  
-                                ],
-                              ),
-                            ),
-                            Divider(
-                              color: Colors.grey[900],
-                              height: 1,
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(
-                                  top: 15, left: 15, right: 15, bottom: 15),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: <Widget>[
-                                  Text("Valor: ",
-                                      style: TextStyle(
-                                          color: Colors.white.withAlpha(80))),
-                                  Text(widget.valor,
-                                      style: TextStyle(
-                                          fontSize: 17,
-                                          color: Colors.orange[700])),
-                                ],
-                              ),
-                            ),
-                            Divider(
-                              color: Colors.grey[900],
-                              height: 1,
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(
-                                  top: 15, left: 15, right: 15, bottom: 15),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: <Widget>[
-                                  Text("Plano: ",
-                                      style: TextStyle(
-                                          color: Colors.white.withAlpha(80))),
-                                  Text(widget.plano,
-                                      style: TextStyle(
-                                          fontSize: 17,
-                                          color: Colors.orange[700])),
-                                ],
-                              ),
-                            ),
-                            Divider(
-                              color: Colors.grey[900],
-                              height: 1,
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(
-                                  top: 15, left: 15, right: 15, bottom: 15),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: <Widget>[
-                                  Text("Recorência: ",
-                                      style: TextStyle(
-                                          color: Colors.white.withAlpha(80))),
-                                  Text(widget.recorrencia,
-                                      style: TextStyle(
-                                          fontSize: 17,
-                                          color: Colors.orange[700])),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Container(
-                        width: width,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            color: Colors.grey[850]),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Padding(
-                              padding: EdgeInsets.only(
-                                  top: 15, left: 15, right: 15, bottom: 15),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: <Widget>[
-                                  Text("Nota: ",
-                                      style: TextStyle(
-                                          color: Colors.white.withAlpha(80))),
-                                  Container(
-                                    width: width *0.6,
-                                    child: ListTile(
-                                      contentPadding: EdgeInsets.all(0),
-                                      title: Text(
-                                    widget.nota,
-                                    //overflow: TextOverflow.ellipsis,
-                                    textAlign: TextAlign.right,
-                                    style: TextStyle(
-                                        fontSize: 17,
-                                        color: Colors.orange[700]),
-                                  ),
-                                    ),
-                                  )
-                                  
-                                ],
-                              ),
-                            ),
-                            Divider(
-                              color: Colors.grey[900],
-                              height: 1,
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(
-                                  top: 15, left: 15, right: 15, bottom: 15),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: <Widget>[
-                                  Text("Método PG: ",
-                                      style: TextStyle(
-                                          color: Colors.white.withAlpha(80))),
-                                  Container(                                    
-                                    width: width * 0.6,
-                                    child: ListTile(
-                                      contentPadding: EdgeInsets.all(0),
-                                      title: Text(widget.metodoPG,
-                                    //overflow: TextOverflow.ellipsis,
-                                    textAlign: TextAlign.right,
-                                      style: TextStyle(
-                                          fontSize: 17,
-                                          color: Colors.orange[700])),
-                                    )
-                                  )
-                                  
-                                ],
-                              ),
-                            ),
-                            Divider(
-                              color: Colors.grey[900],
-                              height: 1,
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(
-                                  top: 15, left: 15, right: 15, bottom: 15),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: <Widget>[
-                                  Text("Descrição: ",
-                                      style: TextStyle(
-                                          color: Colors.white.withAlpha(80))),
-                                  Container(
-                                    //color: Colors.blue,
-                                    alignment: Alignment.centerRight,
-                                    width: width * 0.6,
-                                    child: ListTile(
-                                      contentPadding: EdgeInsets.all(0),
-                                      title: Text(widget.descricao,
-                                        //overflow: TextOverflow.ellipsis,
-                                         textAlign: TextAlign.right,
-                                        style: TextStyle(
-                                            fontSize: 17,
-                                            color: Colors.orange[700])),
-                                    )
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Divider(
-                              color: Colors.grey[900],
-                              height: 1,
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(
-                                  top: 15, left: 15, right: 15, bottom: 15),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: <Widget>[
-                                  Text("Data PG: ",
-                                      style: TextStyle(
-                                          color: Colors.white.withAlpha(80))),
-                                  Text(widget.data,
-                                      style: TextStyle(
-                                          fontSize: 17,
-                                          color: Colors.orange[700])),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      
-                    ],
+      appBar: AppBar(
+        elevation: 0,
+        //backgroundColor: Colors.black,
+        actions: <Widget>[
+          Row(
+            children: <Widget>[
+              GestureDetector(
+                onTap: () {
+                  delete();
+                },
+                child: Container(
+                  height: 25, width: 65,
+                  //padding: EdgeInsets.only(left: 16, right: 16, top: 4, bottom: 4),
+                  decoration: BoxDecoration(
+                      color: Colors.red[700],
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Center(
+                    child: Text(
+                      "Delete",
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
-                  SizedBox(height: 100,)
-                
-              ],
+                ),
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              GestureDetector(
+                onTap: () {
+                  //salvar();
+                },
+                child: Container(
+                  height: 25, width: 55,
+                  //padding: EdgeInsets.only(left: 16, right: 16, top: 4, bottom: 4),
+                  decoration: BoxDecoration(
+                      color: Colors.amber[700],
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Center(
+                    child: Text(
+                      "Edit",
+                      style: TextStyle(color: Colors.grey[900]),
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                width: 15,
+              )
+            ],
+          )
+        ],
+      ),
+      body: SingleChildScrollView(
+        physics: ClampingScrollPhysics(),
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [Colors.grey[900], Colors.black],
+            ),
+          ),
+          child: Padding(
+            padding: EdgeInsets.only(left: 15, top: 15, right: 15),
+            child: Container(
+              //height: height* 1.5,
+              width: width,
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    width: width,
+                    height: height * 0.2,
+                    child: Hero(
+                      tag: widget.id,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(25),
+                        child: Image.asset(
+                          widget.urlImage,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  container1(width),
+                  SizedBox(height: 20),
+                  container2(width),
+                  Container(height: 100)
+                ],
+              ),
             ),
           ),
         ),
+      ),
+    );
+  }
 
-      )),
+  Widget container1(double width) {
+    return Container(
+      width: width,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15), color: Colors.grey[850]),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.only(top: 15, left: 15, right: 15, bottom: 15),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text("Assinatura: ",
+                    style: TextStyle(color: Colors.white.withAlpha(80))),
+                Container(
+                  width: width * 0.6,
+                  child: ListTile(
+                    contentPadding: null,
+                    title: Text(
+                      widget.nome,
+                      textAlign: TextAlign.right,
+                      style: TextStyle(fontSize: 17, color: Colors.orange[700]),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+          Divider(
+            color: Colors.grey[900],
+            height: 1,
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 15, left: 15, right: 15, bottom: 15),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text("Valor: ",
+                    style: TextStyle(color: Colors.white.withAlpha(80))),
+                Text(widget.valor,
+                    style: TextStyle(fontSize: 17, color: Colors.orange[700])),
+              ],
+            ),
+          ),
+          Divider(
+            color: Colors.grey[900],
+            height: 1,
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 15, left: 15, right: 15, bottom: 15),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text("Plano: ",
+                    style: TextStyle(color: Colors.white.withAlpha(80))),
+                Text(widget.plano,
+                    style: TextStyle(fontSize: 17, color: Colors.orange[700])),
+              ],
+            ),
+          ),
+          Divider(
+            color: Colors.grey[900],
+            height: 1,
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 15, left: 15, right: 15, bottom: 15),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text("Recorência: ",
+                    style: TextStyle(color: Colors.white.withAlpha(80))),
+                Text(widget.recorrencia,
+                    style: TextStyle(fontSize: 17, color: Colors.orange[700])),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget container2(double width) {
+    return Container(
+      width: width,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15), color: Colors.grey[850]),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.only(top: 15, left: 15, right: 15, bottom: 15),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text("Nota: ",
+                    style: TextStyle(color: Colors.white.withAlpha(80))),
+                Container(
+                  width: width * 0.6,
+                  child: ListTile(
+                    contentPadding: EdgeInsets.all(0),
+                    title: Text(
+                      widget.nota,
+                      //overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.right,
+                      style: TextStyle(fontSize: 17, color: Colors.orange[700]),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+          Divider(
+            color: Colors.grey[900],
+            height: 1,
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 15, left: 15, right: 15, bottom: 15),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text("Método PG: ",
+                    style: TextStyle(color: Colors.white.withAlpha(80))),
+                Container(
+                    width: width * 0.6,
+                    child: ListTile(
+                      contentPadding: EdgeInsets.all(0),
+                      title: Text(widget.metodoPG,
+                          //overflow: TextOverflow.ellipsis,
+                          textAlign: TextAlign.right,
+                          style: TextStyle(
+                              fontSize: 17, color: Colors.orange[700])),
+                    ))
+              ],
+            ),
+          ),
+          Divider(
+            color: Colors.grey[900],
+            height: 1,
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 15, left: 15, right: 15, bottom: 15),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text("Descrição: ",
+                    style: TextStyle(color: Colors.white.withAlpha(80))),
+                Container(
+                    //color: Colors.blue,
+                    alignment: Alignment.centerRight,
+                    width: width * 0.6,
+                    child: ListTile(
+                      contentPadding: EdgeInsets.all(0),
+                      title: Text(widget.descricao,
+                          //overflow: TextOverflow.ellipsis,
+                          textAlign: TextAlign.right,
+                          style: TextStyle(
+                              fontSize: 17, color: Colors.orange[700])),
+                    )),
+              ],
+            ),
+          ),
+          Divider(
+            color: Colors.grey[900],
+            height: 1,
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 15, left: 15, right: 15, bottom: 15),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text("Data PG: ",
+                    style: TextStyle(color: Colors.white.withAlpha(80))),
+                Text(widget.data,
+                    style: TextStyle(fontSize: 17, color: Colors.orange[700])),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

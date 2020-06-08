@@ -37,8 +37,7 @@ class InfoScreen extends StatelessWidget {
           ),
         ),
       ),*/
-        body: SafeArea(
-      child: Container(
+        body: Container(
         height: height,
           child: Container(
         decoration: BoxDecoration(
@@ -48,11 +47,12 @@ class InfoScreen extends StatelessWidget {
               colors: [cinzaEscuro2, Colors.grey[900]]),
         ),
         child: SingleChildScrollView(
+          physics: ClampingScrollPhysics(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.only(left: 10,right: 10,top: 15,bottom: 15),
+                padding: EdgeInsets.only(left: 10,right: 10,top: 40,bottom: 15),
                 child: Row(                  
                   children: <Widget>[
                     GestureDetector(
@@ -173,6 +173,6 @@ class InfoScreen extends StatelessWidget {
           ),
         ),
       )),
-    ));
+    );
   }
 }

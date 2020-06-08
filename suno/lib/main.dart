@@ -22,6 +22,7 @@ void main() {
     home: MySplash(),
     debugShowCheckedModeBanner: false,
     theme: ThemeData(
+      
       brightness: Brightness.dark,
       accentColor: Colors.deepPurple[600]
     ),

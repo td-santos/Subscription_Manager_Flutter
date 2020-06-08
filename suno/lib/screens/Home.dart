@@ -18,6 +18,8 @@ class _HomeState extends State<Home> {
   List<Assinatura> listaAssinaturasMesCorrente = List();
   List<Assinatura> listaTeste = List();
 
+  //azulMarinho 0D3159 
+
   var total;
   var formatMMyyyy = DateFormat("MM/yyyy");
   var dataAtual = new DateTime.now();
@@ -73,8 +75,7 @@ class _HomeState extends State<Home> {
           //listaAssinaturas = list;
         });
 
-        total =
-            listaAssinaturas.map((item) => item.valor).reduce((a, b) => a + b);
+        total =listaAssinaturas.map((item) => item.valor).reduce((a, b) => a + b);
         totalAssinaturas = format(total).toString();
       } else {
         setState(() {
@@ -104,121 +105,208 @@ class _HomeState extends State<Home> {
       //backgroundColor: Colors.grey[900],
       key: _scaffoldKey,
       drawer: AppDrawer(),
-      body: SafeArea(
-        child: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [cinzaEscuro2, Colors.grey[900]]
+      body: Container(
+        decoration: BoxDecoration(
+          
+          gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [cinzaEscuro2, Colors.grey[900]]),
+        ),
+        height: height,
+        child: Column(
+          children: <Widget>[
+            Container(
+              
+              decoration: BoxDecoration(
+                //borderRadius: BorderRadius.circular(25),
+                  gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [Colors.blue[400], Colors.deepPurple[600]]),
+                 // color: Colors.deepPurple[200]
+                 ),
+              child: Column(
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.only(
+                        left: 10, right: 10, top: 50, bottom: 0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        GestureDetector(
+                          onTap: () {
+                            _scaffoldKey.currentState.openDrawer();
+                          },
+                          child: Icon(Icons.sort),
+                        ),
+                        Container(
+                          //width: width,
+                          child: Text("${format_Mes.format(dataAtual)}",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.w100)),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AddAssinatura()));
+                          },
+                          child: Icon(Icons.add),
+                        )
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        EdgeInsets.only(left: 0, right: 0, top: 0, bottom: 0),
+                    child: Container(
+                      padding: EdgeInsets.all(20),
+                      //height: 150,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          
+                          Padding(
+                            padding: EdgeInsets.only(top: 0),
+                            child: Container(
+                              //width: width,
+
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Text("R\$",
+                                      style: TextStyle(
+                                          //fontSize: 20,
+                                          fontWeight: FontWeight.w100)),
+                                  Text(
+                                    "${totalAssinaturas.replaceAll(".", ",")}",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize: 50,
+                                        //color: Colors.black,
+                                        fontWeight: FontWeight.w300),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ),
-          ),
-          height: height,
-          child: Column(
-            
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(left: 10,right: 10,top: 15,bottom: 15),
+            /*Padding(
+              padding:
+                  EdgeInsets.only(left: 10, right: 10, top: 50, bottom: 15),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  GestureDetector(
+                    onTap: () {
+                      _scaffoldKey.currentState.openDrawer();
+                    },
+                    child: Icon(Icons.sort),
+                  ),
+                  Container(
+                    //width: width,
+                    child: Text("Assinaturas",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.w100)),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => AddAssinatura()));
+                    },
+                    child: Icon(Icons.add),
+                  )
+                ],
+              ),
+            ),
+            Padding(
+              padding:
+                  EdgeInsets.only(left: 10, right: 10, top: 15, bottom: 5),
+              child: Container(
+                padding: EdgeInsets.all(20),
+                //height: 150,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [Colors.deepPurple[300], Colors.deepPurple[600]],
+                  ),
+                ),
                 child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    GestureDetector(
-                      onTap: () {
-                        _scaffoldKey.currentState.openDrawer();
-                      },
-                      child: Icon(Icons.sort),
+                    Column(
+                      //crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        
+                        Text("${format_Mes.format(dataAtual)}",
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.w100)),
+                      ],
                     ),
-                    Container(
-                      //width: width,
-                      child: Text("Assinaturas",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.w100)),
+                    Padding(
+                      padding: EdgeInsets.only(top: 0),
+                      child: Container(
+                        //width: width,
+
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text("R\$",
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.w100)),
+                            Text(
+                              "${totalAssinaturas.replaceAll(".", ",")}",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 40, fontWeight: FontWeight.w100),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => AddAssinatura()));
-                      },
-                      child: Icon(Icons.add),
-                    )
                   ],
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(left: 10,right: 10,top: 15,bottom: 15),
-                child: Container(
-                  padding: EdgeInsets.all(20),
-                  //height: 150,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    gradient: LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        colors: [Colors.deepPurple[300],Colors.deepPurple[600]],),
-                  ),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Column(
-                        //crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text("Mês Corrente",
-                            style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.w100)),
-                          Text("${format_Mes.format(dataAtual)}",
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.w100)),
-                        ],
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 0),
-                        child: Container(
-                          //width: width,
-
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Text("R\$",style: TextStyle(
-                                    fontSize: 20, fontWeight: FontWeight.w100)),
-                              Text(
-                                "${totalAssinaturas.replaceAll(".", ",")}",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize: 30, fontWeight: FontWeight.w100),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Expanded(
-                child: ListView.builder(
-                    itemCount: listaAssinaturas.length,
-                    itemBuilder: (context, index) {
-                      Assinatura ass = listaAssinaturas[index];
-                      return CardItemList(
-                        id: ass.id,
-                        nome: ass.assinaturaName,
-                        imagemUrl: ass.urlLogo,
-                        valor: ass.valor.toString(),
-                        plano: ass.plano,
-                        recorrencia: ass.recorrencia,
-                        nota: ass.nota,
-                        metodoPG: ass.metodoPG,
-                        descricao: ass.descricao,
-                        data: ass.data,
-                      );
-                    }),
-              )
-            ],
-          ),
+            ),*/
+            Expanded(
+              child: ListView.builder(
+                  itemCount: listaAssinaturas.length,
+                  itemBuilder: (context, index) {
+                    Assinatura ass = listaAssinaturas[index];
+                    return CardItemList(
+                      id: ass.id,
+                      nome: ass.assinaturaName,
+                      imagemUrl: ass.urlLogo,
+                      valor: format(ass.valor),//ass.valor.toString(),
+                      plano: ass.plano,
+                      recorrencia: ass.recorrencia,
+                      nota: ass.nota,
+                      metodoPG: ass.metodoPG,
+                      descricao: ass.descricao,
+                      data: ass.data,
+                    );
+                  }),
+            )
+          ],
         ),
       ),
     );
