@@ -4,6 +4,7 @@ import 'package:suno/controles/AssinaturaDB.dart';
 import 'package:suno/controles/ControleBanco.dart';
 import 'package:suno/model/Assinatura.dart';
 import 'package:suno/widgets/AppDrawer.dart';
+import 'package:suno/widgets/CardAssinatura.dart';
 import 'package:suno/widgets/CardItemList.dart';
 import 'AddAssinatra.dart';
 
@@ -18,7 +19,7 @@ class _HomeState extends State<Home> {
   List<Assinatura> listaAssinaturasMesCorrente = List();
   List<Assinatura> listaTeste = List();
 
-  //azulMarinho 0D3159 
+  //azulMarinho 0D3159
 
   var total;
   var formatMMyyyy = DateFormat("MM/yyyy");
@@ -29,6 +30,7 @@ class _HomeState extends State<Home> {
   DateFormat format_MM = DateFormat("MM");
   DateFormat format_yyyy = DateFormat("yyyy");
   DateFormat format_Mes = DateFormat("MMMM", "pt_BR");
+  DateFormat formatFullData = DateFormat("MMMM 'de' yyyy", "pt_BR");
   GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
   Color cinzaEscuro2 = Color(0xff2E3035);
 
@@ -75,7 +77,8 @@ class _HomeState extends State<Home> {
           //listaAssinaturas = list;
         });
 
-        total =listaAssinaturas.map((item) => item.valor).reduce((a, b) => a + b);
+        total =
+            listaAssinaturas.map((item) => item.valor).reduce((a, b) => a + b);
         totalAssinaturas = format(total).toString();
       } else {
         setState(() {
@@ -104,19 +107,98 @@ class _HomeState extends State<Home> {
     return Scaffold(
       //backgroundColor: Colors.grey[900],
       key: _scaffoldKey,
+      appBar: AppBar(
+        title: Text("Hi, Mike"),
+        elevation: 0,
+        backgroundColor: Colors.black,
+        centerTitle: false,
+        actions: <Widget>[
+          Row(
+            children: <Widget>[
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => AddAssinatura()));
+                },
+                child: Icon(Icons.add),
+              ),
+              Container(
+                width: 15,
+              )
+            ],
+          ),
+        ],
+      ),
       drawer: AppDrawer(),
       body: Container(
         decoration: BoxDecoration(
-          
           gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              colors: [cinzaEscuro2, Colors.grey[900]]),
+              colors: [Colors.black, Colors.black]
+              // colors: [cinzaEscuro2, Colors.grey[900]]
+              ),
         ),
         height: height,
         child: Column(
           children: <Widget>[
-            Container(
+
+            Padding(
+              padding:EdgeInsets.only(left: 20, right: 20, top: 15, bottom: 10),
+              child: Container(
+                padding:EdgeInsets.only(left: 10, right: 10, top: 15, bottom: 10),
+                //height: 100,
+                width: width,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(width *0.03),
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [Colors.blue, Colors.purple[600]],
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.blue.withAlpha(80),
+                        offset: Offset(0, 8),
+                        blurRadius: 30,
+                      ),
+                    ]),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: <Widget>[
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Container(
+                          padding: EdgeInsets.all(width *0.02),
+                          child: Text(
+                            "${formatFullData.format(dataAtual)}",
+                            
+                          ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.all(width *0.02),
+                          child: Text(
+                            "R\$",
+                            style: TextStyle(
+                                fontSize: width * 0.07, fontWeight: FontWeight.w100),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Text(
+                      "${totalAssinaturas.replaceAll(".", ",")}",
+                      textAlign: TextAlign.center,
+                      overflow: TextOverflow.ellipsis,
+                      style:
+                          TextStyle(fontSize: width* 0.15, fontWeight: FontWeight.w300),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            /*Container(
               
               decoration: BoxDecoration(
                 //borderRadius: BorderRadius.circular(25),
@@ -203,7 +285,8 @@ class _HomeState extends State<Home> {
                   )
                 ],
               ),
-            ),
+            ),*/
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             /*Padding(
               padding:
                   EdgeInsets.only(left: 10, right: 10, top: 50, bottom: 15),
@@ -287,16 +370,34 @@ class _HomeState extends State<Home> {
                 ),
               ),
             ),*/
+            Padding(
+              padding:
+                  EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text(
+                    "Assinaturas",
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                  Icon(
+                    Icons.short_text,
+                    color: Colors.grey,
+                  )
+                ],
+              ),
+            ),
             Expanded(
               child: ListView.builder(
+                  padding: EdgeInsets.all(0),
                   itemCount: listaAssinaturas.length,
                   itemBuilder: (context, index) {
                     Assinatura ass = listaAssinaturas[index];
-                    return CardItemList(
+                    return CardAssinatura(
                       id: ass.id,
                       nome: ass.assinaturaName,
                       imagemUrl: ass.urlLogo,
-                      valor: format(ass.valor),//ass.valor.toString(),
+                      valor: format(ass.valor), //ass.valor.toString(),
                       plano: ass.plano,
                       recorrencia: ass.recorrencia,
                       nota: ass.nota,

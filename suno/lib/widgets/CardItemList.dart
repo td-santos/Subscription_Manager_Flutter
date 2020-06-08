@@ -35,7 +35,7 @@ class CardItemList extends StatelessWidget {
     Color cinzaEscuro2 = Color(0xff2E3035);
 
     return Padding(
-      padding: EdgeInsets.only(left: 10, bottom: 10, right: 10),
+      padding: EdgeInsets.only(left: 20, bottom: 10, right: 20),
       child: GestureDetector(
         onTap: () {
           Navigator.push(
@@ -56,12 +56,12 @@ class CardItemList extends StatelessWidget {
         child: Container(
           padding: EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(width * 0.015),
-            //borderRadius: BorderRadius.circular(width * 0.045),
+            //borderRadius: BorderRadius.circular(width * 0.015),
+            borderRadius: BorderRadius.circular(width * 0.035),
             gradient: LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
-                colors: [cinzaEscuro2, Colors.grey[900]]),
+                colors: [Colors.grey[900].withAlpha(100), Colors.grey[900]]),
             boxShadow: [
               BoxShadow(
                 offset: Offset(-2, 2),
@@ -173,7 +173,7 @@ class CardItemList extends StatelessWidget {
                         ),
                       ],
                     ),
-                  )
+                  ),
                 ],
               ),
             ],
