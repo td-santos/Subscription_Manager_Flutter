@@ -111,7 +111,8 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                   salvar();
                 },
                 child: Container(
-                  height: 25, width: 65,
+                  height: height * 0.03, 
+                  width: width * 0.17,
                   //padding: EdgeInsets.only(left: 16, right: 16, top: 4, bottom: 4),
                   decoration: BoxDecoration(
                       gradient: LinearGradient(
@@ -121,17 +122,17 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                             Colors.blue, Colors.purple[600]
                           ]),
                       //color: Colors.amber[700],
-                      borderRadius: BorderRadius.circular(10)),
+                      borderRadius: BorderRadius.circular(width * 0.025)),
                   child: Center(
                     child: Text(
                       "Save",
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(color: Colors.white,fontSize: width * 0.03),
                     ),
                   ),
                 ),
               ),
               Container(
-                width: 15,
+                width: width * 0.03,
               )
             ],
           ),
@@ -148,15 +149,15 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                 colors: [Colors.grey[900], Colors.black]),
           ),*/
           child: Padding(
-            padding: EdgeInsets.only(left: 15, right: 15, bottom: 15, top: 15),
+            padding: EdgeInsets.only(left: width * 0.03, right: width * 0.03, bottom: height * 0.02, top: height * 0.02),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                container1(),
+                container1(width, height),
                 SizedBox(
-                  height: 30,
+                  height: height* 0.03,
                 ),
-                container2(width),
+                container2(width, height),
                 Container(
                   //color: Colors.yellow,
                   height: 100,
@@ -169,9 +170,9 @@ class _AddAssinaturaState extends State<AddAssinatura> {
     );
   }
 
-  Widget container1() {
+  Widget container1(double width, double heigth) {
     return Container(
-      padding: EdgeInsets.only(top: 20, left: 15, right: 15, bottom: 20),
+      padding: EdgeInsets.only(top: heigth * 0.03, left: width * 0.04, right: width * 0.04, bottom: heigth * 0.03),
       decoration: BoxDecoration(
         color: Colors.grey[900].withAlpha(150),
           /*gradient: LinearGradient(
@@ -179,19 +180,23 @@ class _AddAssinaturaState extends State<AddAssinatura> {
               end: Alignment.bottomRight,
               colors: [cinzaEscuro2, Colors.grey[900]]),*/
           //color: Colors.grey[850],
-          borderRadius: BorderRadius.circular(15)),
+          borderRadius: BorderRadius.circular(width * 0.04)),
       child: Column(
         children: <Widget>[
           Row(
             children: <Widget>[
               Flexible(
-                child: TextField(
+                child: TextField(                  
                   controller: _controllerAssinatura,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
+                    contentPadding: EdgeInsets.all(width * 0.04),
                       hintText: "Assinatura",
+                      hintStyle: TextStyle(
+                        fontSize: width * 0.033
+                      ),
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15),
+                        borderRadius: BorderRadius.circular(width * 0.04),
                       )),
                 ),
               ),
@@ -211,8 +216,8 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                     //showDialogLogos();
                   },
                   child: Container(
-                    height: 45,
-                    width: 45,
+                    height: width * 0.12,//45
+                    width: width * 0.12,
                     decoration: BoxDecoration(
                         //color: Colors.amber[700],
                         gradient: LinearGradient(
@@ -224,7 +229,7 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                               //Colors.deepPurple[600]
                             ]),
                         //border: Border.all(color: Colors.amber[700]),
-                        borderRadius: BorderRadius.circular(15),
+                        borderRadius: BorderRadius.circular(width * 0.04),
                         boxShadow: [
                           BoxShadow(
                               offset: Offset(-3, 3),
@@ -237,7 +242,7 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                                 ? Icons.style
                                 : iconSelecionado,
                             color: Colors.white.withAlpha(90),//Colors.grey[850],
-                            size: 30,
+                            size: width * 0.07,
                           )
                         : ClipRRect(
                             borderRadius: BorderRadius.circular(15),
@@ -256,7 +261,11 @@ class _AddAssinaturaState extends State<AddAssinatura> {
           ),
           Row(
             children: <Widget>[
-              Text("Plano: "),
+              Text("Plano: ",
+              style: TextStyle(
+                fontSize: width * 0.033
+              ),
+              ),
               SizedBox(
                 width: 10,
               ),
@@ -315,7 +324,11 @@ class _AddAssinaturaState extends State<AddAssinatura> {
           ),
           Row(
             children: <Widget>[
-              Text("Recorrência: "),
+              Text("Recorrência: ",
+              style: TextStyle(
+                fontSize: width * 0.033
+              ),
+              ),
               SizedBox(
                 width: 10,
               ),
@@ -377,9 +390,13 @@ class _AddAssinaturaState extends State<AddAssinatura> {
             maxLines: 2,
             keyboardType: TextInputType.text,
             decoration: InputDecoration(
+              contentPadding: EdgeInsets.all(width * 0.04),
                 hintText: "Nota (opicional)",
+                hintStyle: TextStyle(
+                        fontSize: width * 0.033
+                      ),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(width * 0.04),
                 )),
           ),
         ],
@@ -387,9 +404,9 @@ class _AddAssinaturaState extends State<AddAssinatura> {
     );
   }
 
-  Widget container2(double width) {
+  Widget container2(double width, double height) {
     return Container(
-      padding: EdgeInsets.only(top: 20, left: 15, right: 15, bottom: 20),
+      padding: EdgeInsets.only(top: height * 0.03, left: width * 0.04, right: width * 0.04, bottom: height * 0.03),
       decoration: BoxDecoration(
         color:Colors.grey[900].withAlpha(150),
           /*gradient: LinearGradient(
@@ -423,7 +440,10 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                         ),
                         Column(
                           children: <Widget>[
-                            Slider(
+                            Container(
+                              width: width * 0.5,
+                              //color: Colors.blue,
+                              child: Slider(                              
                               //activeColor: Colors.amber[700],
                               activeColor: Colors.deepPurple[300],
                               max: 200,
@@ -433,6 +453,7 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                                   valueSlide = value;
                                 });
                               },
+                            )
                             ),
                           ],
                         )
@@ -446,14 +467,16 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                       children: <Widget>[
                         Text(
                           "Primeiro pagamento:  ",
-                          style: TextStyle(color: Colors.white.withAlpha(80)),
+                          style: TextStyle(
+                            fontSize: width * 0.033,
+                            color: Colors.white.withAlpha(80)),
                         ),
                         Row(
                           children: <Widget>[
                             Text(
                               dataInicioPG,
                               style: TextStyle(
-                                  fontSize: 17,
+                                  fontSize: width * 0.04,//17,
                                   color: Colors.white.withAlpha(170),
                                   fontWeight: FontWeight.w600),
                             ),
@@ -465,7 +488,7 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                                 selectDate();
                               },
                               child: Icon(
-                                FontAwesomeIcons.calendarAlt,
+                                FontAwesomeIcons.calendarAlt,size: width * 0.05,
                                 //Icons.edit,
                                 color: Colors.white.withAlpha(170),
                               ),
@@ -484,9 +507,13 @@ class _AddAssinaturaState extends State<AddAssinatura> {
             controller: _controllerMetPG,
             keyboardType: TextInputType.text,
             decoration: InputDecoration(
+              contentPadding: EdgeInsets.all(width * 0.04),
                 hintText: "Método de pagamento  (opicional)",
+                hintStyle: TextStyle(
+                        fontSize: width * 0.033
+                      ),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(width * 0.04),
                 )),
           ),
           SizedBox(
@@ -497,9 +524,13 @@ class _AddAssinaturaState extends State<AddAssinatura> {
             maxLines: 4,
             keyboardType: TextInputType.text,
             decoration: InputDecoration(
+              contentPadding: EdgeInsets.all(width * 0.04),
                 hintText: "Descriçao (opicional)",
+                hintStyle: TextStyle(
+                        fontSize: width * 0.033
+                      ),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(width * 0.04),
                 )),
           ),
         ],

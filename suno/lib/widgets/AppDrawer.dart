@@ -79,7 +79,7 @@ class _AppDrawerState extends State<AppDrawer> with TickerProviderStateMixin {
               child: Text(
                 "    SUNO",
                 style: TextStyle(
-                    fontSize: 60,
+                    fontSize: width * 0.15,//60
                     //color: Colors.grey,
                     fontFamily: "Stentiga",
                     fontWeight: FontWeight.w200),
