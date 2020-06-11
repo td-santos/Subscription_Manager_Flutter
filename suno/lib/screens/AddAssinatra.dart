@@ -102,6 +102,7 @@ class _AddAssinaturaState extends State<AddAssinatura> {
       //backgroundColor: Colors.grey[850],
       appBar: AppBar(
         elevation: 0,
+        backgroundColor: Colors.black,
         actions: <Widget>[
           Row(
             children: <Widget>[
@@ -117,10 +118,9 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                           colors: [
-                            Colors.deepPurple[300],
-                            Colors.deepPurple[600]
+                            Colors.blue, Colors.purple[600]
                           ]),
-                      color: Colors.amber[700],
+                      //color: Colors.amber[700],
                       borderRadius: BorderRadius.circular(10)),
                   child: Center(
                     child: Text(
@@ -140,12 +140,13 @@ class _AddAssinaturaState extends State<AddAssinatura> {
       body: SingleChildScrollView(
         physics: ClampingScrollPhysics(),
         child: Container(
-          decoration: BoxDecoration(
+          color: Colors.black,
+          /*decoration: BoxDecoration(
             gradient: LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
                 colors: [Colors.grey[900], Colors.black]),
-          ),
+          ),*/
           child: Padding(
             padding: EdgeInsets.only(left: 15, right: 15, bottom: 15, top: 15),
             child: Column(
@@ -172,10 +173,11 @@ class _AddAssinaturaState extends State<AddAssinatura> {
     return Container(
       padding: EdgeInsets.only(top: 20, left: 15, right: 15, bottom: 20),
       decoration: BoxDecoration(
-          gradient: LinearGradient(
+        color: Colors.grey[900].withAlpha(150),
+          /*gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              colors: [cinzaEscuro2, Colors.grey[900]]),
+              colors: [cinzaEscuro2, Colors.grey[900]]),*/
           //color: Colors.grey[850],
           borderRadius: BorderRadius.circular(15)),
       child: Column(
@@ -217,8 +219,9 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
                             colors: [
-                              Colors.deepPurple[300],
-                              Colors.deepPurple[600]
+                              Colors.blue, Colors.purple[600]
+                              //Colors.deepPurple[300],
+                              //Colors.deepPurple[600]
                             ]),
                         //border: Border.all(color: Colors.amber[700]),
                         borderRadius: BorderRadius.circular(15),
@@ -233,7 +236,7 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                             iconSelecionado == null
                                 ? Icons.style
                                 : iconSelecionado,
-                            color: Colors.grey[850],
+                            color: Colors.white.withAlpha(90),//Colors.grey[850],
                             size: 30,
                           )
                         : ClipRRect(
@@ -388,10 +391,11 @@ class _AddAssinaturaState extends State<AddAssinatura> {
     return Container(
       padding: EdgeInsets.only(top: 20, left: 15, right: 15, bottom: 20),
       decoration: BoxDecoration(
-          gradient: LinearGradient(
+        color:Colors.grey[900].withAlpha(150),
+          /*gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              colors: [cinzaEscuro2, Colors.grey[900]]),
+              colors: [cinzaEscuro2, Colors.grey[900]]),*/
           //color: Colors.grey[850],
           borderRadius: BorderRadius.circular(15)),
       child: Column(
@@ -399,10 +403,11 @@ class _AddAssinaturaState extends State<AddAssinatura> {
           Container(
             width: width,
             decoration: BoxDecoration(
-                gradient: LinearGradient(
+              color: Colors.black,
+                /*gradient: LinearGradient(
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
-                    colors: [Colors.black, Colors.grey[900]]),
+                    colors: [Colors.black, Colors.grey[900]]),*/
                 //color: Colors.grey[900],
                 borderRadius: BorderRadius.circular(15)),
             child: Padding(

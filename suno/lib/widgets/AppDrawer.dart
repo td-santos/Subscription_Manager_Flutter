@@ -69,8 +69,8 @@ class _AppDrawerState extends State<AppDrawer> with TickerProviderStateMixin {
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                     colors: [
-                  Colors.grey[900],
-                  Color(0xff2E3035),
+                  Colors.black,
+                  Colors.black.withAlpha(150),
                 ])),
             width: width,
             height: height * 0.25,
@@ -80,7 +80,7 @@ class _AppDrawerState extends State<AppDrawer> with TickerProviderStateMixin {
                 "    SUNO",
                 style: TextStyle(
                     fontSize: 60,
-                    color: Colors.grey,
+                    //color: Colors.grey,
                     fontFamily: "Stentiga",
                     fontWeight: FontWeight.w200),
               ),
@@ -93,8 +93,8 @@ class _AppDrawerState extends State<AppDrawer> with TickerProviderStateMixin {
                       end: Alignment.topLeft,
                       begin: Alignment.bottomRight,
                       colors: [
-                    Colors.grey[900],
-                    Color(0xff2E3035),
+                    Colors.black,
+                  Colors.black.withAlpha(150),
                   ])),
               width: width,
               height: height * 0.75,
@@ -182,13 +182,15 @@ class _AppDrawerState extends State<AppDrawer> with TickerProviderStateMixin {
                                   builder: (context) => InfoScreen()));
                         },
                         child: Container(
+                          
                           width: width *0.5,
                           height: height* 0.1,
                           padding: EdgeInsets.only(
                               left: 20, bottom: 40, right: 20, top: 20),
-                          color: Colors.transparent,
+                          //color: Colors.transparent,
+                          //color: Colors.blue,
                           child: Row(
-                            mainAxisSize: MainAxisSize.max,
+                            //mainAxisSize: MainAxisSize.max,
                             children: <Widget>[
                               Icon(
                                 FontAwesomeIcons.info,
@@ -196,7 +198,7 @@ class _AppDrawerState extends State<AppDrawer> with TickerProviderStateMixin {
                                 size: 15,
                               ),
                               Text(
-                                " Sobre",
+                                " Sobre",textAlign: TextAlign.left,
                                 style: TextStyle(fontSize: 15,color: Colors.grey,),
                               ),
                             ],

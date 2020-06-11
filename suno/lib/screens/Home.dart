@@ -131,14 +131,15 @@ class _HomeState extends State<Home> {
       ),
       drawer: AppDrawer(),
       body: Container(
-        decoration: BoxDecoration(
+        color: Colors.black,
+        /*decoration: BoxDecoration(
           gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [Colors.black, Colors.black]
               // colors: [cinzaEscuro2, Colors.grey[900]]
               ),
-        ),
+        ),*/
         height: height,
         child: Column(
           children: <Widget>[
@@ -174,7 +175,9 @@ class _HomeState extends State<Home> {
                           padding: EdgeInsets.all(width *0.02),
                           child: Text(
                             "${formatFullData.format(dataAtual)}",
-                            
+                            style: TextStyle(
+                              fontSize: width * 0.03
+                            ),
                           ),
                         ),
                         Container(

@@ -33,7 +33,7 @@ class CardAssinatura extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
 
     return Padding(
-        padding: EdgeInsets.only(left: 10, bottom: 10, right: 10),
+        padding: EdgeInsets.only(left: width * 0.05, bottom: 10, right: width * 0.05),
         child: GestureDetector(
           onTap: () {
             Navigator.push(
@@ -52,7 +52,7 @@ class CardAssinatura extends StatelessWidget {
                         data: data)));
           },
           child: Container(
-              padding: EdgeInsets.only(top: 20,bottom: 20,left: 15,right: 15),
+              padding: EdgeInsets.only(top: height * 0.03,bottom: height * 0.03,left: width * 0.045,right: width * 0.045),
               decoration: BoxDecoration(
                 color: Colors.grey[900].withAlpha(100),
                 borderRadius: BorderRadius.only(
@@ -68,10 +68,10 @@ class CardAssinatura extends StatelessWidget {
                   Row(
                     children: <Widget>[
                       Container(
-                        height: 50,
-                        width: 50,
+                        height: width * 0.11,
+                        width: width * 0.11,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
+                          borderRadius: BorderRadius.circular(width * 0.03),
                           boxShadow: [
                             BoxShadow(
                               offset: Offset(-3, 3),
@@ -85,10 +85,10 @@ class CardAssinatura extends StatelessWidget {
                           tag: id,
                           child: ClipRRect(
                             borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(15),
-                              topRight: Radius.circular(15),
-                              bottomLeft: Radius.circular(15),
-                              bottomRight: Radius.circular(15),
+                              topLeft: Radius.circular(width * 0.03),
+                              topRight: Radius.circular(width * 0.03),
+                              bottomLeft: Radius.circular(width * 0.03),
+                              bottomRight: Radius.circular(width * 0.03),
                             ),
                             child: Image.asset(
                               "$imagemUrl",
@@ -98,17 +98,24 @@ class CardAssinatura extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(left: 20),
+                        padding: EdgeInsets.only(left: width * 0.03),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Text("${nome}"),
+                            Container(
+                              width: width * 0.35,
+                              //color: Colors.purple,
+                              child: Text("${nome}",overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                fontSize: width * 0.032
+                              ),),
+                            ),
                             SizedBox(
                               height: 5,
                             ),
                             Text(
                               "\$${valor}",
-                              style: TextStyle(color: Colors.orange[700]),
+                              style: TextStyle(color: Colors.orange[700],fontSize: width * 0.032),
                             )
                           ],
                         ),
@@ -116,33 +123,42 @@ class CardAssinatura extends StatelessWidget {
                     ],
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 20),
+                    padding: EdgeInsets.only(left: width * 0.02),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      
                       children: <Widget>[
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Text("Plano: ",
-                            style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w100)),
-                            Text("${plano}",
-                            style: TextStyle(fontWeight: FontWeight.w100)),
-                          ],
+                        Container(
+                          width: width * 0.26,
+                          //color: Colors.purple,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: <Widget>[
+                              Text("Plano: ",
+                              style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w100,fontSize: width * 0.032)),
+                              Text("${plano}",
+                              style: TextStyle(fontWeight: FontWeight.w100,fontSize: width * 0.035)),
+                            ],
+                          ),
                         ),
                         SizedBox(
-                          height: 5,
+                          height: 5
                         ),
+                        
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Text("Recor: ",
-                            style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w100)),
-                            Text(                              
-                              "${recorrencia}",
-                              style: TextStyle(color: Colors.pink),
-                            ),
-                          ],
-                        )
+                            //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                             /* Text("Recor: ",
+                              style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w100)),*/
+                              Icon(Icons.sync,color: Colors.grey,size: width * 0.03,),
+                              SizedBox(width: 5),
+                              Text(                              
+                                "${recorrencia}",
+                                style: TextStyle(color: Colors.pink,fontSize: width * 0.035),
+                              ),
+                            ],
+                          ),
+                        
                       ],
                     ),
                   )

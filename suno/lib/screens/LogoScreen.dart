@@ -17,6 +17,9 @@ class _LogoScreenState extends State<LogoScreen> {
 
     return Scaffold(
         appBar: AppBar(
+          elevation: 0,
+          backgroundColor: Colors.black,
+          centerTitle: false,
           title: Text(
             "Logos",
             textAlign: TextAlign.center,
@@ -31,7 +34,8 @@ class _LogoScreenState extends State<LogoScreen> {
           child: Container(
             padding: EdgeInsets.only(left: 20, right: 0, top: 30),
             width: width,
-            decoration: BoxDecoration(
+            color: Colors.black,
+            /*decoration: BoxDecoration(
               gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
@@ -40,7 +44,7 @@ class _LogoScreenState extends State<LogoScreen> {
                     Colors.grey[900],
                     Colors.grey[850]
                   ]),
-            ),
+            ),*/
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
@@ -67,7 +71,7 @@ Widget _listagemLogosWidget(
         padding: EdgeInsets.only(left: 0),
         child: Text(
           "$categoria",
-          style: TextStyle(fontSize: width, fontWeight: FontWeight.w200),
+          style: TextStyle(fontSize: width, fontWeight: FontWeight.w200,color: Colors.grey,)
         ),
       ),
       Container(
@@ -80,8 +84,8 @@ Widget _listagemLogosWidget(
           physics: NeverScrollableScrollPhysics(),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 5,
-            crossAxisSpacing: 5,
-            mainAxisSpacing: 5,
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
           ),
           itemBuilder: (context, index) {
             return GestureDetector(
@@ -95,7 +99,7 @@ Widget _listagemLogosWidget(
                     color: Colors.blue[900],
                     borderRadius: BorderRadius.circular(15),
                     boxShadow: [
-                      BoxShadow(offset: Offset(-3, 3), blurRadius: 4)
+                      BoxShadow(offset: Offset(-1, 1), blurRadius: 0,color: Colors.blue.withAlpha(90))
                     ]),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(15),

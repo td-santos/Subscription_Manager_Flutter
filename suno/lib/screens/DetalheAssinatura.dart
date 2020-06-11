@@ -46,7 +46,7 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        //backgroundColor: Colors.black,
+        backgroundColor: Colors.black,
         actions: <Widget>[
           Row(
             children: <Widget>[
@@ -99,13 +99,14 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
       body: SingleChildScrollView(
         physics: ClampingScrollPhysics(),
         child: Container(
-          decoration: BoxDecoration(
+          color: Colors.black,
+          /*decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [Colors.grey[900], Colors.black],
             ),
-          ),
+          ),*/
           child: Padding(
             padding: EdgeInsets.only(left: 15, top: 15, right: 15),
             child: Container(
@@ -114,6 +115,7 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
               child: Column(
                 children: <Widget>[
                   Container(
+                    
                     width: width,
                     height: height * 0.2,
                     child: Hero(
@@ -128,7 +130,7 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
                     ),
                   ),
                   SizedBox(height: 20),
-                  container1(width),
+                  container1(width,height),
                   SizedBox(height: 20),
                   container2(width),
                   Container(height: 100)
@@ -141,11 +143,14 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
     );
   }
 
-  Widget container1(double width) {
+  Widget container1(double width,double height) {
     return Container(
       width: width,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15), color: Colors.grey[850]),
+          borderRadius: BorderRadius.circular(15), 
+          color:Colors.grey[900].withAlpha(150),
+          //color: Colors.grey[850],
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -155,17 +160,17 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text("Assinatura: ",
-                    style: TextStyle(color: Colors.white.withAlpha(80))),
-                Container(
+                    style: TextStyle(color: Colors.white.withAlpha(80),fontSize: width * 0.033)),
+                Container(                  
+                  //color: Colors.purple,
                   width: width * 0.6,
-                  child: ListTile(
-                    contentPadding: null,
-                    title: Text(
-                      widget.nome,
+                  child: Text(                      
+                      widget.nome,overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.right,
-                      style: TextStyle(fontSize: 17, color: Colors.orange[700]),
+                      style: TextStyle(fontSize: width * 0.04, color: Colors.orange[700]),
                     ),
-                  ),
+                  
+                  
                 )
               ],
             ),
@@ -180,9 +185,9 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text("Valor: ",
-                    style: TextStyle(color: Colors.white.withAlpha(80))),
+                    style: TextStyle(color: Colors.white.withAlpha(80),fontSize: width * 0.033)),
                 Text(widget.valor,
-                    style: TextStyle(fontSize: 17, color: Colors.orange[700])),
+                    style: TextStyle(fontSize: width * 0.04, color: Colors.orange[700])),
               ],
             ),
           ),
@@ -196,9 +201,9 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text("Plano: ",
-                    style: TextStyle(color: Colors.white.withAlpha(80))),
+                    style: TextStyle(color: Colors.white.withAlpha(80),fontSize: width * 0.033)),
                 Text(widget.plano,
-                    style: TextStyle(fontSize: 17, color: Colors.orange[700])),
+                    style: TextStyle(fontSize: width * 0.04, color: Colors.orange[700])),
               ],
             ),
           ),
@@ -212,9 +217,9 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text("Recorência: ",
-                    style: TextStyle(color: Colors.white.withAlpha(80))),
+                    style: TextStyle(color: Colors.white.withAlpha(80),fontSize: width * 0.033)),
                 Text(widget.recorrencia,
-                    style: TextStyle(fontSize: 17, color: Colors.orange[700])),
+                    style: TextStyle(fontSize: width * 0.04, color: Colors.orange[700])),
               ],
             ),
           ),
@@ -227,7 +232,10 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
     return Container(
       width: width,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15), color: Colors.grey[850]),
+          borderRadius: BorderRadius.circular(15), 
+          color: Colors.grey[900].withAlpha(150),
+          //color: Colors.grey[850]
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -237,16 +245,20 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text("Nota: ",
-                    style: TextStyle(color: Colors.white.withAlpha(80))),
+                    style: TextStyle(color: Colors.white.withAlpha(80),fontSize: width * 0.033)),
                 Container(
                   width: width * 0.6,
-                  child: ListTile(
+                  child: widget.nota.isEmpty
+                  ?Text("sem informação",textAlign: TextAlign.right,
+                  style: TextStyle(fontSize: width * 0.04, color: Colors.grey.withAlpha(80)),
+                  )
+                   :ListTile(
                     contentPadding: EdgeInsets.all(0),
                     title: Text(
                       widget.nota,
                       //overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.right,
-                      style: TextStyle(fontSize: 17, color: Colors.orange[700]),
+                      style: TextStyle(fontSize: width * 0.04, color: Colors.orange[700]),
                     ),
                   ),
                 )
@@ -263,16 +275,20 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text("Método PG: ",
-                    style: TextStyle(color: Colors.white.withAlpha(80))),
+                    style: TextStyle(color: Colors.white.withAlpha(80),fontSize: width * 0.033)),
                 Container(
                     width: width * 0.6,
-                    child: ListTile(
+                    child:widget.metodoPG.isEmpty
+                    ?Text("sem informação",textAlign: TextAlign.right,
+                      style: TextStyle(fontSize: width * 0.04, color: Colors.grey.withAlpha(80)),
+                    )
+                   :ListTile(
                       contentPadding: EdgeInsets.all(0),
                       title: Text(widget.metodoPG,
                           //overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.right,
                           style: TextStyle(
-                              fontSize: 17, color: Colors.orange[700])),
+                              fontSize: width * 0.04, color: Colors.orange[700])),
                     ))
               ],
             ),
@@ -287,18 +303,22 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text("Descrição: ",
-                    style: TextStyle(color: Colors.white.withAlpha(80))),
+                    style: TextStyle(color: Colors.white.withAlpha(80),fontSize: width * 0.033)),
                 Container(
                     //color: Colors.blue,
                     alignment: Alignment.centerRight,
                     width: width * 0.6,
-                    child: ListTile(
+                    child: widget.descricao.isEmpty
+                    ?Text("sem informação",textAlign: TextAlign.right,
+                      style: TextStyle(fontSize: width * 0.04, color: Colors.grey.withAlpha(80)),
+                    )
+                   :ListTile(
                       contentPadding: EdgeInsets.all(0),
                       title: Text(widget.descricao,
                           //overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.right,
                           style: TextStyle(
-                              fontSize: 17, color: Colors.orange[700])),
+                              fontSize: width * 0.04, color: Colors.orange[700])),
                     )),
               ],
             ),
@@ -313,9 +333,9 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text("Data PG: ",
-                    style: TextStyle(color: Colors.white.withAlpha(80))),
+                    style: TextStyle(color: Colors.white.withAlpha(80),fontSize: width * 0.033)),
                 Text(widget.data,
-                    style: TextStyle(fontSize: 17, color: Colors.orange[700])),
+                    style: TextStyle(fontSize: width * 0.04, color: Colors.orange[700])),
               ],
             ),
           ),
