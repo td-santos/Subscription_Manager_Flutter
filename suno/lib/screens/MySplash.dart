@@ -33,7 +33,7 @@ class _MySplashState extends State<MySplash> {
 
 
     return Scaffold(
-      backgroundColor: Colors.grey[900],
+      backgroundColor: Colors.black,
       body: Container(
         height: height,
         width: height,
@@ -41,7 +41,7 @@ class _MySplashState extends State<MySplash> {
           child: Text("SUNO", style: TextStyle(
               fontFamily: "Stentiga",
               fontSize: width * 0.25,
-              color: Colors.grey
+              color: Colors.white
             ),),
           /*Container(
             
