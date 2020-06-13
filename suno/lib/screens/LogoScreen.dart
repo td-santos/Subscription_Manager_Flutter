@@ -48,11 +48,11 @@ class _LogoScreenState extends State<LogoScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                _listagemLogosWidget(width * 0.05, height * 0.3, "Music", mapLogoMusic),
-                _listagemLogosWidget( width * 0.05, height * 0.3, "Stream Video", mapLogoVideo),
-                _listagemLogosWidget(width * 0.05, height * 0.2, "Games", mapLogoGames),
-                _listagemLogosWidget(width * 0.05, height * 0.2, "Design", mapLogoDesign),
-                _listagemLogosWidget(width * 0.05, height * 0.2, "Outros", mapLogoOutros),
+                _listagemLogosWidget(width * 0.05, width * 0.6, width, "Music", mapLogoMusic),
+                _listagemLogosWidget(width * 0.05, width * 0.6, width, "Stream Video", mapLogoVideo),
+                _listagemLogosWidget(width * 0.05, width * 0.4, width, "Games", mapLogoGames),
+                _listagemLogosWidget(width * 0.05, width * 0.4, width, "Design", mapLogoDesign),
+                _listagemLogosWidget(width * 0.05, width * 0.4, width, "Outros", mapLogoOutros),
                 SizedBox(height: height * 0.1)
               ],
             ),
@@ -63,7 +63,7 @@ class _LogoScreenState extends State<LogoScreen> {
 }
 
 Widget _listagemLogosWidget(
-    double width, double height, String categoria, Map listaLogos) {
+    double width, double height, double widthLogo, String categoria, Map listaLogos) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget>[
@@ -93,16 +93,16 @@ Widget _listagemLogosWidget(
                 Navigator.pop(context, listaLogos[index]);
               },
               child: Container(
-                height: 40,
-                width: 40,
+                //height:  ,//40
+                //width: widthLogo ,
                 decoration: BoxDecoration(
                     color: Colors.blue[900],
-                    borderRadius: BorderRadius.circular(15),
+                    borderRadius: BorderRadius.circular(widthLogo *0.045),
                     boxShadow: [
                       BoxShadow(offset: Offset(-1, 1), blurRadius: 0,color: Colors.blue.withAlpha(90))
                     ]),
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(widthLogo *0.045),
                   child: Image.asset(
                     listaLogos[index],
                     fit: BoxFit.cover,

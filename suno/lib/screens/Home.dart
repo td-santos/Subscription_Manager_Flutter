@@ -164,14 +164,11 @@ class _HomeState extends State<Home> {
                         blurRadius: 30,
                       ),
                     ]),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.end,
+
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Container(
+                    Container(
                           padding: EdgeInsets.all(width *0.02),
                           child: Text(
                             "${formatFullData.format(dataAtual)}",
@@ -180,6 +177,11 @@ class _HomeState extends State<Home> {
                             ),
                           ),
                         ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: <Widget>[
+                        
                         Container(
                           padding: EdgeInsets.all(width *0.02),
                           child: Text(
@@ -188,191 +190,23 @@ class _HomeState extends State<Home> {
                                 fontSize: width * 0.07, fontWeight: FontWeight.w100),
                           ),
                         ),
-                      ],
-                    ),
-                    Text(
+                        Text(
                       "${totalAssinaturas.replaceAll(".", ",")}",
                       textAlign: TextAlign.center,
                       overflow: TextOverflow.ellipsis,
                       style:
                           TextStyle(fontSize: width* 0.15, fontWeight: FontWeight.w300),
                     ),
+                      ],
+                    ),
+                    
                   ],
                 ),
               ),
             ),
-            /*Container(
-              
-              decoration: BoxDecoration(
-                //borderRadius: BorderRadius.circular(25),
-                  gradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: [Colors.blue[400], Colors.deepPurple[600]]),
-                 // color: Colors.deepPurple[200]
-                 ),
-              child: Column(
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.only(
-                        left: 10, right: 10, top: 50, bottom: 0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        GestureDetector(
-                          onTap: () {
-                            _scaffoldKey.currentState.openDrawer();
-                          },
-                          child: Icon(Icons.sort),
-                        ),
-                        Container(
-                          //width: width,
-                          child: Text("${format_Mes.format(dataAtual)}",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.w100)),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => AddAssinatura()));
-                          },
-                          child: Icon(Icons.add),
-                        )
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                        EdgeInsets.only(left: 0, right: 0, top: 0, bottom: 0),
-                    child: Container(
-                      padding: EdgeInsets.all(20),
-                      //height: 150,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          
-                          Padding(
-                            padding: EdgeInsets.only(top: 0),
-                            child: Container(
-                              //width: width,
+            
 
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Text("R\$",
-                                      style: TextStyle(
-                                          //fontSize: 20,
-                                          fontWeight: FontWeight.w100)),
-                                  Text(
-                                    "${totalAssinaturas.replaceAll(".", ",")}",
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontSize: 50,
-                                        //color: Colors.black,
-                                        fontWeight: FontWeight.w300),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),*/
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            /*Padding(
-              padding:
-                  EdgeInsets.only(left: 10, right: 10, top: 50, bottom: 15),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  GestureDetector(
-                    onTap: () {
-                      _scaffoldKey.currentState.openDrawer();
-                    },
-                    child: Icon(Icons.sort),
-                  ),
-                  Container(
-                    //width: width,
-                    child: Text("Assinaturas",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.w100)),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => AddAssinatura()));
-                    },
-                    child: Icon(Icons.add),
-                  )
-                ],
-              ),
-            ),
-            Padding(
-              padding:
-                  EdgeInsets.only(left: 10, right: 10, top: 15, bottom: 5),
-              child: Container(
-                padding: EdgeInsets.all(20),
-                //height: 150,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [Colors.deepPurple[300], Colors.deepPurple[600]],
-                  ),
-                ),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Column(
-                      //crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        
-                        Text("${format_Mes.format(dataAtual)}",
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.w100)),
-                      ],
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 0),
-                      child: Container(
-                        //width: width,
 
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text("R\$",
-                                style: TextStyle(
-                                    fontSize: 20, fontWeight: FontWeight.w100)),
-                            Text(
-                              "${totalAssinaturas.replaceAll(".", ",")}",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: 40, fontWeight: FontWeight.w100),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),*/
             Padding(
               padding:
                   EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 10),
@@ -397,7 +231,8 @@ class _HomeState extends State<Home> {
                   itemBuilder: (context, index) {
                     Assinatura ass = listaAssinaturas[index];
                     return CardAssinatura(
-                      id: ass.id,
+                      assinatura: ass,
+                      /*id: ass.id,
                       nome: ass.assinaturaName,
                       imagemUrl: ass.urlLogo,
                       valor: format(ass.valor), //ass.valor.toString(),
@@ -406,7 +241,8 @@ class _HomeState extends State<Home> {
                       nota: ass.nota,
                       metodoPG: ass.metodoPG,
                       descricao: ass.descricao,
-                      data: ass.data,
+                      data: ass.data,*/
+                      
                     );
                   }),
             )

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:suno/model/Assinatura.dart';
 import 'package:suno/screens/DetalheAssinatura.dart';
 
 class CardAssinatura extends StatelessWidget {
-  final int id;
+  final Assinatura assinatura;
+  /*final int id;
   final String imagemUrl;
   final String nome;
   final String valor;
@@ -11,11 +13,11 @@ class CardAssinatura extends StatelessWidget {
   final String nota;
   final String metodoPG;
   final String descricao;
-  final String data;
+  final String data;*/
 
   const CardAssinatura(
       {Key key,
-      this.id,
+      /*this.id,
       this.imagemUrl,
       this.nome,
       this.valor,
@@ -24,8 +26,12 @@ class CardAssinatura extends StatelessWidget {
       this.nota,
       this.metodoPG,
       this.descricao,
-      this.data})
+      this.data,*/ this.assinatura})
       : super(key: key);
+
+  String format(double n) {
+    return n.toStringAsFixed(n.truncateToDouble() == n ? 0 : 2);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,16 +46,17 @@ class CardAssinatura extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                     builder: (context) => DetalheAssinatura(
-                        id: id,
-                        urlImage: imagemUrl,
-                        valor: valor,
-                        nome: nome,
-                        plano: plano,
-                        recorrencia: recorrencia,
-                        nota: nota,
-                        metodoPG: metodoPG,
-                        descricao: descricao,
-                        data: data)));
+                      assinatura: assinatura,
+                        id: assinatura.id,
+                        urlImage: assinatura.urlLogo,
+                        valor: format(assinatura.valor),
+                        nome: assinatura.assinaturaName,
+                        plano: assinatura.plano,
+                        recorrencia: assinatura.recorrencia,
+                        nota: assinatura.nota,
+                        metodoPG: assinatura.metodoPG,
+                        descricao: assinatura.descricao,
+                        data: assinatura.data)));
           },
           child: Container(
               padding: EdgeInsets.only(top: height * 0.03,bottom: height * 0.03,left: width * 0.045,right: width * 0.045),
@@ -82,7 +89,7 @@ class CardAssinatura extends StatelessWidget {
                           ],
                         ),
                         child: Hero(
-                          tag: id,
+                          tag: assinatura.id,
                           child: ClipRRect(
                             borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(width * 0.03),
@@ -91,7 +98,7 @@ class CardAssinatura extends StatelessWidget {
                               bottomRight: Radius.circular(width * 0.03),
                             ),
                             child: Image.asset(
-                              "$imagemUrl",
+                              "${assinatura.urlLogo}",
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -105,7 +112,7 @@ class CardAssinatura extends StatelessWidget {
                             Container(
                               width: width * 0.35,
                               //color: Colors.purple,
-                              child: Text("${nome}",overflow: TextOverflow.ellipsis,
+                              child: Text("${assinatura.assinaturaName}",overflow: TextOverflow.ellipsis,
                               style: TextStyle(
                                 fontSize: width * 0.032
                               ),),
@@ -114,7 +121,7 @@ class CardAssinatura extends StatelessWidget {
                               height: 5,
                             ),
                             Text(
-                              "\$${valor}",
+                              "\$${format(assinatura.valor)}",
                               style: TextStyle(color: Colors.orange[700],fontSize: width * 0.032),
                             )
                           ],
@@ -136,7 +143,7 @@ class CardAssinatura extends StatelessWidget {
                             children: <Widget>[
                               Text("Plano: ",
                               style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w100,fontSize: width * 0.032)),
-                              Text("${plano}",
+                              Text("${assinatura.plano}",
                               style: TextStyle(fontWeight: FontWeight.w100,fontSize: width * 0.035)),
                             ],
                           ),
@@ -153,7 +160,7 @@ class CardAssinatura extends StatelessWidget {
                               Icon(Icons.sync,color: Colors.grey,size: width * 0.03,),
                               SizedBox(width: 5),
                               Text(                              
-                                "${recorrencia}",
+                                "${assinatura.recorrencia}",
                                 style: TextStyle(color: Colors.pink,fontSize: width * 0.035),
                               ),
                             ],

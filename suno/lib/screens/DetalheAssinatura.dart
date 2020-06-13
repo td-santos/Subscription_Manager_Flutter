@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:suno/controles/ControleBanco.dart';
+import 'package:suno/model/Assinatura.dart';
+import 'package:suno/screens/AddAssinatra.dart';
 
 class DetalheAssinatura extends StatefulWidget {
+  final Assinatura assinatura;
   final int id;
   final String urlImage;
   final String valor;
@@ -24,7 +27,7 @@ class DetalheAssinatura extends StatefulWidget {
       this.metodoPG,
       this.descricao,
       this.data,
-      this.id})
+      this.id, this.assinatura})
       : super(key: key);
 
   @override
@@ -44,6 +47,7 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
     double height = MediaQuery.of(context).size.height;
 
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.black,
@@ -73,7 +77,9 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
               ),
               GestureDetector(
                 onTap: () {
-                  //salvar();
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (context)=> AddAssinatura(assinatura: widget.assinatura)
+                    ));
                 },
                 child: Container(
                   height: 25, width: 55,

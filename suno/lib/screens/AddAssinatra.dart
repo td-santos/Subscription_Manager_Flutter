@@ -2,17 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:suno/controles/ControleBanco.dart';
+import 'package:suno/model/Assinatura.dart';
 import 'package:suno/widgets/ContainerOption.dart';
 import 'package:suno/widgets/DialogLogos.dart';
 
 import 'LogoScreen.dart';
 
 class AddAssinatura extends StatefulWidget {
+
+  final Assinatura assinatura;
+
+  const AddAssinatura({Key key, this.assinatura}) : super(key: key);
+
   @override
   _AddAssinaturaState createState() => _AddAssinaturaState();
 }
 
 class _AddAssinaturaState extends State<AddAssinatura> {
+  
   double valueSlide;
   double valor;
   bool planB, planP, planPr = false;
@@ -23,6 +30,7 @@ class _AddAssinaturaState extends State<AddAssinatura> {
   DateFormat format_dd = DateFormat("dd");
   DateFormat format_MM = DateFormat("MM");
   DateFormat format_yyyy = DateFormat("yyyy");
+  DateFormat format_DataPicker = DateFormat("yyyy-MM-dd 03:33:33");
   String dataInicioPG;
   String plano, recorrencia;
   TextEditingController _controllerAssinatura = TextEditingController();
@@ -31,6 +39,9 @@ class _AddAssinaturaState extends State<AddAssinatura> {
   TextEditingController _controllerMetPG = TextEditingController();
   int dia, mes, ano;
   Color cinzaEscuro2 = Color(0xff2E3035);
+  DateTime initialDate = DateTime.now();
+
+  
 
   salvar() {
     dia = int.parse(format_dd.format(DateTime.now()));
@@ -74,7 +85,7 @@ class _AddAssinaturaState extends State<AddAssinatura> {
     final dataPicker = await showDatePicker(
       locale: Locale("pt", "BR"),
       context: context,
-      initialDate: DateTime.now(),
+      initialDate: initialDate,//DateTime.now(),
       firstDate: DateTime(2000),
       lastDate: DateTime(3000),
     );
@@ -84,6 +95,51 @@ class _AddAssinaturaState extends State<AddAssinatura> {
       });
     }
   }
+  
+  _preencherCampos(){
+    _controllerAssinatura.text = widget.assinatura.assinaturaName;
+    _controllerDesc.text = widget.assinatura.descricao;
+    _controllerNota.text = widget.assinatura.nota;
+    _controllerMetPG.text = widget.assinatura.metodoPG;
+    urlLogo = widget.assinatura.urlLogo;
+    valueSlide = widget.assinatura.valor;
+    valor = widget.assinatura.valor;
+    dataInicioPG = widget.assinatura.data;
+    //2020-06-13 02:29:41.478207
+    String dataEditAno = widget.assinatura.data.substring(6,10);
+    String dataEditMes = widget.assinatura.data.substring(3,5);
+    String dataEditDia = widget.assinatura.data.substring(0,2);
+
+    String dataEdit = "$dataEditAno-$dataEditMes-$dataEditDia 03:33:33";
+    print(dataEdit);
+    DateTime convert = DateTime.parse(dataEdit);
+    initialDate = DateTime.parse(format_DataPicker.format(convert));
+    recorrencia = widget.assinatura.recorrencia;
+    plano = widget.assinatura.plano;
+
+    if(widget.assinatura.recorrencia == "unica"){
+      recU = true;
+      
+    }else if(widget.assinatura.recorrencia == "mensal"){
+      recM = true;
+      
+    }else if(widget.assinatura.recorrencia == "anual"){
+      recA = true;
+      
+    }
+
+    if(widget.assinatura.plano == "Básico"){
+      planB = true;
+      
+    }else if(widget.assinatura.plano == "Padrao"){
+      planP = true;
+      
+    }else if(widget.assinatura.plano == "Premium"){
+      planPr = true;
+      
+    }
+
+  }
 
   @override
   void initState() {
@@ -91,6 +147,11 @@ class _AddAssinaturaState extends State<AddAssinatura> {
     super.initState();
     valueSlide = 0;
     dataInicioPG = format_ddMMyyy.format(DateTime.now());
+
+    if(widget.assinatura!= null){
+      _preencherCampos();
+    }
+    //print(initialDate);
   }
 
   @override

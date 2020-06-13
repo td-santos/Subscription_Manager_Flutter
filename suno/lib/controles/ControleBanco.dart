@@ -14,7 +14,7 @@ class ControleBanco {
   salvarDB(BuildContext context,String assinaturaName,String plano,String recorrencia,
       double valor,String urlLogo,String nota,String dataInicioPG,String metodoPG,String descricao, int dia,int mes,int ano) {
      
-    if (assinaturaName != null && plano != null && recorrencia != null && valor != 0 && urlLogo != null) {
+    if (assinaturaName.isNotEmpty && plano != null && recorrencia != null && valor != 0 && urlLogo != null) {
       
     /*     int loop=0;
      if(recorrencia == "unica"){
