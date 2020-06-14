@@ -42,9 +42,9 @@ class ControleBanco {
         ass.id = id;
         assDB.updateAssinatura(ass);
         print("\nEditado");
-        Navigator.pushReplacement(context, MaterialPageRoute(
-          builder: (context)=> Home()
-          ));
+        //Navigator.pop(context);
+        Navigator.pop(context);
+        
       }
       
       

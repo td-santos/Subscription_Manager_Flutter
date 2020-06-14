@@ -77,7 +77,8 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(
+                  
+                  Navigator.pushReplacement(context, MaterialPageRoute(
                     builder: (context)=> AddAssinatura(assinatura: widget.assinatura)
                     ));
                 },
