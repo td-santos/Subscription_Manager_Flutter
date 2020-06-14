@@ -40,7 +40,8 @@ class _AddAssinaturaState extends State<AddAssinatura> {
   int dia, mes, ano;
   Color cinzaEscuro2 = Color(0xff2E3035);
   DateTime initialDate = DateTime.now();
-
+  String saveEdit;
+  bool edit;
   
 
   salvar() {
@@ -48,9 +49,16 @@ class _AddAssinaturaState extends State<AddAssinatura> {
     mes = int.parse(format_MM.format(DateTime.now()));
     ano = int.parse(format_yyyy.format(DateTime.now()));
     valor = double.parse(valueSlide.toStringAsFixed(2).toString());
+    int id;
+    if(widget.assinatura!= null){
+      id = widget.assinatura.id;
+    }else{
+      id = null;
+    }
 
     ControleBanco cb = ControleBanco();
     cb.salvarDB(
+        edit,
         context,
         _controllerAssinatura.text,
         plano,
@@ -63,7 +71,8 @@ class _AddAssinaturaState extends State<AddAssinatura> {
         _controllerDesc.text,
         dia,
         mes,
-        ano);
+        ano,
+        id: id);
   }
 
   showDialogLogos() {
@@ -149,7 +158,12 @@ class _AddAssinaturaState extends State<AddAssinatura> {
     dataInicioPG = format_ddMMyyy.format(DateTime.now());
 
     if(widget.assinatura!= null){
+      edit = true;
+      saveEdit = "Edit";
       _preencherCampos();
+    }else{
+      edit = false;
+      saveEdit ="Save";
     }
     //print(initialDate);
   }
@@ -169,7 +183,9 @@ class _AddAssinaturaState extends State<AddAssinatura> {
             children: <Widget>[
               GestureDetector(
                 onTap: () {
-                  salvar();
+                 salvar();
+                  
+                  
                 },
                 child: Container(
                   height: height * 0.03, 
@@ -186,7 +202,7 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                       borderRadius: BorderRadius.circular(width * 0.025)),
                   child: Center(
                     child: Text(
-                      "Save",
+                      saveEdit,
                       style: TextStyle(color: Colors.white,fontSize: width * 0.03),
                     ),
                   ),

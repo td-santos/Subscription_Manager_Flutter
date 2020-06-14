@@ -51,9 +51,19 @@ class AssinaturaDB{
     return assinatura;
   }
 
+  Future<int> updateAssinatura(Assinatura assinatura)async{
+    print("chamada update");
+    print(assinatura.toString());
+    Database dbAssinatura = await db;
+    return await dbAssinatura.update(assinaturaTABLE,assinatura.toMap(),
+    where: "$idColumn =?",
+    whereArgs: [assinatura.id]
+    );
+  }
+
   Future<int> deleteAssinatura(String assinaturaName)async{
-    Database dbMovimentacoes = await db;
-    return await dbMovimentacoes.delete(assinaturaTABLE,
+    Database dbAssinatura = await db;
+    return await dbAssinatura.delete(assinaturaTABLE,
       
       where: "$assinaturaNameColumn =?",
       whereArgs: [assinaturaName]

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:suno/controles/AssinaturaDB.dart';
 import 'package:suno/model/Assinatura.dart';
+import 'package:suno/screens/Home.dart';
 
 class ControleBanco {
   ControleBanco() {}
@@ -11,28 +12,12 @@ class ControleBanco {
     Navigator.pop(context);
   }
 
-  salvarDB(BuildContext context,String assinaturaName,String plano,String recorrencia,
-      double valor,String urlLogo,String nota,String dataInicioPG,String metodoPG,String descricao, int dia,int mes,int ano) {
+  salvarDB(bool edit,BuildContext context,String assinaturaName,String plano,String recorrencia,
+      double valor,String urlLogo,String nota,String dataInicioPG,String metodoPG,String descricao, int dia,int mes,int ano,{int id}) {
      
     if (assinaturaName.isNotEmpty && plano != null && recorrencia != null && valor != 0 && urlLogo != null) {
       
-    /*     int loop=0;
-     if(recorrencia == "unica"){
-       loop=0;
-     } else if(recorrencia == "mensal"){
-       loop= loop+24;
-     }  else if(recorrencia == "anual"){
-       loop =loop+5;
-     }
-     int mesLoop;
-
-     for(int i =0 ;i<=loop; i++){
-       Assinatura ass = Assinatura();
-
-       ass.data = "${dia}/${mes+i}/${ano}";
-       print("DATA DO LOOP: ${ass.data}");
-     }*/
-      
+    
       Assinatura ass = Assinatura();
       ass.assinaturaName = assinaturaName;
       ass.plano = plano;
@@ -48,9 +33,21 @@ class ControleBanco {
       print(ass.toString());
 
       AssinaturaDB assDB = AssinaturaDB();
-      assDB.saveAssinatura(ass);
-      print("\nSalvo");
-      Navigator.pop(context);
+      if(edit == false){
+        
+        assDB.saveAssinatura(ass);
+        print("\nSalvo");
+        Navigator.pop(context);
+      }else{
+        ass.id = id;
+        assDB.updateAssinatura(ass);
+        print("\nEditado");
+        Navigator.pushReplacement(context, MaterialPageRoute(
+          builder: (context)=> Home()
+          ));
+      }
+      
+      
     } else {
       print("Preencha");
     }
