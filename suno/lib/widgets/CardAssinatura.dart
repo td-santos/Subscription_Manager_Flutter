@@ -105,7 +105,7 @@ class CardAssinatura extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(left: width * 0.03),
+                        padding: EdgeInsets.only(left: width * 0.05),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[

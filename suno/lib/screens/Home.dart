@@ -16,23 +16,28 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   AssinaturaDB assDB = AssinaturaDB();
   List<Assinatura> listaAssinaturas = List();
+  List<Assinatura> listaAssinaturasProxMes = List();
   List<Assinatura> listaAssinaturasMesCorrente = List();
   List<Assinatura> listaTeste = List();
 
   //azulMarinho 0D3159
 
   var total;
+  var totalProxMes;
   var formatMMyyyy = DateFormat("MM/yyyy");
   var dataAtual = new DateTime.now();
   String totalAssinaturas = "";
+  String totalAssinaturasProxMes = "";
   ControleBanco cb = ControleBanco();
   DateFormat format_dd = DateFormat("dd");
-  DateFormat format_MM = DateFormat("MM");
+  DateFormat format_MM = DateFormat("MM");  
   DateFormat format_yyyy = DateFormat("yyyy");
   DateFormat format_Mes = DateFormat("MMMM", "pt_BR");
   DateFormat formatFullData = DateFormat("MMMM 'de' yyyy", "pt_BR");
   GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
-  Color cinzaEscuro2 = Color(0xff2E3035);
+  int proximoMes;
+  String mesSeguinte="";
+
 
   String format(double n) {
     return n.toStringAsFixed(n.truncateToDouble() == n ? 0 : 2);
@@ -90,6 +95,24 @@ class _HomeState extends State<Home> {
     });
   }
 
+  _allAssValor(String data) {
+    assDB.getAllAssinaturasPorMes(data).then((list) {
+      if (list.isNotEmpty) {
+        setState(() {
+          listaAssinaturasProxMes = list;
+        });
+        totalProxMes = listaAssinaturasProxMes.map((item) => item.valor).reduce((a, b) => a + b);
+        totalAssinaturasProxMes = format(totalProxMes).toString();
+      } else {
+        setState(() {
+          listaAssinaturasProxMes.clear();
+          totalProxMes = 0;
+          totalAssinaturasProxMes = totalProxMes.toString();
+        });
+      }
+    });
+  }
+
   @override
   void initState() {
     // TODO: implement initState
@@ -99,6 +122,18 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    proximoMes = int.parse(format_MM.format(dataAtual)) + 1;
+    if (proximoMes > 12) {
+      proximoMes = 1;
+    }
+    if (proximoMes < 10) {
+      mesSeguinte = format_Mes.format(DateTime.parse("2000-0${proximoMes}-01 11:11:11"));
+      _allAssValor("0$proximoMes/${format_yyyy.format(dataAtual)}");
+    } else {
+      mesSeguinte = format_Mes.format(DateTime.parse("2000-${proximoMes}-01 11:11:11"));
+      _allAssValor("$proximoMes/${format_yyyy.format(dataAtual)}");
+    }
+
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
@@ -132,14 +167,7 @@ class _HomeState extends State<Home> {
       drawer: AppDrawer(),
       body: Container(
         color: Colors.black,
-        /*decoration: BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [Colors.black, Colors.black]
-              // colors: [cinzaEscuro2, Colors.grey[900]]
-              ),
-        ),*/
+        
         height: height,
         child: Column(
           children: <Widget>[
@@ -168,15 +196,35 @@ class _HomeState extends State<Home> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Container(
-                          padding: EdgeInsets.all(width *0.02),
-                          child: Text(
-                            "${formatFullData.format(dataAtual)}",
-                            style: TextStyle(
-                              fontSize: width * 0.03
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Container(
+                              padding: EdgeInsets.all(width *0.02),
+                              child: Text(
+                                "${formatFullData.format(dataAtual)}",
+                                style: TextStyle(
+                                  fontSize: width * 0.03
+                                ),
+                              ),
                             ),
-                          ),
-                        ),
+                            Container(
+                              padding: EdgeInsets.only(top:width *0.01,bottom:width *0.01, left: width *0.03,right: width *0.03),
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Colors.white, width: 0.2),
+                                borderRadius: BorderRadius.circular(width *0.015)
+                              ),
+                              child: Center(
+                                child: Text(
+                                "${mesSeguinte}:  $totalAssinaturasProxMes",
+                                style: TextStyle(
+                                  fontSize: width * 0.03
+                                ),
+                              ),
+                              ),
+                            ),
+                      ],
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.end,
