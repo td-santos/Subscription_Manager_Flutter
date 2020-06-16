@@ -21,8 +21,8 @@ class InfoScreen extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-        //backgroundColor: Colors.grey[900],
-        /*appBar: AppBar(
+        backgroundColor: Colors.black,
+        appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
         centerTitle: false,
@@ -36,22 +36,22 @@ class InfoScreen extends StatelessWidget {
             ),
           ),
         ),
-      ),*/
+      ),
         body: Container(
         height: height,
           child: Container(
-        decoration: BoxDecoration(
+        /*decoration: BoxDecoration(
           gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [cinzaEscuro2, Colors.grey[900]]),
-        ),
+        ),*/
         child: SingleChildScrollView(
           physics: ClampingScrollPhysics(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Padding(
+              /*Padding(
                 padding: EdgeInsets.only(left: 10,right: 10,top: 40,bottom: 15),
                 child: Row(                  
                   children: <Widget>[
@@ -76,7 +76,7 @@ class InfoScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-              ),
+              ),*/
               Padding(
                 padding: EdgeInsets.only(
                     left: width * 0.05,

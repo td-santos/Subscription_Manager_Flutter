@@ -164,7 +164,7 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
-      drawer: AppDrawer(),
+      //drawer: AppDrawer(),
       body: Container(
         color: Colors.black,
         

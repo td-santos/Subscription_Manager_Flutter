@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:suno/screens/InitialPage.dart';
 
 import 'Home.dart';
 
@@ -16,7 +17,7 @@ class _MySplashState extends State<MySplash> {
     super.initState();
     Future.delayed(Duration(seconds: 2),(){
       Navigator.pushReplacement(context, MaterialPageRoute(
-        builder: (context) => Home()
+        builder: (context) => InitialPage()//Home()
         ));
     });
   }
