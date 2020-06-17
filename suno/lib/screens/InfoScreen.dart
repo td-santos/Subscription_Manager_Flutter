@@ -40,43 +40,13 @@ class InfoScreen extends StatelessWidget {
         body: Container(
         height: height,
           child: Container(
-        /*decoration: BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [cinzaEscuro2, Colors.grey[900]]),
-        ),*/
+        
         child: SingleChildScrollView(
           physics: ClampingScrollPhysics(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              /*Padding(
-                padding: EdgeInsets.only(left: 10,right: 10,top: 40,bottom: 15),
-                child: Row(                  
-                  children: <Widget>[
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: Icon(Icons.arrow_back_ios),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 15),
-                      child: Container(                      
-                      child: Text(
-                        "Info",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: width * 0.07,
-                          fontWeight: FontWeight.w200,
-                        ),
-                      ),
-                    ),
-                    ),
-                  ],
-                ),
-              ),*/
+              
               Padding(
                 padding: EdgeInsets.only(
                     left: width * 0.05,
@@ -85,7 +55,7 @@ class InfoScreen extends StatelessWidget {
                     bottom: 5),
                 child: Text(
                   "Nome",
-                  style: TextStyle(fontSize: width * 0.03),
+                  style: TextStyle(fontSize: width * 0.03,color: Colors.blue),
                 ),
               ),
               Padding(
@@ -93,7 +63,7 @@ class InfoScreen extends StatelessWidget {
                     left: width * 0.05, right: width * 0.05, bottom: 10),
                 child: Text(
                   "Suno - Gestor de Assinaturas",
-                  style: TextStyle(fontSize: width * 0.045),
+                  style: TextStyle(fontSize: width * 0.045,color: Colors.grey),
                 ),
               ),
               Divider(
@@ -107,7 +77,7 @@ class InfoScreen extends StatelessWidget {
                     bottom: 5),
                 child: Text(
                   "Versão do App",
-                  style: TextStyle(fontSize: width * 0.03),
+                  style: TextStyle(fontSize: width * 0.03,color: Colors.blue),
                 ),
               ),
               Padding(
@@ -115,7 +85,7 @@ class InfoScreen extends StatelessWidget {
                     left: width * 0.05, right: width * 0.05, bottom: 10),
                 child: Text(
                   "1.0.0",
-                  style: TextStyle(fontSize: width * 0.045),
+                  style: TextStyle(fontSize: width * 0.045,color: Colors.grey),
                 ),
               ),
               Divider(
@@ -129,7 +99,7 @@ class InfoScreen extends StatelessWidget {
                     bottom: 5),
                 child: Text(
                   "Sobre",
-                  style: TextStyle(fontSize: width * 0.03),
+                  style: TextStyle(fontSize: width * 0.03,color: Colors.blue),
                 ),
               ),
               Padding(
@@ -137,7 +107,7 @@ class InfoScreen extends StatelessWidget {
                     left: width * 0.05, right: width * 0.05, bottom: 10),
                 child: Text(
                   "Aplicativo de gerenciamento financeiro focado em gestão de assinaturas contratadas.",
-                  style: TextStyle(fontSize: width * 0.045),
+                  style: TextStyle(fontSize: width * 0.045,color: Colors.grey),
                 ),
               ),
               Divider(

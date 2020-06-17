@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:suno/controles/AssinaturaDB.dart';
 import 'package:suno/controles/ControleBanco.dart';
 import 'package:suno/model/Assinatura.dart';
@@ -9,6 +10,9 @@ import 'package:suno/widgets/CardItemList.dart';
 import 'AddAssinatra.dart';
 
 class Home extends StatefulWidget {
+  final String userName;
+
+  const Home({Key key, this.userName}) : super(key: key);
   @override
   _HomeState createState() => _HomeState();
 }
@@ -19,7 +23,9 @@ class _HomeState extends State<Home> {
   List<Assinatura> listaAssinaturasProxMes = List();
   List<Assinatura> listaAssinaturasMesCorrente = List();
   List<Assinatura> listaTeste = List();
-
+  String userName = "";
+  TextEditingController _controllerNomeUser = TextEditingController();
+  
   //azulMarinho 0D3159
 
   var total;
@@ -30,14 +36,44 @@ class _HomeState extends State<Home> {
   String totalAssinaturasProxMes = "";
   ControleBanco cb = ControleBanco();
   DateFormat format_dd = DateFormat("dd");
-  DateFormat format_MM = DateFormat("MM");  
+  DateFormat format_MM = DateFormat("MM");
   DateFormat format_yyyy = DateFormat("yyyy");
   DateFormat format_Mes = DateFormat("MMMM", "pt_BR");
   DateFormat formatFullData = DateFormat("MMMM 'de' yyyy", "pt_BR");
   GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
   int proximoMes;
-  String mesSeguinte="";
+  String mesSeguinte = "";
 
+  salvarNamePrefs(String name) async {    
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString("userName", "Hi, $name");
+    
+    setState(() {
+      userName = name;
+    });
+    print("(SalvarPrefs Name):$name "); 
+    print(prefs.getString("userName"));   
+
+    getNamePrefs();
+  }
+
+  getNamePrefs()async{
+    final prefs = await SharedPreferences.getInstance();
+    
+    setState(() {
+      userName = prefs.getString("userName");
+      print(userName);
+      print(prefs.getString("userName"));  
+    });
+
+    if(userName == null || userName.isEmpty){
+      setState(() {
+        userName = "Change Name Here";
+      });
+      
+    }
+    
+  }
 
   String format(double n) {
     return n.toStringAsFixed(n.truncateToDouble() == n ? 0 : 2);
@@ -101,7 +137,9 @@ class _HomeState extends State<Home> {
         setState(() {
           listaAssinaturasProxMes = list;
         });
-        totalProxMes = listaAssinaturasProxMes.map((item) => item.valor).reduce((a, b) => a + b);
+        totalProxMes = listaAssinaturasProxMes
+            .map((item) => item.valor)
+            .reduce((a, b) => a + b);
         totalAssinaturasProxMes = format(totalProxMes).toString();
       } else {
         setState(() {
@@ -113,11 +151,87 @@ class _HomeState extends State<Home> {
     });
   }
 
+  showDialogName(width) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            backgroundColor: Colors.transparent,
+            content: Container(
+              decoration: BoxDecoration(
+                  color: Colors.grey[900],
+                  borderRadius: BorderRadius.circular(width * 0.04)),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                //crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.only(top: width * 0.04, left:width * 0.03, right: width * 0.03),
+                    child: Text("Ei, qual o seu nome?"),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(width * 0.03),
+                    child: TextField(
+                      onSubmitted: (text){
+                        setState(() {
+                          salvarNamePrefs(text);
+                          //userName = text;
+                        });
+                        Navigator.pop(context);
+                      },
+                      maxLength: 15,
+                      controller: _controllerNomeUser,
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(
+                          contentPadding: EdgeInsets.all(width * 0.04),
+                          hintText: "...",
+                          hintStyle: TextStyle(fontSize: width * 0.033),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(width * 0.04),
+                          )),
+                    ),
+                  ),
+                  SizedBox(height: width * 0.05,),
+                  GestureDetector(
+                    onTap: (){
+                      setState(() {
+                        salvarNamePrefs(_controllerNomeUser.text);
+                        //userName = _controllerNomeUser.text;
+                      });
+                      Navigator.pop(context);
+                    },
+                                      child: Container(
+                      width: width,
+                      height: width * 0.15,
+                      decoration: BoxDecoration(
+                        color: Colors.green,
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(width * 0.04),
+                          bottomRight: Radius.circular(width * 0.04),
+                        )
+                        ),
+                      child: Center(
+                        child: Text("Save"),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
+  }
+
   @override
-  void initState() {
+  void initState()  {
     // TODO: implement initState
     super.initState();
     //_allMovMes(formatMMyyyy.format(dataAtual));
+    //userName ="change";
+    
+    
+    getNamePrefs();
+    //userName = "Change Name Here";
   }
 
   @override
@@ -127,10 +241,12 @@ class _HomeState extends State<Home> {
       proximoMes = 1;
     }
     if (proximoMes < 10) {
-      mesSeguinte = format_Mes.format(DateTime.parse("2000-0${proximoMes}-01 11:11:11"));
+      mesSeguinte =
+          format_Mes.format(DateTime.parse("2000-0${proximoMes}-01 11:11:11"));
       _allAssValor("0$proximoMes/${format_yyyy.format(dataAtual)}");
     } else {
-      mesSeguinte = format_Mes.format(DateTime.parse("2000-${proximoMes}-01 11:11:11"));
+      mesSeguinte =
+          format_Mes.format(DateTime.parse("2000-${proximoMes}-01 11:11:11"));
       _allAssValor("$proximoMes/${format_yyyy.format(dataAtual)}");
     }
 
@@ -143,7 +259,11 @@ class _HomeState extends State<Home> {
       //backgroundColor: Colors.grey[900],
       key: _scaffoldKey,
       appBar: AppBar(
-        title: Text("Hi, Mike"),
+        title: GestureDetector(
+            onTap: () {
+              showDialogName(width);
+            },
+            child: Text("$userName")),
         elevation: 0,
         backgroundColor: Colors.black,
         centerTitle: false,
@@ -167,19 +287,19 @@ class _HomeState extends State<Home> {
       //drawer: AppDrawer(),
       body: Container(
         color: Colors.black,
-        
         height: height,
         child: Column(
           children: <Widget>[
-
             Padding(
-              padding:EdgeInsets.only(left: 20, right: 20, top: 15, bottom: 10),
+              padding:
+                  EdgeInsets.only(left: 20, right: 20, top: 15, bottom: 10),
               child: Container(
-                padding:EdgeInsets.only(left: 10, right: 10, top: 15, bottom: 10),
+                padding:
+                    EdgeInsets.only(left: 10, right: 10, top: 15, bottom: 10),
                 //height: 100,
                 width: width,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(width *0.03),
+                    borderRadius: BorderRadius.circular(width * 0.03),
                     gradient: LinearGradient(
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
@@ -200,61 +320,59 @@ class _HomeState extends State<Home> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Container(
-                              padding: EdgeInsets.all(width *0.02),
-                              child: Text(
-                                "${formatFullData.format(dataAtual)}",
-                                style: TextStyle(
-                                  fontSize: width * 0.03
-                                ),
-                              ),
+                          padding: EdgeInsets.all(width * 0.02),
+                          child: Text(
+                            "${formatFullData.format(dataAtual)}",
+                            style: TextStyle(fontSize: width * 0.03),
+                          ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.only(
+                              top: width * 0.01,
+                              bottom: width * 0.01,
+                              left: width * 0.03,
+                              right: width * 0.03),
+                          decoration: BoxDecoration(
+                              border:
+                                  Border.all(color: Colors.white, width: 0.2),
+                              borderRadius:
+                                  BorderRadius.circular(width * 0.015)),
+                          child: Center(
+                            child: Text(
+                              "${mesSeguinte}:  $totalAssinaturasProxMes",
+                              style: TextStyle(fontSize: width * 0.03),
                             ),
-                            Container(
-                              padding: EdgeInsets.only(top:width *0.01,bottom:width *0.01, left: width *0.03,right: width *0.03),
-                              decoration: BoxDecoration(
-                                border: Border.all(color: Colors.white, width: 0.2),
-                                borderRadius: BorderRadius.circular(width *0.015)
-                              ),
-                              child: Center(
-                                child: Text(
-                                "${mesSeguinte}:  $totalAssinaturasProxMes",
-                                style: TextStyle(
-                                  fontSize: width * 0.03
-                                ),
-                              ),
-                              ),
-                            ),
+                          ),
+                        ),
                       ],
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: <Widget>[
-                        
                         Container(
-                          padding: EdgeInsets.all(width *0.02),
+                          padding: EdgeInsets.all(width * 0.02),
                           child: Text(
                             "R\$",
                             style: TextStyle(
-                                fontSize: width * 0.07, fontWeight: FontWeight.w100),
+                                fontSize: width * 0.07,
+                                fontWeight: FontWeight.w100),
                           ),
                         ),
                         Text(
-                      "${totalAssinaturas.replaceAll(".", ",")}",
-                      textAlign: TextAlign.center,
-                      overflow: TextOverflow.ellipsis,
-                      style:
-                          TextStyle(fontSize: width* 0.15, fontWeight: FontWeight.w300),
-                    ),
+                          "${totalAssinaturas.replaceAll(".", ",")}",
+                          textAlign: TextAlign.center,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                              fontSize: width * 0.15,
+                              fontWeight: FontWeight.w300),
+                        ),
                       ],
                     ),
-                    
                   ],
                 ),
               ),
             ),
-            
-
-
             Padding(
               padding:
                   EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 10),
@@ -290,7 +408,6 @@ class _HomeState extends State<Home> {
                       metodoPG: ass.metodoPG,
                       descricao: ass.descricao,
                       data: ass.data,*/
-                      
                     );
                   }),
             )

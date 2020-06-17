@@ -14,7 +14,7 @@ class _InitialPageState extends State<InitialPage> {
   int selectedIcon = 0;
   
 
-  List<Widget> telas = [Home()];
+  
 
   @override
   Widget build(BuildContext context) {
