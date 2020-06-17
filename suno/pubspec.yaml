@@ -105,6 +105,8 @@ flutter:
     - assets/dribbble.png
     - assets/gsuite.jpg
     - assets/fundo/fundobotao.png
+    - assets/fundo/fundo.png
+    - assets/fundo/fundo2.png
     
   #   - images/a_dot_ham.jpeg
 

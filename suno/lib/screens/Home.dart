@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:suno/controles/AssinaturaDB.dart';
@@ -391,7 +392,18 @@ class _HomeState extends State<Home> {
               ),
             ),
             Expanded(
-              child: ListView.builder(
+              child: listaAssinaturas.length== 0
+              ?Opacity( 
+                opacity: 0.7,
+                child: Container(                
+                child: Center(
+                  //child: Image.asset("assets/fundo/fundo2.png",fit: BoxFit.cover,),
+                  //child: Icon(FontAwesomeIcons.cube,size: width * 0.5,color: Colors.grey[900], ),
+                  child: Icon(FontAwesomeIcons.buffer,size: width * 0.7,color: Colors.grey[900], ),
+                ),
+              ),
+              )
+              :ListView.builder(
                   padding: EdgeInsets.all(0),
                   itemCount: listaAssinaturas.length,
                   itemBuilder: (context, index) {
