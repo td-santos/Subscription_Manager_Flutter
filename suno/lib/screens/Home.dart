@@ -44,6 +44,7 @@ class _HomeState extends State<Home> {
   GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
   int proximoMes;
   String mesSeguinte = "";
+  bool visibleFundo= false;
 
   salvarNamePrefs(String name) async {    
     final prefs = await SharedPreferences.getInstance();
@@ -116,16 +117,18 @@ class _HomeState extends State<Home> {
         }
         setState(() {
           listaAssinaturas = listaAssinaturasMesCorrente;
+          
           //listaAssinaturas = list;
         });
 
-        total =
-            listaAssinaturas.map((item) => item.valor).reduce((a, b) => a + b);
+        total =listaAssinaturas.map((item) => item.valor).reduce((a, b) => a + b);
         totalAssinaturas = format(total).toString();
+        
       } else {
         setState(() {
           listaAssinaturas.clear();
           total = 0;
+          visibleFundo = true;
           totalAssinaturas = total.toString();
         });
       }
@@ -227,12 +230,8 @@ class _HomeState extends State<Home> {
   void initState()  {
     // TODO: implement initState
     super.initState();
-    //_allMovMes(formatMMyyyy.format(dataAtual));
-    //userName ="change";
-    
-    
     getNamePrefs();
-    //userName = "Change Name Here";
+    
   }
 
   @override
@@ -392,8 +391,10 @@ class _HomeState extends State<Home> {
               ),
             ),
             Expanded(
-              child: listaAssinaturas.length== 0
-              ?Opacity( 
+              child: listaAssinaturas.length == 0
+              ?Visibility(
+                visible: visibleFundo,
+                child: Opacity( 
                 opacity: 0.7,
                 child: Container(                
                 child: Center(
@@ -403,23 +404,14 @@ class _HomeState extends State<Home> {
                 ),
               ),
               )
+                )
               :ListView.builder(
                   padding: EdgeInsets.all(0),
                   itemCount: listaAssinaturas.length,
                   itemBuilder: (context, index) {
                     Assinatura ass = listaAssinaturas[index];
                     return CardAssinatura(
-                      assinatura: ass,
-                      /*id: ass.id,
-                      nome: ass.assinaturaName,
-                      imagemUrl: ass.urlLogo,
-                      valor: format(ass.valor), //ass.valor.toString(),
-                      plano: ass.plano,
-                      recorrencia: ass.recorrencia,
-                      nota: ass.nota,
-                      metodoPG: ass.metodoPG,
-                      descricao: ass.descricao,
-                      data: ass.data,*/
+                      assinatura: ass,                      
                     );
                   }),
             )
