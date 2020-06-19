@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:suno/screens/AllSubscribes.dart';
 import 'package:suno/screens/Home.dart';
 import 'package:suno/screens/InfoScreen.dart';
 import 'package:suno/widgets/AppDrawer.dart';
@@ -20,8 +21,9 @@ class _InitialPageState extends State<InitialPage> {
     double height = MediaQuery.of(context).size.height;
 
     List<Widget> telas = [
-      Home(),      
-      Container(height: height,width: width,color: Colors.black,),
+      Home(),  
+      AllSubscribes()  ,  
+      //Container(height: height,width: width,color: Colors.black,),
       InfoScreen()
       ];
     

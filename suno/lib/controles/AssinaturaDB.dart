@@ -61,12 +61,12 @@ class AssinaturaDB{
     );
   }
 
-  Future<int> deleteAssinatura(String assinaturaName)async{
+  Future<int> deleteAssinatura(int id)async{
     Database dbAssinatura = await db;
     return await dbAssinatura.delete(assinaturaTABLE,
       
-      where: "$assinaturaNameColumn =?",
-      whereArgs: [assinaturaName]
+      where: "$idColumn =?",
+      whereArgs: [id]
     );
   }
 
@@ -83,6 +83,19 @@ class AssinaturaDB{
       +"OR ($recorrenciaColumn ='unica' AND  $dataColumn LIKE '%$data%') "
       +"OR($recorrenciaColumn ='anual' AND  $dataColumn LIKE '%/${dataDiaMes}/%')"
       );
+    List<Assinatura> listAssinaturas = List();
+
+    for(Map m in listMap){
+      listAssinaturas.add(Assinatura.fromMap(m));
+    }
+    return listAssinaturas;
+  }
+
+  Future<List> getAllAssinaturas()async{
+
+    Database dbAssinaturas = await db;
+    List listMap = await dbAssinaturas.rawQuery("SELECT * FROM $assinaturaTABLE");
+    
     List<Assinatura> listAssinaturas = List();
 
     for(Map m in listMap){
