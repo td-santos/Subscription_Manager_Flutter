@@ -93,10 +93,11 @@ Widget _listagemLogosWidget(
                 Navigator.pop(context, listaLogos[index]);
               },
               child: Container(
+
                 //height:  ,//40
                 //width: widthLogo ,
                 decoration: BoxDecoration(
-                    color: Colors.blue[900],
+                    //color: Colors.blue[900],
                     borderRadius: BorderRadius.circular(widthLogo *0.045),
                     boxShadow: [
                       BoxShadow(offset: Offset(-1, 1), blurRadius: 0,color: Colors.blue.withAlpha(90))

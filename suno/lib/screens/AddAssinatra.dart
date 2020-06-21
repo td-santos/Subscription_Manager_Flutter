@@ -22,7 +22,7 @@ class _AddAssinaturaState extends State<AddAssinatura> {
   
   double valueSlide;
   double valor;
-  bool planB, planP, planPr = false;
+  bool planB, planP, planPr, planF = false;
   bool recU, recM, recA = false;
   String urlLogo;
   IconData iconSelecionado;
@@ -297,14 +297,15 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                     width: width * 0.12,
                     decoration: BoxDecoration(
                         //color: Colors.amber[700],
-                        gradient: LinearGradient(
+                        gradient: urlLogo == null
+                        ?LinearGradient(
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
                             colors: [
                               Colors.blue, Colors.purple[600]
-                              //Colors.deepPurple[300],
-                              //Colors.deepPurple[600]
-                            ]),
+                              
+                            ])
+                        :null,
                         //border: Border.all(color: Colors.amber[700]),
                         borderRadius: BorderRadius.circular(width * 0.04),
                         boxShadow: [
@@ -322,10 +323,11 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                             size: width * 0.07,
                           )
                         : ClipRRect(
-                            borderRadius: BorderRadius.circular(15),
+                            borderRadius: BorderRadius.circular(width * 0.04),
                             child: Image.asset(
                               urlLogo,
                               fit: BoxFit.cover,
+                              
                             ),
                           ),
                   ),
@@ -369,6 +371,7 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                     planP = true;
                     planPr = false;
                     planB = false;
+                    planF = false;
                     plano = "Padrao";
                   });
                 },
@@ -386,12 +389,31 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                     planP = false;
                     planPr = true;
                     planB = false;
+                    planF = false;
                     plano = "Premium";
                   });
                 },
                 child: ContainerOption(
                   selected: planPr,
                   texto: "Premium",
+                ),
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    planP = false;
+                    planPr = false;
+                    planB = false;
+                    planF = true;
+                    plano = "Familia";
+                  });
+                },
+                child: ContainerOption(
+                  selected: planF,
+                  texto: "Família",
                 ),
               ),
             ],
