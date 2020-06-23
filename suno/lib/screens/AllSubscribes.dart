@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:suno/controles/AssinaturaDB.dart';
 import 'package:suno/model/Assinatura.dart';
 import 'package:suno/widgets/CardAssinatura.dart';
+import 'package:suno/widgets/CardAssinaturaInfo.dart';
 
 class AllSubscribes extends StatefulWidget {
   @override
@@ -45,21 +46,18 @@ class _AllSubscribesState extends State<AllSubscribes> {
         title: (Text("All Subscribes!",style: TextStyle(color: Colors.grey),)),
       ),
       body: Container(
-        //height: height,
-        //width: width,
-        child: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             
             
-              SizedBox(
-                height: height,
+              Expanded(
+                //height: height,
                 child: ListView.builder(
                   padding: EdgeInsets.all(0),
                   itemCount: listaAssinaturas.length,
                   itemBuilder: (context, index) {
                     Assinatura ass = listaAssinaturas[index];
-                    return CardAssinatura(
+                    return CardAssinaturaInfo(
                       assinatura: ass,                      
                     );
                   }),
@@ -68,7 +66,7 @@ class _AllSubscribesState extends State<AllSubscribes> {
           ],
         ),
       ),
-      ),
+      
     );
   }
 }

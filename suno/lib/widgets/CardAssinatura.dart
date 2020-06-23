@@ -4,29 +4,10 @@ import 'package:suno/screens/DetalheAssinatura.dart';
 
 class CardAssinatura extends StatelessWidget {
   final Assinatura assinatura;
-  /*final int id;
-  final String imagemUrl;
-  final String nome;
-  final String valor;
-  final String plano;
-  final String recorrencia;
-  final String nota;
-  final String metodoPG;
-  final String descricao;
-  final String data;*/
+  
 
   const CardAssinatura(
-      {Key key,
-      /*this.id,
-      this.imagemUrl,
-      this.nome,
-      this.valor,
-      this.plano,
-      this.recorrencia,
-      this.nota,
-      this.metodoPG,
-      this.descricao,
-      this.data,*/ this.assinatura})
+      {Key key,this.assinatura})
       : super(key: key);
 
   String format(double n) {
