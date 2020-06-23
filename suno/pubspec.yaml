@@ -40,6 +40,10 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_launcher_icons: ^0.7.5
+  flutter_native_splash: ^0.1.9
+
+flutter_native_splash:
+  color: "000000"
 
 flutter_icons:
   android: true
