@@ -56,6 +56,10 @@ Map<int,String> mapLogoGames ={
   4: "assets/ea_access.jpg",
   5: "assets/xbox_gamepass.jpg",
   6: "assets/nintendo_online.jpg",
+  7: "assets/origin_access.jpg",
+  8: "assets/humbleM.png",
+  9: "assets/utomik2.jpg",
+  10: "assets/verizon.jpg",
 };
 
 Map<int,String> mapLogoMusic ={
@@ -86,6 +90,7 @@ Map<int,String> mapLogoVideo ={
   10: "assets/disney_pluss.png",
   11: "assets/crackle.jpg",
   12: "assets/fox_play.jpg",
+  13: "assets/kinopop.jpg",
   
 };
 Map<int,String> mapLogoDesign ={

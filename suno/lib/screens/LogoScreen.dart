@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 import 'package:suno/model/Listas.dart';
 
 class LogoScreen extends StatefulWidget {
@@ -50,7 +50,7 @@ class _LogoScreenState extends State<LogoScreen> {
               children: <Widget>[
                 _listagemLogosWidget(width * 0.05, width * 0.6, width, "Music", mapLogoMusic),
                 _listagemLogosWidget(width * 0.05, width * 0.6, width, "Stream Video", mapLogoVideo),
-                _listagemLogosWidget(width * 0.05, width * 0.4, width, "Games", mapLogoGames),
+                _listagemLogosWidget(width * 0.05, width * 0.6, width, "Games", mapLogoGames),
                 _listagemLogosWidget(width * 0.05, width * 0.4, width, "Design", mapLogoDesign),
                 _listagemLogosWidget(width * 0.05, width * 0.4, width, "Outros", mapLogoOutros),
                 SizedBox(height: height * 0.1)
