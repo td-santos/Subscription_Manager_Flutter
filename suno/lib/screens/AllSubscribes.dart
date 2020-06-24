@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:suno/controles/AssinaturaDB.dart';
 import 'package:suno/model/Assinatura.dart';
 import 'package:suno/widgets/CardAssinatura.dart';
@@ -13,6 +14,7 @@ class _AllSubscribesState extends State<AllSubscribes> {
 
   AssinaturaDB assDB = AssinaturaDB();
   List<Assinatura> listaAssinaturas = List();
+  bool visibleFundo= false;
 
   _allSubs() {
     assDB.getAllAssinaturas().then((list) {
@@ -24,11 +26,13 @@ class _AllSubscribesState extends State<AllSubscribes> {
       } else {
         setState(() {
           listaAssinaturas.clear();
-          
+          visibleFundo = true;
         });
       }
     });
   }
+
+  
   
   @override
   Widget build(BuildContext context) {
@@ -43,7 +47,7 @@ class _AllSubscribesState extends State<AllSubscribes> {
       appBar: AppBar(
         backgroundColor: Colors.black,
         elevation: 0,
-        title: (Text("All Subscribes!",style: TextStyle(color: Colors.grey),)),
+        title: (Text("Cadastrados",style: TextStyle(color: Colors.grey),)),
       ),
       body: Container(
         child: Column(
@@ -52,7 +56,21 @@ class _AllSubscribesState extends State<AllSubscribes> {
             
               Expanded(
                 //height: height,
-                child: ListView.builder(
+                child: listaAssinaturas.length == 0
+                ?Visibility(
+                visible: visibleFundo,
+                child: Opacity( 
+                opacity: 0.7,
+                child: Container(                
+                child: Center(
+                  //child: Image.asset("assets/fundo/fundo2.png",fit: BoxFit.cover,),
+                  //child: Icon(FontAwesomeIcons.cube,size: width * 0.5,color: Colors.grey[900], ),
+                  child: Icon(FontAwesomeIcons.buffer,size: width * 0.7,color: Colors.grey[900], ),
+                ),
+              ),
+              )
+                )
+                :ListView.builder(
                   padding: EdgeInsets.all(0),
                   itemCount: listaAssinaturas.length,
                   itemBuilder: (context, index) {
@@ -61,6 +79,7 @@ class _AllSubscribesState extends State<AllSubscribes> {
                       assinatura: ass,                      
                     );
                   }),
+                
               ),
             
           ],

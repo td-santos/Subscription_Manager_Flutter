@@ -6,11 +6,17 @@ import 'package:suno/screens/Home.dart';
 class ControleBanco {
   ControleBanco() {}
 
-  delete(BuildContext context, Assinatura assinatura) {
+  delete( Assinatura assinatura,{BuildContext context}) {
     AssinaturaDB assdb = AssinaturaDB();
     assdb.deleteAssinatura(assinatura.id);
-    Navigator.pop(context);
+    if(context !=null){
+      Navigator.pop(context);
+    }
+    
   }
+
+  
+
 
   salvarDB(bool edit,BuildContext context,String assinaturaName,String plano,String recorrencia,
       double valor,String urlLogo,String nota,String dataInicioPG,String metodoPG,String descricao, int dia,int mes,int ano,{int id}) {

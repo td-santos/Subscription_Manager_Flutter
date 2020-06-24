@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:suno/controles/ControleBanco.dart';
 import 'package:suno/model/Assinatura.dart';
 
 class CardAssinaturaInfo extends StatelessWidget {
@@ -7,6 +8,11 @@ class CardAssinaturaInfo extends StatelessWidget {
 
   const CardAssinaturaInfo({Key key, this.assinatura}) : super(key: key);
 
+  delete() {
+    ControleBanco cb = ControleBanco();
+    cb.delete(assinatura);
+  }
+  
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -95,7 +101,12 @@ class CardAssinaturaInfo extends StatelessWidget {
                 ],
               ),
               
-              Icon(Icons.delete_outline,color: Colors.red[300],)
+              GestureDetector(
+                onTap: (){
+                  delete();
+                },
+                child: Icon(Icons.delete_outline,color: Colors.red[300],),
+              )
             ],
           ),
         ),

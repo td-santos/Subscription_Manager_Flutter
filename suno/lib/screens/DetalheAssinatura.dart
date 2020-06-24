@@ -38,7 +38,7 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
 
   delete() {
     ControleBanco cb = ControleBanco();
-    cb.delete(context, widget.assinatura);
+    cb.delete(widget.assinatura,context: context);
   }
 
   @override

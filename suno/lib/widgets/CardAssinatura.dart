@@ -95,7 +95,8 @@ class CardAssinatura extends StatelessWidget {
                               //color: Colors.purple,
                               child: Text("${assinatura.assinaturaName}",overflow: TextOverflow.ellipsis,
                               style: TextStyle(
-                                fontSize: width * 0.032
+                                fontSize: width * 0.032,
+                                letterSpacing: 1
                               ),),
                             ),
                             SizedBox(
