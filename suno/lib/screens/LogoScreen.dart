@@ -54,6 +54,7 @@ class _LogoScreenState extends State<LogoScreen> {
                 _listagemLogosWidget(width * 0.05, width * 0.3, width, "Armazenamento", mapLogoDrive),
                 _listagemLogosWidget(width * 0.05, width * 0.4, width, "Design", mapLogoDesign),
                 _listagemLogosWidget(width * 0.05, width * 0.4, width, "Outros", mapLogoOutros),
+                _listagemLogosWidget(width * 0.05, width * 0.4, width, "Hospedagem", mapLogoHost),
                 SizedBox(height: height * 0.1)
               ],
             ),

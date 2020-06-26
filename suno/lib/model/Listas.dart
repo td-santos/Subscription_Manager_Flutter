@@ -50,6 +50,17 @@ Map<int,String> mapLogoOutros ={
   7: "assets/team_viewer.png",
 };
 
+Map<int,String> mapLogoHost ={
+  0: "assets/bluehost.jpg",
+  1: "assets/godaddy.jpg",
+  2: "assets/hostgator.png",
+  3: "assets/hostinger.png",
+  4: "assets/kinghost.jpg",
+  5: "assets/locaweb.png",
+  6: "assets/weblink.png",
+  
+};
+
 Map<int,String> mapLogoGames ={
   0: "assets/apple_arcade.jpeg",
   1: "assets/stadia.jpg",
