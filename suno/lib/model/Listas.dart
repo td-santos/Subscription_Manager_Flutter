@@ -46,6 +46,8 @@ Map<int,String> mapLogoOutros ={
   3: "assets/linkedin_premium.jpg",
   4: "assets/kindle_unlimited.jpg",
   5: "assets/gsuite.jpg",
+  6: "assets/trello.png",
+  7: "assets/team_viewer.png",
 };
 
 Map<int,String> mapLogoGames ={
@@ -109,6 +111,8 @@ Map<int,String> mapLogoDesign ={
   3: "assets/adobe_logo.png",
   4: "assets/canva.jpg",
   5: "assets/dribbble.png",
+  6: "assets/vegas_pro.jpg",
+  7: "assets/wix.jpg",
 };
 
 

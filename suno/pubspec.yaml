@@ -121,6 +121,10 @@ flutter:
     - assets/amazon_drive.jpg
     - assets/asus_webstorage.jpg
     - assets/dropbox.jpg
+    - assets/wix.jpg
+    - assets/vegas_pro.jpg
+    - assets/trello.png
+    - assets/team_viewer.png
     - assets/fundo/fundobotao.png
     - assets/fundo/fundo.png
     - assets/fundo/fundo2.png
