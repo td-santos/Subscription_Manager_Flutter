@@ -116,6 +116,11 @@ flutter:
     - assets/utomik.jpg
     - assets/utomik2.jpg
     - assets/verizon.jpg
+    - assets/icloud.jpeg
+    - assets/google_drive.jpg
+    - assets/amazon_drive.jpg
+    - assets/asus_webstorage.jpg
+    - assets/dropbox.jpg
     - assets/fundo/fundobotao.png
     - assets/fundo/fundo.png
     - assets/fundo/fundo2.png

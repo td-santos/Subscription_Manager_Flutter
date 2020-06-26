@@ -93,6 +93,15 @@ Map<int,String> mapLogoVideo ={
   13: "assets/kinopop.jpg",
   
 };
+Map<int,String> mapLogoDrive ={
+  0: "assets/google_drive.jpg",
+  1: "assets/icloud.jpeg",
+  2: "assets/dropbox.jpg",
+  3: "assets/asus_webstorage.jpg",
+  4: "assets/amazon_drive.jpg",
+  
+};
+
 Map<int,String> mapLogoDesign ={
   0: "assets/adobe_creative.jpeg",
   1: "assets/figma.png",
