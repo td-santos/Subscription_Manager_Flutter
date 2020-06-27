@@ -47,6 +47,7 @@ class _AllSubscribesState extends State<AllSubscribes> {
       appBar: AppBar(
         backgroundColor: Colors.black,
         elevation: 0,
+        centerTitle: false,
         title: (Text("Cadastrados",style: TextStyle(color: Colors.grey),)),
       ),
       body: Container(

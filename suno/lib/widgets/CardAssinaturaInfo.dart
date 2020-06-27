@@ -68,10 +68,15 @@ class CardAssinaturaInfo extends StatelessWidget {
                 child: Column(   
                   crossAxisAlignment: CrossAxisAlignment.start,               
                   children: <Widget>[
-                    Text(assinatura.assinaturaName,style: TextStyle(
-                      fontSize: width * 0.05,
-                      letterSpacing: 1
-                    ),),
+                    Container(
+                      width: width *0.4,
+                      child: Text(assinatura.assinaturaName,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: width * 0.05,
+                        letterSpacing: 1
+                      ),),
+                    ),
                     SizedBox(height: 15,),
                     Text(assinatura.data,style: TextStyle(
                       fontSize: width * 0.03,
@@ -87,7 +92,8 @@ class CardAssinaturaInfo extends StatelessWidget {
                       color: Colors.grey
                     ),),
                     SizedBox(width: 5,),
-                    Text("\$${assinatura.valor}",style: TextStyle(
+                    Text("\$${assinatura.valor}",
+                    style: TextStyle(
                       fontSize: width * 0.03,
                       letterSpacing: 1,
                       color: Colors.orange
