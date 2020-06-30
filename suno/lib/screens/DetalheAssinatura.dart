@@ -286,18 +286,16 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
                     style: TextStyle(color: Colors.white.withAlpha(80),fontSize: width * 0.033)),
                 Container(
                     width: width * 0.6,
-                    child:widget.metodoPG.isEmpty
+                    child:widget.metodoPG == null
                     ?Text("sem informação",textAlign: TextAlign.right,
                       style: TextStyle(fontSize: width * 0.04, color: Colors.grey.withAlpha(80)),
                     )
-                   :ListTile(
-                      contentPadding: EdgeInsets.all(0),
-                      title: Text(widget.metodoPG,
+                   :Text(widget.metodoPG,
                           //overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.right,
                           style: TextStyle(
                               fontSize: width * 0.04, color: Colors.orange[700])),
-                    ))
+                    )
               ],
             ),
           ),
