@@ -1,3 +1,5 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
@@ -24,6 +26,7 @@ class _AddAssinaturaState extends State<AddAssinatura> {
   double valor;
   bool planB, planP, planPr, planF = false;
   bool recU, recM, recA = false;
+  bool metDeb, metCred, metBol, metOutro = false;
   String urlLogo;
   IconData iconSelecionado;
   DateFormat format_ddMMyyy = DateFormat("dd/MM/yyyy");
@@ -32,7 +35,7 @@ class _AddAssinaturaState extends State<AddAssinatura> {
   DateFormat format_yyyy = DateFormat("yyyy");
   DateFormat format_DataPicker = DateFormat("yyyy-MM-dd 03:33:33");
   String dataInicioPG;
-  String plano, recorrencia;
+  String plano, recorrencia,metodoPG;
   TextEditingController _controllerAssinatura = TextEditingController();
   TextEditingController _controllerDesc = TextEditingController();
   TextEditingController _controllerNota = TextEditingController();
@@ -67,7 +70,8 @@ class _AddAssinaturaState extends State<AddAssinatura> {
         urlLogo,
         _controllerNota.text,
         dataInicioPG,
-        _controllerMetPG.text,
+        //_controllerMetPG.text,
+        metodoPG,
         _controllerDesc.text,
         dia,
         mes,
@@ -515,6 +519,7 @@ class _AddAssinaturaState extends State<AddAssinatura> {
           //color: Colors.grey[850],
           borderRadius: BorderRadius.circular(15)),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Container(
             width: width,
@@ -602,7 +607,7 @@ class _AddAssinaturaState extends State<AddAssinatura> {
           SizedBox(
             height: 25,
           ),
-          TextField(
+          /*TextField(
             controller: _controllerMetPG,
             keyboardType: TextInputType.text,
             decoration: InputDecoration(
@@ -614,9 +619,90 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(width * 0.04),
                 )),
+          ),*/
+          Text("Método de pagamento:",style: TextStyle(
+            color: Colors.grey,
+            fontSize: width * 0.033
+          ),),
+          SizedBox(height: 10,),
+          Row(
+            children: <Widget>[
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    metDeb = false;
+                    metCred = true;
+                    metBol = false;
+                    metOutro= false;
+                    metodoPG = "Crédito";
+                  });
+                },
+                child: ContainerOption(
+                  selected: metCred,
+                  texto: "Crédito",
+                ),
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    metDeb = true;
+                    metCred = false;
+                    metBol = false;
+                    metOutro= false;
+                    metodoPG = "Débito";
+                  });
+                },
+                child: ContainerOption(
+                  selected: metDeb,
+                  texto: "Débito",
+                ),
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    metDeb = false;
+                    metCred = false;
+                    metBol = true;
+                    metOutro= false;
+                    metodoPG = "Boleto";
+                  });
+                },
+                child: ContainerOption(
+                  selected: metBol,
+                  texto: "Boleto",
+                ),
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    metDeb = false;
+                    metCred = false;
+                    metBol = false;
+                    metOutro= true;
+                    metodoPG = "Outro";
+                  });
+                },
+                child: ContainerOption(
+                  selected: metOutro,
+                  texto: "Outro",
+                ),
+              ),
+              SizedBox(
+                width: 10,
+              ),
+            ],
           ),
           SizedBox(
-            height: 10,
+            height: 15,
           ),
           TextField(
             controller: _controllerDesc,
