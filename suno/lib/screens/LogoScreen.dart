@@ -18,7 +18,7 @@ class _LogoScreenState extends State<LogoScreen> {
     return Scaffold(
         appBar: AppBar(
           elevation: 0,
-          backgroundColor: Colors.black,
+          backgroundColor: Colors.black.withAlpha(150),
           centerTitle: false,
           title: Text(
             "Logos",
@@ -34,7 +34,7 @@ class _LogoScreenState extends State<LogoScreen> {
           child: Container(
             padding: EdgeInsets.only(left: 20, right: 0, top: 30),
             width: width,
-            color: Colors.black,
+            color: Colors.black.withAlpha(150),
             /*decoration: BoxDecoration(
               gradient: LinearGradient(
                   begin: Alignment.topLeft,
@@ -101,9 +101,10 @@ Widget _listagemLogosWidget(
                 decoration: BoxDecoration(
                     //color: Colors.blue[900],
                     borderRadius: BorderRadius.circular(widthLogo *0.045),
-                    boxShadow: [
+                    /*boxShadow: [
                       BoxShadow(offset: Offset(-1, 1), blurRadius: 0,color: Colors.blue.withAlpha(90))
-                    ]),
+                    ],*/
+                    ),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(widthLogo *0.045),
                   child: Image.asset(

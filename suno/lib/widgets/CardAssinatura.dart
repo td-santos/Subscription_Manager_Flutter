@@ -11,7 +11,8 @@ class CardAssinatura extends StatelessWidget {
       : super(key: key);
 
   String format(double n) {
-    return n.toStringAsFixed(n.truncateToDouble() == n ? 0 : 2);
+    
+    return n.toStringAsFixed(n.truncateToDouble() == n ? 2 : 2).replaceAll(".", ",");
   }
 
   @override
@@ -102,8 +103,8 @@ class CardAssinatura extends StatelessWidget {
                             SizedBox(
                               height: 5,
                             ),
-                            Text(
-                              "\$${format(assinatura.valor)}",
+                            Text("\$${format(assinatura.valor)}",
+                              
                               style: TextStyle(color: Colors.orange[700],fontSize: width * 0.032),
                             )
                           ],

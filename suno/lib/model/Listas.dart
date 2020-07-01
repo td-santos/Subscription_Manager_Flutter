@@ -122,7 +122,7 @@ Map<int,String> mapLogoDesign ={
   3: "assets/adobe_logo.png",
   4: "assets/canva.jpg",
   5: "assets/dribbble.png",
-  6: "assets/vegas_pro.jpg",
+  6: "assets/vegas_pro.png",
   7: "assets/wix.jpg",
 };
 
