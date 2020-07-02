@@ -98,7 +98,7 @@ class _DiaogLogosState extends State<DiaogLogos> {
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(15),
                             child: Image.asset(
-                              mapLogos[index],
+                              "mapLogos[index]",
                               fit: BoxFit.cover,
                             ),
                           ),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:suno/model/Listas.dart';
+import 'package:suno/screens/infoLogo.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class InfoScreen extends StatelessWidget {
@@ -110,6 +112,32 @@ class InfoScreen extends StatelessWidget {
                   style: TextStyle(fontSize: width * 0.045,color: Colors.grey),
                 ),
               ),
+
+              Padding(
+                padding: EdgeInsets.only(
+                    left: width * 0.05, right: width * 0.05, bottom: 10),
+                child: GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => InfoLogo()
+                      ));
+                  },
+                  child: Container(
+                    width: width * 0.5,
+                    padding: EdgeInsets.only(bottom: 10, top: 10),
+                    decoration: BoxDecoration(                      
+                      border: Border.all(width: 1, color: Colors.deepPurple[300]),
+                      borderRadius: BorderRadius.circular(10)
+                    ),
+                    child: Center(
+                      child: Text(
+                  "Serviços Cadastrados",
+                  style: TextStyle(fontSize: width * 0.04,color: Colors.deepPurple[300]),
+                ),
+                    ),
+                  ),
+                ),
+              ),
               Divider(
                 color: Colors.grey,
               ),
@@ -118,7 +146,7 @@ class InfoScreen extends StatelessWidget {
                     left: width * 0.05,
                     right: width * 0.05,
                     bottom: 10,
-                    top: 30),
+                    top: 60),
                 child: GestureDetector(
                   onTap: () {
                     String url =
@@ -138,7 +166,9 @@ class InfoScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-              )
+              ),
+              SizedBox(height: 20,),
+              
             ],
           ),
         ),
