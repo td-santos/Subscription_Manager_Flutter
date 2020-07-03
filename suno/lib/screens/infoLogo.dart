@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:suno/model/Listas.dart';
+import 'package:suno/widgets/CardServiceInfo.dart';
 
 class InfoLogo extends StatefulWidget {
   @override
@@ -31,8 +32,17 @@ class _InfoLogoState extends State<InfoLogo> {
       ),
       body: ListView.builder(
                   itemCount: mapLogos.length,
+                  /*gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 5,
+                      mainAxisSpacing: 5,
+                    ),*/
                   itemBuilder: (context, index){
-                    return Container(
+                    return CardServiceInfo(
+                      nomeServico: mapLogos[index].keys.toString().replaceAll("(", "").replaceAll(")", ""),
+                      urlLogo: mapLogos[index].values.toString().replaceAll("(", "").replaceAll(")", ""),
+                    )
+                    /*Container(
                       padding: EdgeInsets.all(20),
                       width: width,
                       child: Row(
@@ -44,7 +54,8 @@ class _InfoLogoState extends State<InfoLogo> {
 
                         ],
                       ),
-                    );
+                    )*/
+                    ;
                   })
     );
   }
