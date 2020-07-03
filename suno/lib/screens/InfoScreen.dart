@@ -113,31 +113,7 @@ class InfoScreen extends StatelessWidget {
                 ),
               ),
 
-              Padding(
-                padding: EdgeInsets.only(
-                    left: width * 0.05, right: width * 0.05, bottom: 10),
-                child: GestureDetector(
-                  onTap: (){
-                    Navigator.push(context, MaterialPageRoute(
-                      builder: (context) => InfoLogo()
-                      ));
-                  },
-                  child: Container(
-                    width: width * 0.5,
-                    padding: EdgeInsets.only(bottom: 10, top: 10),
-                    decoration: BoxDecoration(                      
-                      border: Border.all(width: 1, color: Colors.deepPurple[300]),
-                      borderRadius: BorderRadius.circular(10)
-                    ),
-                    child: Center(
-                      child: Text(
-                  "Serviços Cadastrados",
-                  style: TextStyle(fontSize: width * 0.04,color: Colors.deepPurple[300]),
-                ),
-                    ),
-                  ),
-                ),
-              ),
+              
               Divider(
                 color: Colors.grey,
               ),
@@ -156,12 +132,12 @@ class InfoScreen extends StatelessWidget {
                   child: Container(
                     padding: EdgeInsets.only(bottom: 10, top: 10),
                     decoration: BoxDecoration(
-                        border: Border.all(width: 1, color: Colors.blue),
+                        border: Border.all(width: 1, color: Colors.deepPurple[300]),
                         borderRadius: BorderRadius.circular(10)),
                     child: Center(
                       child: Text(
                         "Conheça nossos apps !",
-                        style: TextStyle(color: Colors.blue),
+                        style: TextStyle(color: Colors.deepPurple[300]),
                       ),
                     ),
                   ),
