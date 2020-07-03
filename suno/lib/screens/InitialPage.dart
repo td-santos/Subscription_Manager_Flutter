@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:suno/screens/AllSubscribes.dart';
 import 'package:suno/screens/Home.dart';
 import 'package:suno/screens/InfoScreen.dart';
+import 'package:suno/screens/infoLogo.dart';
 import 'package:suno/widgets/AppDrawer.dart';
 
 class InitialPage extends StatefulWidget {
@@ -24,7 +25,8 @@ class _InitialPageState extends State<InitialPage> {
       Home(),  
       AllSubscribes()  ,  
       //Container(height: height,width: width,color: Colors.black,),
-      InfoScreen()
+      InfoScreen(),
+      InfoLogo()
       ];
     
     
@@ -82,6 +84,12 @@ class _InitialPageState extends State<InitialPage> {
           BottomNavigationBarItem(
             title: Text("info",),
             icon: selectedIcon!= 2 
+            ? Icon(FontAwesomeIcons.infoCircle,size: width * 0.06,)
+            : Icon(FontAwesomeIcons.infoCircle,size: width * 0.07,)
+          ),
+          BottomNavigationBarItem(
+            title: Text("services",),
+            icon: selectedIcon!= 3 
             ? Icon(FontAwesomeIcons.grinWink,size: width * 0.06,)
             : Icon(FontAwesomeIcons.grinWink,size: width * 0.07,)
           ),
