@@ -764,7 +764,7 @@ class _AddAssinaturaState extends State<AddAssinatura> {
       padding: EdgeInsets.all(25),
       child: Column(
         children: <Widget>[
-          Align(
+          /*Align(
             alignment: Alignment.centerRight,
             child: GestureDetector(
               onTap: () {
@@ -790,7 +790,7 @@ class _AddAssinaturaState extends State<AddAssinatura> {
           ),
           SizedBox(
             height: 20,
-          ),
+          ),*/
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
@@ -958,7 +958,7 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                     width: width * 0.1,
                     padding: EdgeInsets.all(5),
                     decoration: BoxDecoration(
-                        color: Colors.deepPurple[300],
+                        color: Colors.red[300],
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(
                           width: 0.3,
