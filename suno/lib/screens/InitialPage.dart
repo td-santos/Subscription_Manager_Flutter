@@ -24,9 +24,9 @@ class _InitialPageState extends State<InitialPage> {
     List<Widget> telas = [
       Home(),  
       AllSubscribes()  ,  
-      //Container(height: height,width: width,color: Colors.black,),
-      InfoScreen(),
-      InfoLogo()
+      //Container(height: height,width: width,color: Colors.black,),      
+      InfoLogo(),
+      InfoScreen()
       ];
     
     
@@ -81,17 +81,18 @@ class _InitialPageState extends State<InitialPage> {
             ? Icon(FontAwesomeIcons.clone,size: width * 0.06,)
             : Icon(FontAwesomeIcons.clone,size: width * 0.07,)
           ),
-          BottomNavigationBarItem(
-            title: Text("info",),
-            icon: selectedIcon!= 2 
-            ? Icon(FontAwesomeIcons.infoCircle,size: width * 0.06,)
-            : Icon(FontAwesomeIcons.infoCircle,size: width * 0.07,)
-          ),
+          
           BottomNavigationBarItem(
             title: Text("services",),
-            icon: selectedIcon!= 3 
+            icon: selectedIcon!= 2 
             ? Icon(FontAwesomeIcons.grinWink,size: width * 0.06,)
             : Icon(FontAwesomeIcons.grinWink,size: width * 0.07,)
+          ),
+          BottomNavigationBarItem(
+            title: Text("info",),
+            icon: selectedIcon!= 3 
+            ? Icon(FontAwesomeIcons.infoCircle,size: width * 0.06,)
+            : Icon(FontAwesomeIcons.infoCircle,size: width * 0.07,)
           ),
         ],
       ),
