@@ -557,7 +557,8 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        GestureDetector(
+                        
+                        /*GestureDetector(
                           onTap: () {
                             setState(() {
                               if (tamanhoTeclado == 0) {
@@ -572,7 +573,7 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                             valorTeclado.isEmpty ? "0,00" : "$valorTeclado",
                             style: TextStyle(fontSize: width * 0.07),
                           ),
-                        ),
+                        ),*/
                         /*Column(
                           children: <Widget>[
                             Container(
@@ -593,9 +594,22 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                         )*/
                       ],
                     ),
-                    Container(
+                    ExpansionTile(
+                      //backgroundColor: Colors.transparent,
+                          title: Text(
+                            //"${valueSlide.toStringAsFixed(2)}",
+                            valorTeclado.isEmpty ? "0,00" : "$valorTeclado",
+                            style: TextStyle(fontSize: width * 0.08,color: Colors.white),
+                          ),
+                          children: <Widget>[
+                            Container(
+                        //height: tamanhoTeclado,
+                        child: tecladoNum(width, height))
+                          ],
+                        ),
+                    /*Container(
                         height: tamanhoTeclado,
-                        child: tecladoNum(width, height)),
+                        child: tecladoNum(width, height)),*/
                     SizedBox(
                       height: 20,
                     ),
