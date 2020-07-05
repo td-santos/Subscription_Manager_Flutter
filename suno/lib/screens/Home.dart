@@ -30,7 +30,7 @@ class _HomeState extends State<Home> {
   //azulMarinho 0D3159
 
   var total;
-  var totalProxMes;
+  double totalProxMes;
   var formatMMyyyy = DateFormat("MM/yyyy");
   var dataAtual = new DateTime.now();
   String totalAssinaturas = "";
@@ -78,7 +78,7 @@ class _HomeState extends State<Home> {
   }
 
   String format(double n) {
-    return n.toStringAsFixed(n.truncateToDouble() == n ? 0 : 2);
+    return n.toStringAsFixed(n.truncateToDouble() == n ? 2 : 2).replaceAll(".", ",");
   }
 
   _allMovMes(String data) {
@@ -127,9 +127,9 @@ class _HomeState extends State<Home> {
       } else {
         setState(() {
           listaAssinaturas.clear();
-          total = 0;
+          total = 0.00;
           visibleFundo = true;
-          totalAssinaturas = total.toString();
+          totalAssinaturas = format(total);
         });
       }
     });
@@ -148,8 +148,8 @@ class _HomeState extends State<Home> {
       } else {
         setState(() {
           listaAssinaturasProxMes.clear();
-          totalProxMes = 0;
-          totalAssinaturasProxMes = totalProxMes.toString();
+          totalProxMes = 0.00;
+          totalAssinaturasProxMes = format(totalProxMes);
         });
       }
     });
