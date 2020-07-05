@@ -25,7 +25,7 @@ class CardServiceInfo extends StatelessWidget {
           title: Text(nomeServico,style: TextStyle(
             fontWeight: FontWeight.w600
           ),),
-          leading: Icon(FontAwesomeIcons.solidCircle,size: width * 0.04,color: Colors.limeAccent[400],),
+          leading: Icon(FontAwesomeIcons.solidCircle,size: width * 0.04,color: Colors.greenAccent[400],),
 
           children: <Widget>[
             Container(

@@ -111,9 +111,37 @@ class InfoScreen extends StatelessWidget {
                   "Aplicativo de gerenciamento financeiro focado em gestão de assinaturas contratadas.",
                   style: TextStyle(fontSize: width * 0.045,color: Colors.grey),
                 ),
+              ),              
+              Divider(
+                color: Colors.grey,
               ),
-
-              
+              Padding(
+                padding: EdgeInsets.only(
+                    left: width * 0.05,
+                    right: width * 0.05,
+                    top: 10,
+                    bottom: 5),
+                child: Text(
+                  "Suporte",
+                  style: TextStyle(fontSize: width * 0.03,color: Colors.blue),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(
+                    left: width * 0.05, right: width * 0.05, bottom: 10),
+                child: Text(
+                  "Caso possua algum serviço de assinatura que não está disponibilizado neste app, envie um email para:",
+                  style: TextStyle(fontSize: width * 0.045,color: Colors.grey),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(
+                    left: width * 0.05, right: width * 0.05, bottom: 10),
+                child: Text(
+                  "thiago_dantas411@hotmail.com",
+                  style: TextStyle(fontSize: width * 0.04,color: Colors.deepPurple[300],letterSpacing: 1),
+                ),
+              ),               
               Divider(
                 color: Colors.grey,
               ),
