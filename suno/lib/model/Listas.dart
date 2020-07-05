@@ -5,7 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 Map<int,Map<String,String>> mapLogos = {
   //0: "assets/netflix.png",
   
-  0: {"Spotify":"assets/spotify.jpg"},
+  0: {"Spotify":"assets/spotify.png"},
   1: {"Apple Music":"assets/apple_music.jpg"},
   2: {"Deezer":"assets/deezer.jpg"},
   3: {"Youtube Music":"assets/youtube_music.png"},
@@ -64,7 +64,7 @@ Map<int,Map<String,String>> mapLogos = {
   51:{"Kindle Unlimited":"assets/kindle_unlimited.jpg"},
   52:{"Google Gsuite":"assets/gsuite.jpg"},
   53:{"Trello":"assets/trello.png"},
-  54:{"Team Viewer":"assets/team_viewer.png"},
+  54:{"Team Viewer":"assets/team_viewer.jpg"},
 
   55:{"BlueHost":"assets/bluehost.jpg"},
   56:{"GoDaddy":"assets/godaddy.jpg"},
@@ -84,7 +84,7 @@ Map<int,String> mapLogoOutros ={
   4: "assets/kindle_unlimited.jpg",
   5: "assets/gsuite.jpg",
   6: "assets/trello.png",
-  7: "assets/team_viewer.png",
+  7: "assets/team_viewer.jpg",
 };
 
 Map<int,String> mapLogoHost ={
@@ -113,7 +113,7 @@ Map<int,String> mapLogoGames ={
 };
 
 Map<int,String> mapLogoMusic ={
-  0: "assets/spotify.jpg",
+  0: "assets/spotify.png",
   1: "assets/apple_music.jpg",
   2: "assets/deezer.jpg",
   3: "assets/youtube_music.png",

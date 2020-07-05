@@ -94,7 +94,10 @@ flutter:
     - assets/adobe_logo.png
     - assets/kindle_unlimited.jpg
     - assets/amazon_primevideo.jpg
-    - assets/spotify.jpg    
+    - assets/spotify.jpg
+    - assets/spotify2.jpg 
+    - assets/spotify3.jpg
+    - assets/spotify.png      
     - assets/zoom.jpeg
     - assets/apple_tv.jpg
     - assets/slack.jpg
@@ -126,6 +129,7 @@ flutter:
     - assets/vegas_pro.png
     - assets/trello.png
     - assets/team_viewer.png
+    - assets/team_viewer.jpg
     - assets/bluehost.jpg
     - assets/godaddy.jpg
     - assets/hostgator.png
