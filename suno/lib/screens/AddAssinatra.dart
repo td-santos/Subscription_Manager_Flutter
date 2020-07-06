@@ -21,7 +21,7 @@ class _AddAssinaturaState extends State<AddAssinatura> {
   double valueSlide;
   double valor;
   String valorTeclado = "";
-  String valorFomatado ="";
+  String valorFomatado = "";
   double tamanhoTeclado = 0;
   bool planB, planP, planPr, planF = false;
   bool recU, recM, recA = false;
@@ -49,7 +49,8 @@ class _AddAssinaturaState extends State<AddAssinatura> {
     dia = int.parse(format_dd.format(DateTime.now()));
     mes = int.parse(format_MM.format(DateTime.now()));
     ano = int.parse(format_yyyy.format(DateTime.now()));
-    valorFomatado = double.parse(valorTeclado.replaceAll(",", ".")).toStringAsFixed(2);
+    valorFomatado =
+        double.parse(valorTeclado.replaceAll(",", ".")).toStringAsFixed(2);
     print(valorFomatado);
     valor = double.parse(valorFomatado);
     //valor = double.parse(valueSlide.toStringAsFixed(2).toString());
@@ -164,24 +165,33 @@ class _AddAssinaturaState extends State<AddAssinatura> {
       setState(() {
         valorTeclado = valorTeclado.substring(0, valorTeclado.length - 1);
       });
-    }else if(textoTeclado == ","){
-        if(valorTeclado==""|| valorTeclado.contains(",")){
+    } else if (textoTeclado == ",") {
+      if (valorTeclado == "" || valorTeclado.contains(",")) {
+      } else {
+        setState(() {
+          valorTeclado = "$valorTeclado$textoTeclado";
+        });
+      }
+    } else {
+      var valSplit = valorTeclado.split(",");
 
-        }else{
+      if (valSplit.length > 1) {
+        String valor2 = "";
+        valor2 = valSplit[1];
+        if (valor2.length < 2) {
           setState(() {
-        valorTeclado = "$valorTeclado$textoTeclado";
-        });
+            valorTeclado = "$valorTeclado$textoTeclado";
+          });
         }
-    }else{
-      setState(() {
-        valorTeclado = "$valorTeclado$textoTeclado";
+        //print("SPLIT $valor2 -> ${valor2.length}" );
+      } else {
+        setState(() {
+          valorTeclado = "$valorTeclado$textoTeclado";
         });
-        print(valorTeclado.substring(0,valorTeclado.length -2));
+      }
+
+      //print(valorTeclado.substring(0,valorTeclado.length -2));
     }
-      
-        
-      
-    
   }
 
   @override
@@ -557,7 +567,6 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        
                         /*GestureDetector(
                           onTap: () {
                             setState(() {
@@ -596,17 +605,18 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                     ),
                     ExpansionTile(
                       //backgroundColor: Colors.transparent,
-                          title: Text(
-                            //"${valueSlide.toStringAsFixed(2)}",
-                            valorTeclado.isEmpty ? "0,00" : "$valorTeclado",
-                            style: TextStyle(fontSize: width * 0.08,color: Colors.white),
-                          ),
-                          children: <Widget>[
-                            Container(
-                        //height: tamanhoTeclado,
-                        child: tecladoNum(width, height))
-                          ],
-                        ),
+                      title: Text(
+                        //"${valueSlide.toStringAsFixed(2)}",
+                        valorTeclado.isEmpty ? "0,00" : "$valorTeclado",
+                        style: TextStyle(
+                            fontSize: width * 0.08, color: Colors.white),
+                      ),
+                      children: <Widget>[
+                        Container(
+                            //height: tamanhoTeclado,
+                            child: tecladoNum(width, height))
+                      ],
+                    ),
                     /*Container(
                         height: tamanhoTeclado,
                         child: tecladoNum(width, height)),*/
