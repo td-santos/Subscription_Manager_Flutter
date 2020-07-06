@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_vibrate/flutter_vibrate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:suno/controles/ControleBanco.dart';
@@ -161,13 +162,16 @@ class _AddAssinaturaState extends State<AddAssinatura> {
   }
 
   setValorTeclado(String textoTeclado) {
+    
     if (textoTeclado == "<") {
+      Vibrate.feedback(FeedbackType.light);
       setState(() {
         valorTeclado = valorTeclado.substring(0, valorTeclado.length - 1);
       });
     } else if (textoTeclado == ",") {
       if (valorTeclado == "" || valorTeclado.contains(",")) {
       } else {
+        Vibrate.feedback(FeedbackType.light);
         setState(() {
           valorTeclado = "$valorTeclado$textoTeclado";
         });
@@ -179,12 +183,14 @@ class _AddAssinaturaState extends State<AddAssinatura> {
         String valor2 = "";
         valor2 = valSplit[1];
         if (valor2.length < 2) {
+          Vibrate.feedback(FeedbackType.light);
           setState(() {
             valorTeclado = "$valorTeclado$textoTeclado";
           });
         }
         //print("SPLIT $valor2 -> ${valor2.length}" );
       } else {
+        Vibrate.feedback(FeedbackType.light);
         setState(() {
           valorTeclado = "$valorTeclado$textoTeclado";
         });
