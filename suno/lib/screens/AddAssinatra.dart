@@ -112,6 +112,7 @@ class _AddAssinaturaState extends State<AddAssinatura> {
     initialDate = DateTime.parse(format_DataPicker.format(convert));
     recorrencia = widget.assinatura.recorrencia;
     plano = widget.assinatura.plano;
+    metodoPG = widget.assinatura.metodoPG;
 
     if (widget.assinatura.recorrencia == "unica") {
       recU = true;
@@ -127,6 +128,8 @@ class _AddAssinaturaState extends State<AddAssinatura> {
       planP = true;
     } else if (widget.assinatura.plano == "Premium") {
       planPr = true;
+    }else if (widget.assinatura.plano == "Familia") {
+      planF = true;
     }
 
     if (widget.assinatura.metodoPG == "Crédito") {
@@ -343,6 +346,7 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                     planP = false;
                     planPr = false;
                     planB = true;
+                    planF = false;
                     plano = "Básico";
                   });
                 },
