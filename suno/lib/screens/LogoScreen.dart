@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:suno/model/Listas.dart';
 
 class LogoScreen extends StatefulWidget {
@@ -8,8 +7,7 @@ class LogoScreen extends StatefulWidget {
 }
 
 class _LogoScreenState extends State<LogoScreen> {
-  Color cinzaEscuro2 = Color(0xff2E3035);
-  Color cinzaEscuro = Color(0xff383844);
+  
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -34,17 +32,7 @@ class _LogoScreenState extends State<LogoScreen> {
           child: Container(
             padding: EdgeInsets.only(left: 20, right: 0, top: 30),
             width: width,
-            color: Colors.black.withAlpha(150),
-            /*decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [
-                    Colors.grey[900],
-                    Colors.grey[900],
-                    Colors.grey[850]
-                  ]),
-            ),*/
+            color: Colors.black.withAlpha(150),            
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
@@ -77,9 +65,7 @@ Widget _listagemLogosWidget(
         ),
       ),
       Container(
-        height: height,
-        //color: Colors.black,
-        //width: 400,
+        height: height,        
         child: GridView.builder(
           padding: EdgeInsets.all(10),
           itemCount: listaLogos.length,
@@ -95,16 +81,9 @@ Widget _listagemLogosWidget(
                 Navigator.pop(context, listaLogos[index]);
               },
               child: Container(
-
-                //height:  ,//40
-                //width: widthLogo ,
-                decoration: BoxDecoration(
-                    //color: Colors.blue[900],
-                    borderRadius: BorderRadius.circular(widthLogo *0.045),
-                    /*boxShadow: [
-                      BoxShadow(offset: Offset(-1, 1), blurRadius: 0,color: Colors.blue.withAlpha(90))
-                    ],*/
-                    ),
+                decoration: BoxDecoration(                    
+                    borderRadius: BorderRadius.circular(widthLogo *0.045),                    
+                ),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(widthLogo *0.045),
                   child: Image.asset(

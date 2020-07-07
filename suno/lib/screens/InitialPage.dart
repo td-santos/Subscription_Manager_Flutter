@@ -23,25 +23,21 @@ class _InitialPageState extends State<InitialPage> {
 
     List<Widget> telas = [
       Home(),  
-      AllSubscribes()  ,  
-      //Container(height: height,width: width,color: Colors.black,),      
+      AllSubscribes()  ,           
       InfoLogo(),
       InfoScreen()
-      ];
-    
+      ];    
     
     return Scaffold(
-      backgroundColor: Colors.black,
-      //appBar: AppBar(),
-      //drawer: AppDrawer(),
+      backgroundColor: Colors.black,      
       body: telas[selectedIcon],
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           border: Border.all(color: Colors.black,width: 2),
           borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(width * 0.08),
-          topRight: Radius.circular(width * 0.08),
-        ),
+            topLeft: Radius.circular(width * 0.08),
+            topRight: Radius.circular(width * 0.08),
+          ),
         ),
         
         child: ClipRRect(
@@ -49,22 +45,17 @@ class _InitialPageState extends State<InitialPage> {
           topLeft: Radius.circular(width * 0.08),
           topRight: Radius.circular(width * 0.08),
         ),
-          child: BottomNavigationBar(
-        //backgroundColor: Colors.black.withAlpha(180),
-        backgroundColor: Color.fromARGB(190, 20, 20, 20),
-        
-        type: BottomNavigationBarType.fixed,
-        //selectedItemColor: Colors.pink,
+          child: BottomNavigationBar(        
+        backgroundColor: Color.fromARGB(190, 20, 20, 20),        
+        type: BottomNavigationBarType.fixed,       
         selectedItemColor: Color.fromARGB(255, 217, 74, 122),
         unselectedItemColor: Colors.grey[700],
         selectedLabelStyle: TextStyle(fontSize: 0),
-        unselectedLabelStyle: TextStyle(fontSize: 0),
-        
+        unselectedLabelStyle: TextStyle(fontSize: 0),        
         currentIndex: selectedIcon,
         onTap: (index){
           setState(() {
-            selectedIcon = index;
-            
+            selectedIcon = index;            
           });
         },
         
@@ -100,9 +91,5 @@ class _InitialPageState extends State<InitialPage> {
       )
     );
   }
-
-  
-
-
 
 }

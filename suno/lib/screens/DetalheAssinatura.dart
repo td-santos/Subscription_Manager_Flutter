@@ -17,18 +17,8 @@ class DetalheAssinatura extends StatefulWidget {
   final String data;
 
   const DetalheAssinatura(
-      {Key key,
-      this.urlImage,
-      this.valor,
-      this.nome,
-      this.plano,
-      this.recorrencia,
-      this.nota,
-      this.metodoPG,
-      this.descricao,
-      this.data,
-      this.id, this.assinatura})
-      : super(key: key);
+      {Key key,this.urlImage,this.valor,this.nome,this.plano,this.recorrencia,
+      this.nota,this.metodoPG,this.descricao,this.data,this.id, this.assinatura}): super(key: key);
 
   @override
   _DetalheAssinaturaState createState() => _DetalheAssinaturaState();
@@ -43,7 +33,7 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
 
   @override
   Widget build(BuildContext context) {
-    Color cinzaEscuro2 = Color(0xff2E3035);
+    
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
@@ -84,8 +74,7 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
                     ));
                 },
                 child: Container(
-                  height: 25, width: 55,
-                  //padding: EdgeInsets.only(left: 16, right: 16, top: 4, bottom: 4),
+                  height: 25, width: 55,                  
                   decoration: BoxDecoration(
                       color: Colors.amber[700],
                       borderRadius: BorderRadius.circular(10)),
@@ -97,9 +86,7 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
                   ),
                 ),
               ),
-              Container(
-                width: 15,
-              )
+              Container(width: 15)
             ],
           )
         ],
@@ -107,23 +94,14 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
       body: SingleChildScrollView(
         physics: ClampingScrollPhysics(),
         child: Container(
-          color: Colors.black,
-          /*decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [Colors.grey[900], Colors.black],
-            ),
-          ),*/
+          color: Colors.black,          
           child: Padding(
             padding: EdgeInsets.only(left: 15, top: 15, right: 15),
             child: Container(
-              //height: height* 1.5,
               width: width,
               child: Column(
                 children: <Widget>[
-                  Container(
-                    
+                  Container(                    
                     width: width,
                     height: height * 0.2,
                     child: Hero(
@@ -156,8 +134,7 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
       width: width,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15), 
-          color:Colors.grey[900].withAlpha(150),
-          //color: Colors.grey[850],
+          color:Colors.grey[900].withAlpha(150),          
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -169,16 +146,13 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
               children: <Widget>[
                 Text("Assinatura: ",
                     style: TextStyle(color: Colors.white.withAlpha(80),fontSize: width * 0.033)),
-                Container(                  
-                  //color: Colors.purple,
+                Container(
                   width: width * 0.6,
                   child: Text(                      
                       widget.nome,overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.right,
                       style: TextStyle(fontSize: width * 0.04, color: Colors.orange[700]),
                     ),
-                  
-                  
                 )
               ],
             ),
@@ -241,8 +215,7 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
       width: width,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15), 
-          color: Colors.grey[900].withAlpha(150),
-          //color: Colors.grey[850]
+          color: Colors.grey[900].withAlpha(150),          
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -258,13 +231,12 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
                   width: width * 0.6,
                   child: widget.nota.isEmpty
                   ?Text("sem informação",textAlign: TextAlign.right,
-                  style: TextStyle(fontSize: width * 0.04, color: Colors.grey.withAlpha(80)),
+                    style: TextStyle(fontSize: width * 0.04, color: Colors.grey.withAlpha(80)),
                   )
-                   :ListTile(
+                  :ListTile(
                     contentPadding: EdgeInsets.all(0),
                     title: Text(
                       widget.nota,
-                      //overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.right,
                       style: TextStyle(fontSize: width * 0.04, color: Colors.orange[700]),
                     ),
@@ -291,11 +263,11 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
                       style: TextStyle(fontSize: width * 0.04, color: Colors.grey.withAlpha(80)),
                     )
                    :Text(widget.metodoPG,
-                          //overflow: TextOverflow.ellipsis,
-                          textAlign: TextAlign.right,
-                          style: TextStyle(
-                              fontSize: width * 0.04, color: Colors.orange[700])),
-                    )
+                      textAlign: TextAlign.right,
+                      style: TextStyle(
+                        fontSize: width * 0.04, color: Colors.orange[700]),
+                    ),
+                ),
               ],
             ),
           ),
@@ -311,21 +283,20 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
                 Text("Descrição: ",
                     style: TextStyle(color: Colors.white.withAlpha(80),fontSize: width * 0.033)),
                 Container(
-                    //color: Colors.blue,
                     alignment: Alignment.centerRight,
                     width: width * 0.6,
                     child: widget.descricao.isEmpty
                     ?Text("sem informação",textAlign: TextAlign.right,
                       style: TextStyle(fontSize: width * 0.04, color: Colors.grey.withAlpha(80)),
                     )
-                   :ListTile(
+                    :ListTile(
                       contentPadding: EdgeInsets.all(0),
                       title: Text(widget.descricao,
-                          //overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.right,
                           style: TextStyle(
                               fontSize: width * 0.04, color: Colors.orange[700])),
-                    )),
+                    ),
+                ),
               ],
             ),
           ),

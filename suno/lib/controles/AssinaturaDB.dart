@@ -63,8 +63,7 @@ class AssinaturaDB{
 
   Future<int> deleteAssinatura(int id)async{
     Database dbAssinatura = await db;
-    return await dbAssinatura.delete(assinaturaTABLE,
-      
+    return await dbAssinatura.delete(assinaturaTABLE,      
       where: "$idColumn =?",
       whereArgs: [id]
     );
@@ -84,23 +83,21 @@ class AssinaturaDB{
       +"OR($recorrenciaColumn ='anual' AND  $dataColumn LIKE '%/${dataDiaMes}/%')"
       );
     List<Assinatura> listAssinaturas = List();
-
     for(Map m in listMap){
       listAssinaturas.add(Assinatura.fromMap(m));
     }
+
     return listAssinaturas;
   }
 
   Future<List> getAllAssinaturas()async{
-
     Database dbAssinaturas = await db;
-    List listMap = await dbAssinaturas.rawQuery("SELECT * FROM $assinaturaTABLE");
-    
+    List listMap = await dbAssinaturas.rawQuery("SELECT * FROM $assinaturaTABLE");    
     List<Assinatura> listAssinaturas = List();
-
     for(Map m in listMap){
       listAssinaturas.add(Assinatura.fromMap(m));
     }
+
     return listAssinaturas;
   }
 

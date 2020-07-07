@@ -1,7 +1,4 @@
 
-import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 Map<int,Map<String,String>> mapLogos = {
   //0: "assets/netflix.png",
   
@@ -161,25 +158,4 @@ Map<int,String> mapLogoDesign ={
   5: "assets/dribbble.png",
   6: "assets/vegas_pro.png",
   7: "assets/wix.jpg",
-};
-
-
-Map<int, dynamic> mapIconLogos = {
-  0: FontAwesomeIcons.music, //music
-  1: FontAwesomeIcons.gamepad, //game
-  2: FontAwesomeIcons.boxOpen, //misteryBox ou cube
-  3: FontAwesomeIcons.bookOpen, //livros
-  4: FontAwesomeIcons.palette, //design
-  5: FontAwesomeIcons.tv, //tv cabo
-  6: FontAwesomeIcons.graduationCap, //educaçao
-  7: FontAwesomeIcons.utensils, //comida
-  8: Icons.cast, //stream video
-  9: FontAwesomeIcons.users, //social media
-  10: FontAwesomeIcons.stethoscope, //saude
-  11: FontAwesomeIcons.googlePlay, // apps
-  12: FontAwesomeIcons.cube,
-  13: FontAwesomeIcons.gem,
-  14: FontAwesomeIcons.question,
-  15: FontAwesomeIcons.rocketchat,
-  16: FontAwesomeIcons.wifi,
 };

@@ -3,7 +3,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:suno/controles/AssinaturaDB.dart';
-import 'package:suno/controles/ControleBanco.dart';
 import 'package:suno/model/Assinatura.dart';
 import 'package:suno/widgets/CardAssinatura.dart';
 import 'AddAssinatra.dart';
@@ -21,20 +20,18 @@ class _HomeState extends State<Home> {
   List<Assinatura> listaAssinaturas = List();
   List<Assinatura> listaAssinaturasProxMes = List();
   List<Assinatura> listaAssinaturasMesCorrente = List();
-  List<Assinatura> listaTeste = List();
+  //List<Assinatura> listaTeste = List();
   String userName = "";
   TextEditingController _controllerNomeUser = TextEditingController();
   
-  //azulMarinho 0D3159
-
   var total;
   double totalProxMes;
   var formatMMyyyy = DateFormat("MM/yyyy");
   var dataAtual = new DateTime.now();
   String totalAssinaturas = "";
   String totalAssinaturasProxMes = "";
-  ControleBanco cb = ControleBanco();
-  DateFormat format_dd = DateFormat("dd");
+  //ControleBanco cb = ControleBanco();
+  //DateFormat format_dd = DateFormat("dd");
   DateFormat format_MM = DateFormat("MM");
   DateFormat format_yyyy = DateFormat("yyyy");
   DateFormat format_Mes = DateFormat("MMMM", "pt_BR");
@@ -69,41 +66,39 @@ class _HomeState extends State<Home> {
     if(userName == null || userName.isEmpty){
       setState(() {
         userName = "Change Name Here";
-      });
-      
-    }
-    
+      });      
+    }    
   }
 
   String format(double n) {
     return n.toStringAsFixed(n.truncateToDouble() == n ? 2 : 2).replaceAll(".", ",");
   }
 
-  _allMovMes(String data) {
+  _allAssinaturasPorMes(String data) {
     assDB.getAllAssinaturasPorMes(data).then((list) {
-      //print(list);
+    
       listaAssinaturasMesCorrente.clear();
 
       if (list.isNotEmpty) {
         for (int i = 0; i < list.length; i++) {
           Assinatura ass = list[i];
-          int mesAss = int.parse(ass.data.substring(3, 5));
-          int mesParam = int.parse(data.substring(0, 2));
-          int anoAss = int.parse(ass.data.substring(6, 10));
-          int anoParam = int.parse(data.substring(3, 7));
+          int mesAssintura = int.parse(ass.data.substring(3, 5));
+          int mesParametro = int.parse(data.substring(0, 2));
+          int anoAssinatura = int.parse(ass.data.substring(6, 10));
+          int anoParametro = int.parse(data.substring(3, 7));
           //print("ASS DATA: ${ass.data.substring(3,5)}");
-          //  print("DATA: ${data.substring(0,2)}");
+          //print("DATA: ${data.substring(0,2)}");
           //print("ASS Ano: ${anoAss}");
           //print("DATA Ano: ${anoParam}");
 
           if (ass.recorrencia == 'mensal') {
-            if (mesAss <= mesParam) {
-              if (anoAss <= anoParam) {
+            if (mesAssintura <= mesParametro) {
+              if (anoAssinatura <= anoParametro) {
                 listaAssinaturasMesCorrente.add(ass);
               }
             }
-            if (mesAss >= mesParam) {
-              if (anoAss < anoParam) {
+            if (mesAssintura >= mesParametro) {
+              if (anoAssinatura < anoParametro) {
                 listaAssinaturasMesCorrente.remove(ass);
                 listaAssinaturasMesCorrente.add(ass);
               }
@@ -114,9 +109,8 @@ class _HomeState extends State<Home> {
           }
         }
         setState(() {
-          listaAssinaturas = listaAssinaturasMesCorrente;
+          listaAssinaturas = listaAssinaturasMesCorrente;        
           
-          //listaAssinaturas = list;
         });
 
         total =listaAssinaturas.map((item) => item.valor).reduce((a, b) => a + b);
@@ -133,7 +127,7 @@ class _HomeState extends State<Home> {
     });
   }
 
-  _allAssValor(String data) {
+  _allAssinaturasProxMesValor(String data) {
     assDB.getAllAssinaturasPorMes(data).then((list) {
       if (list.isNotEmpty) {
         setState(() {
@@ -224,6 +218,22 @@ class _HomeState extends State<Home> {
         });
   }
 
+  _calcProxMes(){
+    proximoMes = int.parse(format_MM.format(dataAtual)) + 1;
+    if (proximoMes > 12) {
+      proximoMes = 1;
+    }
+    if (proximoMes < 10) {
+      mesSeguinte =
+          format_Mes.format(DateTime.parse("2000-0${proximoMes}-01 11:11:11"));
+      _allAssinaturasProxMesValor("0$proximoMes/${format_yyyy.format(dataAtual)}");
+    } else {
+      mesSeguinte =
+          format_Mes.format(DateTime.parse("2000-${proximoMes}-01 11:11:11"));
+      _allAssinaturasProxMesValor("$proximoMes/${format_yyyy.format(dataAtual)}");
+    }
+  }
+  
   @override
   void initState()  {
     // TODO: implement initState
@@ -234,27 +244,15 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    proximoMes = int.parse(format_MM.format(dataAtual)) + 1;
-    if (proximoMes > 12) {
-      proximoMes = 1;
-    }
-    if (proximoMes < 10) {
-      mesSeguinte =
-          format_Mes.format(DateTime.parse("2000-0${proximoMes}-01 11:11:11"));
-      _allAssValor("0$proximoMes/${format_yyyy.format(dataAtual)}");
-    } else {
-      mesSeguinte =
-          format_Mes.format(DateTime.parse("2000-${proximoMes}-01 11:11:11"));
-      _allAssValor("$proximoMes/${format_yyyy.format(dataAtual)}");
-    }
+
+    _calcProxMes();
 
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
-    _allMovMes(formatMMyyyy.format(dataAtual));
+    _allAssinaturasPorMes(formatMMyyyy.format(dataAtual));
 
-    return Scaffold(
-      //backgroundColor: Colors.grey[900],
+    return Scaffold(      
       key: _scaffoldKey,
       appBar: AppBar(
         title: GestureDetector(
@@ -282,19 +280,16 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
-      //drawer: AppDrawer(),
+      
       body: Container(
         color: Colors.black,
         height: height,
         child: Column(
           children: <Widget>[
             Padding(
-              padding:
-                  EdgeInsets.only(left: 20, right: 20, top: 15, bottom: 10),
+              padding:EdgeInsets.only(left: 20, right: 20, top: 15, bottom: 10),
               child: Container(
-                padding:
-                    EdgeInsets.only(left: 10, right: 10, top: 15, bottom: 10),
-                //height: 100,
+                padding:EdgeInsets.only(left: 10, right: 10, top: 15, bottom: 10),                
                 width: width,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(width * 0.03),
@@ -372,8 +367,7 @@ class _HomeState extends State<Home> {
               ),
             ),
             Padding(
-              padding:
-                  EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 10),
+              padding:EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
@@ -393,16 +387,14 @@ class _HomeState extends State<Home> {
               ?Visibility(
                 visible: visibleFundo,
                 child: Opacity( 
-                opacity: 0.7,
-                child: Container(                
-                child: Center(
-                  //child: Image.asset("assets/fundo/fundo2.png",fit: BoxFit.cover,),
-                  //child: Icon(FontAwesomeIcons.cube,size: width * 0.5,color: Colors.grey[900], ),
-                  child: Icon(FontAwesomeIcons.buffer,size: width * 0.7,color: Colors.grey[900], ),
-                ),
-              ),
-              )
+                  opacity: 0.7,
+                  child: Container(                
+                    child: Center(                  
+                      child: Icon(FontAwesomeIcons.buffer,size: width * 0.7,color: Colors.grey[900], ),
+                    ),
+                  ),
                 )
+              )
               :ListView.builder(
                   padding: EdgeInsets.all(0),
                   itemCount: listaAssinaturas.length,
@@ -411,7 +403,8 @@ class _HomeState extends State<Home> {
                     return CardAssinatura(
                       assinatura: ass,                      
                     );
-                  }),
+                  }
+              ),
             )
           ],
         ),
