@@ -4,7 +4,7 @@ import 'package:suno/screens/AllSubscribes.dart';
 import 'package:suno/screens/Home.dart';
 import 'package:suno/screens/InfoScreen.dart';
 import 'package:suno/screens/infoLogo.dart';
-import 'package:suno/widgets/AppDrawer.dart';
+
 
 class InitialPage extends StatefulWidget {
   @override

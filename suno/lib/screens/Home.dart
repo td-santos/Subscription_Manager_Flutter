@@ -5,9 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:suno/controles/AssinaturaDB.dart';
 import 'package:suno/controles/ControleBanco.dart';
 import 'package:suno/model/Assinatura.dart';
-import 'package:suno/widgets/AppDrawer.dart';
 import 'package:suno/widgets/CardAssinatura.dart';
-import 'package:suno/widgets/CardItemList.dart';
 import 'AddAssinatra.dart';
 
 class Home extends StatefulWidget {

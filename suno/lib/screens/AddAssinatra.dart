@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:suno/controles/ControleBanco.dart';
 import 'package:suno/model/Assinatura.dart';
 import 'package:suno/widgets/ContainerOption.dart';
-import 'package:suno/widgets/DialogLogos.dart';
+
 
 import 'LogoScreen.dart';
 
@@ -82,20 +82,7 @@ class _AddAssinaturaState extends State<AddAssinatura> {
         id: id);
   }
 
-  showDialogLogos() {
-    showDialog(
-        context: context,
-        builder: (context) {
-          return DiaogLogos();
-        }).then((value) {
-      print(value);
-      Future.delayed(Duration(milliseconds: 300), () {
-        setState(() {
-          urlLogo = value;
-        });
-      });
-    });
-  }
+
 
   selectDate() async {
     final dataPicker = await showDatePicker(
