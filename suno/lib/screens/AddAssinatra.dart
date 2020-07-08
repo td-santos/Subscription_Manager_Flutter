@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:suno/controles/ControleBanco.dart';
 import 'package:suno/model/Assinatura.dart';
 import 'package:suno/widgets/ContainerOption.dart';
+import 'package:suno/widgets/TeclaTecladoNum.dart';
 import 'LogoScreen.dart';
 
 class AddAssinatura extends StatefulWidget {
@@ -632,6 +633,8 @@ class _AddAssinaturaState extends State<AddAssinatura> {
     );
   }
 
+
+
   Widget tecladoNum(double width, double height) {
     return Container(
       width: width,
@@ -645,37 +648,19 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                 onTap: () {
                   setValorTeclado("1");
                 },
-                child: Container(
-                    width: width * 0.1,
-                    padding: EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(width: 0.3, color: Colors.grey)),
-                    child: Center(child: Text("1"))),
+                child: TeclaTecladoNum(textoTecla: "1",),
               ),
               GestureDetector(
                 onTap: () {
                   setValorTeclado("2");
                 },
-                child: Container(
-                    width: width * 0.1,
-                    padding: EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(width: 0.3, color: Colors.grey)),
-                    child: Center(child: Text("2"))),
+                child: TeclaTecladoNum(textoTecla: "2",),
               ),
               GestureDetector(
                 onTap: () {
                   setValorTeclado("3");
                 },
-                child: Container(
-                    width: width * 0.1,
-                    padding: EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(width: 0.3, color: Colors.grey)),
-                    child: Center(child: Text("3"))),
+                child: TeclaTecladoNum(textoTecla: "3",),
               ),
             ],
           ),
@@ -687,37 +672,19 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                 onTap: () {
                   setValorTeclado("4");
                 },
-                child: Container(
-                    width: width * 0.1,
-                    padding: EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(width: 0.3, color: Colors.grey)),
-                    child: Center(child: Text("4"))),
+                child: TeclaTecladoNum(textoTecla: "4",),
               ),
               GestureDetector(
                 onTap: () {
                   setValorTeclado("5");
                 },
-                child: Container(
-                    width: width * 0.1,
-                    padding: EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(width: 0.3, color: Colors.grey)),
-                    child: Center(child: Text("5"))),
+                child: TeclaTecladoNum(textoTecla: "5",),
               ),
               GestureDetector(
                 onTap: () {
                   setValorTeclado("6");
                 },
-                child: Container(
-                    width: width * 0.1,
-                    padding: EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(width: 0.3, color: Colors.grey)),
-                    child: Center(child: Text("6"))),
+                child: TeclaTecladoNum(textoTecla: "6",),
               ),
             ],
           ),
@@ -729,37 +696,19 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                 onTap: () {
                   setValorTeclado("7");
                 },
-                child: Container(
-                    width: width * 0.1,
-                    padding: EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(width: 0.3, color: Colors.grey)),
-                    child: Center(child: Text("7"))),
+                child: TeclaTecladoNum(textoTecla: "7",),
               ),
               GestureDetector(
                 onTap: () {
                   setValorTeclado("8");
                 },
-                child: Container(
-                    width: width * 0.1,
-                    padding: EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(width: 0.3, color: Colors.grey)),
-                    child: Center(child: Text("8"))),
+                child: TeclaTecladoNum(textoTecla: "8",),
               ),
               GestureDetector(
                 onTap: () {
                   setValorTeclado("9");
                 },
-                child: Container(
-                    width: width * 0.1,
-                    padding: EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(width: 0.3, color: Colors.grey)),
-                    child: Center(child: Text("9"))),
+                child: TeclaTecladoNum(textoTecla: "9",),
               ),
             ],
           ),
@@ -771,40 +720,19 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                 onTap: () {
                   setValorTeclado("0");
                 },
-                child: Container(
-                    width: width * 0.1,
-                    padding: EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(width: 0.3, color: Colors.grey)),
-                    child: Center(child: Text("0"))),
+                child: TeclaTecladoNum(textoTecla: "0",),
               ),
               GestureDetector(
                 onTap: () {
                   setValorTeclado(",");
                 },
-                child: Container(
-                    width: width * 0.1,
-                    padding: EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(width: 0.3, color: Colors.grey)),
-                    child: Center(child: Text(","))),
+                child: TeclaTecladoNum(textoTecla: ",",),
               ),
               GestureDetector(
                 onTap: () {
                   setValorTeclado("<");
                 },
-                child: Container(
-                    width: width * 0.1,
-                    padding: EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                        color: Colors.red[300],
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(
-                          width: 0.3,
-                        )),
-                    child: Center(child: Text("<"))),
+                child: TeclaTecladoNum(textoTecla: "<",colorRed: true,),
               ),
             ],
           ),
