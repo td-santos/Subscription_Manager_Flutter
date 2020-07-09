@@ -141,6 +141,12 @@ flutter:
     - assets/fundo/fundobotao.png
     - assets/fundo/fundo.png
     - assets/fundo/fundo2.png
+    - assets/logo_music.jpg
+    - assets/logo_video.jpg
+    - assets/logo_game.jpg
+    - assets/logo_design.jpg
+    - assets/logo_armazenamento.jpg
+    - assets/logo_hospedagem.jpg
     
   #   - images/a_dot_ham.jpeg
 
