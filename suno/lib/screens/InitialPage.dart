@@ -14,23 +14,32 @@ class InitialPage extends StatefulWidget {
 class _InitialPageState extends State<InitialPage> {
 
   int selectedIcon = 0;
-  
+  var _pageController = PageController();
+  var telas = [
+      Home(),  
+      AllSubscribes()  ,           
+      InfoLogo(),
+      InfoScreen()
+      ];  
   @override
   Widget build(BuildContext context) {
     
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
-    List<Widget> telas = [
-      Home(),  
-      AllSubscribes()  ,           
-      InfoLogo(),
-      InfoScreen()
-      ];    
+      
     
     return Scaffold(
       backgroundColor: Colors.black,      
-      body: telas[selectedIcon],
+      body: PageView(
+        children: telas,
+        controller: _pageController,
+        onPageChanged: (index){
+          setState(() {
+            selectedIcon = index;
+          });
+        },
+      ),//telas[selectedIcon],
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           border: Border.all(color: Colors.black,width: 2),
@@ -55,7 +64,8 @@ class _InitialPageState extends State<InitialPage> {
         currentIndex: selectedIcon,
         onTap: (index){
           setState(() {
-            selectedIcon = index;            
+            selectedIcon = index; 
+            _pageController.jumpToPage(selectedIcon) ;
           });
         },
         
