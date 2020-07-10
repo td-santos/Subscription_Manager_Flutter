@@ -206,6 +206,7 @@ class _AddAssinaturaState extends State<AddAssinatura> {
 
     return Scaffold(
       appBar: AppBar(
+        title: Text("Add",style: TextStyle(color: Colors.grey),),
         elevation: 0,
         backgroundColor: Colors.black,
         actions: <Widget>[

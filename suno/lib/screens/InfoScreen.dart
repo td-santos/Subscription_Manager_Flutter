@@ -32,8 +32,9 @@ class InfoScreen extends StatelessWidget {
           child: Text(
             "Info",
             style: TextStyle(
-              fontSize: width * 0.07,
-              fontWeight: FontWeight.w200,
+              color: Colors.grey
+              //fontSize: width * 0.07,
+              //fontWeight: FontWeight.w200,
             ),
           ),
         ),

@@ -259,7 +259,7 @@ class _HomeState extends State<Home> {
             onTap: () {
               showDialogName(width);
             },
-            child: Text("$userName")),
+            child: Text("$userName",style: TextStyle(color: Colors.blue[300]),)),
         elevation: 0,
         backgroundColor: Colors.black,
         centerTitle: false,

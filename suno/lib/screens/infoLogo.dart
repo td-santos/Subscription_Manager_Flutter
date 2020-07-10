@@ -21,10 +21,11 @@ class _InfoLogoState extends State<InfoLogo> {
           title: Padding(
             padding: EdgeInsets.only(left: 5),
             child: Text(
-              "Serviços disponibilizados",
+              "Serviços",
               style: TextStyle(
-                fontSize: width * 0.05,
-                fontWeight: FontWeight.w200,
+                //fontSize: width * 0.05,
+                color: Colors.grey
+                //fontWeight: FontWeight.w200,
               ),
             ),
           ),

@@ -22,8 +22,9 @@ class _LogoScreenState extends State<LogoScreen> {
             "Logos",
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontSize: width * 0.07,
-              fontWeight: FontWeight.w200,
+              color: Colors.grey
+              //fontSize: width * 0.07,
+              //fontWeight: FontWeight.w200,
             ),
           ),
         ),
