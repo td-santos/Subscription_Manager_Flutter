@@ -515,28 +515,16 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                               fontSize: width * 0.033,
                               color: Colors.white.withAlpha(80)),
                         ),
-                        Row(
-                          children: <Widget>[
-                            Text(
-                              dataInicioPG,
-                              style: TextStyle(
-                                  fontSize: width * 0.04, //17,
-                                  color: Colors.white.withAlpha(170),
-                                  fontWeight: FontWeight.w600),
-                            ),
-                            SizedBox(width: 15),
-                            GestureDetector(
-                              onTap: () {
-                                selectDate();
-                              },
-                              child: Icon(
-                                FontAwesomeIcons.calendarAlt,
-                                size: width * 0.05,                                
-                                color: Colors.white.withAlpha(170),
-                              ),
-                            )
-                          ],
-                        )
+                        GestureDetector(
+                          onTap: () => selectDate(),
+                            child: Text(
+                                dataInicioPG,
+                                style: TextStyle(
+                                    fontSize: width * 0.04, //17,
+                                    color: Colors.white.withAlpha(170),
+                                    fontWeight: FontWeight.w600),
+                              ),      
+                        ),                        
                       ],
                     ),
                   ],
