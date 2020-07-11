@@ -90,6 +90,7 @@ class _AddAssinaturaState extends State<AddAssinatura> {
           data: ThemeData.dark().copyWith(
             colorScheme: ColorScheme.dark(
               primary: Colors.deepPurple[300],
+              surface: Color(0xff201B2E)
             ),
             accentColor: Colors.black,            
             textSelectionColor: Colors.transparent,
