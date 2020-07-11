@@ -83,6 +83,21 @@ class _AddAssinaturaState extends State<AddAssinatura> {
     final dataPicker = await showDatePicker(
       locale: Locale("pt", "BR"),
       context: context,
+      helpText: "Data do Cadastro",
+          
+      builder: (context,child){
+        return Theme(
+          data: ThemeData.dark().copyWith(
+            colorScheme: ColorScheme.dark(
+              primary: Colors.deepPurple[300],
+            ),
+            accentColor: Colors.black,            
+            textSelectionColor: Colors.transparent,
+            dialogBackgroundColor: Colors.grey[900]
+            
+          ),          
+          child: child);
+      },
       initialDate: initialDate, //DateTime.now(),
       firstDate: DateTime(2000),
       lastDate: DateTime(3000),
