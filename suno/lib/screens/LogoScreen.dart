@@ -1,5 +1,8 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:suno/model/Listas.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class LogoScreen extends StatefulWidget {
   @override
@@ -87,8 +90,11 @@ Widget _listagemLogosWidget(
                 ),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(widthLogo *0.045),
-                  child: Image.asset(
-                    listaLogos[index],
+                  child: FadeInImage(
+                    //fadeInDuration: Duration(milliseconds: 600),
+                    fadeOutDuration: Duration(milliseconds: 200),
+                    image:AssetImage(listaLogos[index]),
+                    placeholder: AssetImage(""),
                     fit: BoxFit.cover,
                   ),
                 ),

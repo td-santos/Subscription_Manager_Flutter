@@ -35,7 +35,7 @@ dependencies:
   url_launcher: ^5.4.10
   shared_preferences: ^0.5.7+3
   flutter_vibrate: ^1.0.0
-  
+  transparent_image: ^1.0.0
 
 dev_dependencies:
   flutter_test:
