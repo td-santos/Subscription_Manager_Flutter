@@ -222,6 +222,7 @@ class _AddAssinaturaState extends State<AddAssinatura> {
 
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text("Add",style: TextStyle(color: Colors.grey),),
         elevation: 0,
         backgroundColor: Colors.black,

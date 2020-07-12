@@ -266,13 +266,20 @@ class _HomeState extends State<Home> {
         actions: <Widget>[
           Row(
             children: <Widget>[
-              GestureDetector(
+              IconButton(
+                icon: Icon(Icons.add), 
+                onPressed: (){
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => AddAssinatura()));
+                }
+                ),
+              /*GestureDetector(
                 onTap: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => AddAssinatura()));
                 },
                 child: Icon(Icons.add),
-              ),
+              ),*/
               Container(
                 width: 15,
               )
