@@ -73,6 +73,15 @@ Map<int,Map<String,String>> mapLogos = {
   //:{"":""},
 };
 
+Map<int,String> mapLogoPadrao ={
+  0: "assets/logo_music.jpg",
+  1: "assets/logo_video.jpg",
+  2: "assets/logo_game.jpg",
+  3: "assets/logo_design.jpg",
+  4: "assets/logo_armazenamento.jpg",
+  5: "assets/logo_hospedagem.jpg",
+};
+
 Map<int,String> mapLogoOutros ={
   0: "assets/office.jpg",
   1: "assets/slack.jpg",

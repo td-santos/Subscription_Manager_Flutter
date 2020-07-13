@@ -40,6 +40,7 @@ class _LogoScreenState extends State<LogoScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
+                _listagemLogosWidget(width * 0.05, width * 0.4, width, "Ícones padrões", mapLogoPadrao),
                 _listagemLogosWidget(width * 0.05, width * 0.6, width, "Music", mapLogoMusic),
                 _listagemLogosWidget(width * 0.05, width * 0.6, width, "Stream Video", mapLogoVideo),
                 _listagemLogosWidget(width * 0.05, width * 0.6, width, "Games", mapLogoGames),
