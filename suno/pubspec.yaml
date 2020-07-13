@@ -147,6 +147,10 @@ flutter:
     - assets/logo_design.jpg
     - assets/logo_armazenamento.jpg
     - assets/logo_hospedagem.jpg
+    - assets/logo_book.jpg
+    - assets/logo_box.jpg
+    - assets/logo_eng.jpg
+    - assets/logo_saude.jpg
     
   #   - images/a_dot_ham.jpeg
 

@@ -80,6 +80,10 @@ Map<int,String> mapLogoPadrao ={
   3: "assets/logo_design.jpg",
   4: "assets/logo_armazenamento.jpg",
   5: "assets/logo_hospedagem.jpg",
+  6: "assets/logo_book.jpg",
+  7: "assets/logo_eng.jpg",
+  8: "assets/logo_box.jpg",
+  9: "assets/logo_saude.jpg",
 };
 
 Map<int,String> mapLogoOutros ={
