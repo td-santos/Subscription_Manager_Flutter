@@ -44,6 +44,7 @@ class _LogoScreenState extends State<LogoScreen> {
                 _listagemLogosWidget(width * 0.05, width * 0.6, width, "Music", mapLogoMusic),
                 _listagemLogosWidget(width * 0.05, width * 0.6, width, "Stream Video", mapLogoVideo),
                 _listagemLogosWidget(width * 0.05, width * 0.6, width, "Games", mapLogoGames),
+                _listagemLogosWidget(width * 0.05, width * 0.4, width, "Planos de Saúde", mapLogoSaude),
                 _listagemLogosWidget(width * 0.05, width * 0.3, width, "Armazenamento", mapLogoDrive),
                 _listagemLogosWidget(width * 0.05, width * 0.4, width, "Design", mapLogoDesign),
                 _listagemLogosWidget(width * 0.05, width * 0.4, width, "Outros", mapLogoOutros),

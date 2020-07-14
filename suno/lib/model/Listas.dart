@@ -86,6 +86,19 @@ Map<int,String> mapLogoPadrao ={
   9: "assets/logo_saude.jpg",
 };
 
+Map<int,String> mapLogoSaude ={
+  0: "assets/amil.jpg",
+  1: "assets/assim.jpg",
+  2: "assets/biosaude.jpg",
+  3: "assets/bradesco_saude.jpg",
+  4: "assets/golden_cross.jpg",
+  5: "assets/interclinicas.jpg",
+  6: "assets/intermedica.jpg",
+  7: "assets/porto_seguro_saude.jpg",
+  8: "assets/sulamerica_saude.jpg",
+  9: "assets/unimed.jpg",
+};
+
 Map<int,String> mapLogoOutros ={
   0: "assets/office.jpg",
   1: "assets/slack.jpg",

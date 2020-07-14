@@ -151,6 +151,16 @@ flutter:
     - assets/logo_box.jpg
     - assets/logo_eng.jpg
     - assets/logo_saude.jpg
+    - assets/amil.jpg
+    - assets/assim.jpg
+    - assets/bradesco_saude.jpg
+    - assets/biosaude.jpg
+    - assets/golden_cross.jpg
+    - assets/interclinicas.jpg
+    - assets/intermedica.jpg
+    - assets/porto_seguro_saude.jpg
+    - assets/sulamerica_saude.jpg
+    - assets/unimed.jpg
     
   #   - images/a_dot_ham.jpeg
 
