@@ -70,6 +70,17 @@ Map<int,Map<String,String>> mapLogos = {
   59:{"KingHost":"assets/kinghost.jpg"},
   60:{"LocaWeb":"assets/locaweb.png"},
   61:{"WebLink":"assets/weblink.png"},
+
+  62:{"Amil":"assets/amil.jpg"},
+  63:{"Assim":"assets/assim.jpg"},
+  64:{"Biosaude":"assets/biosaude.jpg"},
+  65:{"Bradesco Saude":"assets/bradesco_saude.jpg"},
+  66:{"Golden Cross":"assets/golden_cross.jpg"},
+  67:{"Interclinicas":"assets/interclinicas.jpg"},
+  68:{"Intermedica":"assets/intermedica.jpg"},
+  69:{"Porto Seguro Saude":"assets/porto_seguro_saude.jpg"},
+  70:{"Sulamerica":"assets/sulamerica_saude.jpg"},
+  71:{"Unimed":"assets/unimed.jpg"},
   //:{"":""},
 };
 
