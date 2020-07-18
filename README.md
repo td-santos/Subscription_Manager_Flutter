@@ -7,9 +7,9 @@ Em construção
  ## Video Demonstrativo -> [Clique aqui](https://youtu.be/KplxbhvhmD8)
  
 
- 
- 
-<br><br>
+<br>
+
+ ## Screens
 
 <div align="left"> 
  
@@ -33,3 +33,25 @@ Em construção
  <img  width="150" height="300" src="suno/prints/print_9.png"><span style="padding-left:2px"></span>
  
 </div>
+
+<br>
+
+ ## O App aborda:
+
+    • UI própria
+  
+    • Widgets customizados (ex: Teclado numérico)
+    
+    • SharedPreferences
+  
+    • SqFlite (persistência de dados)
+  
+    • Lógica para lançamentos únicos, mensais e anuais.
+    
+    • Cálculo de gastos para o mês atual e o mês seguinte.
+    
+    • Hero Animation
+    
+    • Splash Screen
+    
+    
