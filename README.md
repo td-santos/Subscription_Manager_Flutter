@@ -5,7 +5,7 @@ podendo ser pagamento único, mensal ou anual. Também pode-se categorizar por t
 
 Assim o usuário terá um conrole sobre o valor, a recorrência e o tipo de plano contratado logo na tela inicial do app(imagem 2).
 
-
+<br>
 
  ## Video Demonstrativo -> [Clique aqui](https://youtu.be/KplxbhvhmD8)
  
