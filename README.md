@@ -10,25 +10,26 @@ Em construção
  
  
 <br><br>
+
 <div align="left"> 
  
- <img  width="200" height="400" src="suno/prints/print_0.png"><span style="padding-left:2px"></span>  
- <img  width="200" height="400" src="suno/prints/print_1.png"><span style="padding-left:2px"></span>
- <img  width="200" height="400" src="suno/prints/print_2.png"><span style="padding-left:2px"></span>
- <img  width="200" height="400" src="suno/prints/print_3.png"><span style="padding-left:2px"></span>  
- <img  width="200" height="400" src="suno/prints/print_4.png"><span style="padding-left:2px"></span>
- <img  width="200" height="400" src="suno/prints/print_5.png"><span style="padding-left:2px"></span>
- 
+ <img  width="150" height="300" src="suno/prints/print_0.png">
+ <img  width="150" height="300" src="suno/prints/print_1.png">
+ <img  width="150" height="300" src="suno/prints/print_2.png">
+ <img  width="150" height="300" src="suno/prints/print_3.png">
+ <img  width="150" height="300" src="suno/prints/print_4.png">
  
 </div>
 
-<br>
+<br><br>
  
 <div align="left">
  
- <img  width="200" height="400" src="suno/prints/print_6.png"><span style="padding-left:2px"></span>
- <img  width="200" height="400" src="suno/prints/print_7.png"><span style="padding-left:2px"></span>
- <img  width="200" height="400" src="suno/prints/print_8.png"><span style="padding-left:2px"></span>
- <img  width="200" height="400" src="suno/prints/print_9.png"><span style="padding-left:2px"></span>
+ 
+ <img  width="150" height="300" src="suno/prints/print_5.png"> 
+ <img  width="150" height="300" src="suno/prints/print_6.png">
+ <img  width="150" height="300" src="suno/prints/print_7.png">
+ <img  width="150" height="300" src="suno/prints/print_8.png">
+ <img  width="150" height="300" src="suno/prints/print_9.png">
  
 </div>
