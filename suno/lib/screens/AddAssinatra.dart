@@ -294,7 +294,7 @@ class _AddAssinaturaState extends State<AddAssinatura> {
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
                       contentPadding: EdgeInsets.all(width * 0.04),
-                      hintText: "Assinatura",
+                      hintText: "Serviço",
                       hintStyle: TextStyle(fontSize: width * 0.033),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(width * 0.04),

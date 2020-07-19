@@ -144,7 +144,7 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text("Assinatura: ",
+                Text("Serviço: ",
                     style: TextStyle(color: Colors.white.withAlpha(80),fontSize: width * 0.033)),
                 Container(
                   width: width * 0.6,
@@ -309,7 +309,7 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text("Data PG: ",
+                Text("Data primeiro pg: ",
                     style: TextStyle(color: Colors.white.withAlpha(80),fontSize: width * 0.033)),
                 Text(widget.data,
                     style: TextStyle(fontSize: width * 0.04, color: Colors.orange[700])),

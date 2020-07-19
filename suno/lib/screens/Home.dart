@@ -43,7 +43,7 @@ class _HomeState extends State<Home> {
 
   salvarNamePrefs(String name) async {    
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString("userName", "Hi, $name");
+    await prefs.setString("userName", "Olá, $name");
     
     setState(() {
       userName = name;
@@ -65,7 +65,7 @@ class _HomeState extends State<Home> {
 
     if(userName == null || userName.isEmpty){
       setState(() {
-        userName = "Change Name Here";
+        userName = "Olá, qual o seu nome?";
       });      
     }    
   }
@@ -163,7 +163,7 @@ class _HomeState extends State<Home> {
                 children: <Widget>[
                   Padding(
                     padding: EdgeInsets.only(top: width * 0.04, left:width * 0.03, right: width * 0.03),
-                    child: Text("Ei, qual o seu nome?"),
+                    child: Text("Nos diga seu nome !"),
                   ),
                   Padding(
                     padding: EdgeInsets.all(width * 0.03),
