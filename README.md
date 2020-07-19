@@ -7,7 +7,8 @@ Assim o usuário terá um conrole sobre o valor, a recorrência e o tipo de plan
 
 <br>
 
- ## Video Demonstrativo -> [Clique aqui](https://youtu.be/KplxbhvhmD8)
+ ### Video Apresentação -> [Clique aqui](https://youtu.be/KplxbhvhmD8)
+ ### Video Demonstrativo -> [Clique aqui](https://youtu.be/W5Opl8kqHBI)
  
 
 <br>
