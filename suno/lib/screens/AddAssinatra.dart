@@ -151,11 +151,11 @@ class _AddAssinaturaState extends State<AddAssinatura> {
 
     if (widget.assinatura.metodoPG == "Crédito") {
       metCred = true;
-    } else if (widget.assinatura.plano == "Débito") {
+    } else if (widget.assinatura.metodoPG == "Débito") {
       metDeb = true;
-    } else if (widget.assinatura.plano == "Boleto") {
+    } else if (widget.assinatura.metodoPG == "Boleto") {
       metBol = true;
-    } else if (widget.assinatura.plano == "Outro") {
+    } else if (widget.assinatura.metodoPG == "Outro") {
       metOutro = true;
     }
   }
@@ -212,6 +212,9 @@ class _AddAssinaturaState extends State<AddAssinatura> {
       edit = false;
       saveEdit = "Save";
     }
+
+    print("pg: $metDeb, $metCred, $metBol, $metOutro");
+    print("rec: $recU, $recM, $recA");
     
   }
 
