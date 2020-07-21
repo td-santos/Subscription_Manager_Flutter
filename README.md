@@ -1,13 +1,14 @@
 # Suno - Gestor de Assinaturas
  
-App pensado para ter uma UI amigável e convidativa, com o intuito de fornecer um maior controle sobre os serviços de assinaturas mais utilizados,
+Aplicativo pensado para ter uma UI amigável e convidativa, com o intuito de fornecer um maior controle sobre os serviços de assinaturas mais utilizados,
 podendo ser pagamento único, mensal ou anual. Também pode-se categorizar por tipo de plano (básico, padrão, premium e família).
 
-Assim o usuário terá um conrole sobre o valor, a recorrência e o tipo de plano contratado logo na tela inicial do app(imagem 2).
+Assim o usuário terá um controle sobre o valor, a recorrência e o tipo de plano contratado logo na tela inicial do app(imagem 2).
 
 <br>
 
- ## Video Demonstrativo -> [Clique aqui](https://youtu.be/KplxbhvhmD8)
+ ### Video Apresentação -> [Clique aqui](https://youtu.be/KplxbhvhmD8)
+ ### Video Demonstrativo -> [Clique aqui](https://youtu.be/W5Opl8kqHBI)
  
 
 <br>
