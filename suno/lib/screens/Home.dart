@@ -20,7 +20,6 @@ class _HomeState extends State<Home> {
   List<Assinatura> listaAssinaturas = List();
   List<Assinatura> listaAssinaturasProxMes = List();
   List<Assinatura> listaAssinaturasMesCorrente = List();
-  //List<Assinatura> listaTeste = List();
   String userName = "";
   TextEditingController _controllerNomeUser = TextEditingController();
   
@@ -29,9 +28,7 @@ class _HomeState extends State<Home> {
   var formatMMyyyy = DateFormat("MM/yyyy");
   var dataAtual = new DateTime.now();
   String totalAssinaturas = "";
-  String totalAssinaturasProxMes = "";
-  //ControleBanco cb = ControleBanco();
-  //DateFormat format_dd = DateFormat("dd");
+  String totalAssinaturasProxMes = "";  
   DateFormat format_MM = DateFormat("MM");
   DateFormat format_yyyy = DateFormat("yyyy");
   DateFormat format_Mes = DateFormat("MMMM", "pt_BR");
@@ -273,13 +270,7 @@ class _HomeState extends State<Home> {
                       MaterialPageRoute(builder: (context) => AddAssinatura()));
                 }
                 ),
-              /*GestureDetector(
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => AddAssinatura()));
-                },
-                child: Icon(Icons.add),
-              ),*/
+              
               Container(
                 width: 15,
               )

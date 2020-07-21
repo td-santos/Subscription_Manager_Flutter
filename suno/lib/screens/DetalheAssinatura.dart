@@ -51,7 +51,6 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
                 },
                 child: Container(
                   height: 25, width: 65,
-                  //padding: EdgeInsets.only(left: 16, right: 16, top: 4, bottom: 4),
                   decoration: BoxDecoration(
                       color: Colors.red[700],
                       borderRadius: BorderRadius.circular(10)),
@@ -63,12 +62,9 @@ class _DetalheAssinaturaState extends State<DetalheAssinatura> {
                   ),
                 ),
               ),
-              SizedBox(
-                width: 10,
-              ),
+              SizedBox(width: 10),
               GestureDetector(
-                onTap: () {
-                  
+                onTap: () {                  
                   Navigator.pushReplacement(context, MaterialPageRoute(
                     builder: (context)=> AddAssinatura(assinatura: widget.assinatura)
                     ));
