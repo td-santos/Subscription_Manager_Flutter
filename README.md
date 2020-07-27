@@ -5,15 +5,26 @@ podendo ser pagamento único, mensal ou anual. Também pode-se categorizar por t
 
 Assim o usuário terá um controle sobre o valor, a recorrência e o tipo de plano contratado logo na tela inicial do app(imagem 2).
 
-<br>
+ <br>
+ 
+ |[Video apresentação](https://youtu.be/KplxbhvhmD8)|[Video Demonstrativo](https://youtu.be/W5Opl8kqHBI)|
+ |:-:|:-:|
+ 
 
- ### Video Apresentação -> [Clique aqui](https://youtu.be/KplxbhvhmD8)
- ### Video Demonstrativo -> [Clique aqui](https://youtu.be/W5Opl8kqHBI)
- </br>
  
  ### Download Play Google -> [Clique aqui](https://play.google.com/store/apps/details?id=com.dantas.thiago.suno)
  
+ <br>
+ 
+<div align="left"> 
+ 
+ |Adicionar|Item Detalhe|Inserir Nome|Telas NavBar|
+ |:-:|:-:|:-:|:-:|
+ |![Gif 1](suno/prints/gif_1.gif)|![Gif 1](suno/prints/gif_4.gif)|![Gif 1](suno/prints/gif_2.gif)|![Gif 1](suno/prints/gif_3.gif)|
 
+
+
+</div>
 <br>
 
  ## Screens
