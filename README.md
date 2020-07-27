@@ -7,12 +7,9 @@ Assim o usuário terá um controle sobre o valor, a recorrência e o tipo de pla
 
  <br>
  
- |[Video apresentação](https://youtu.be/KplxbhvhmD8)|[Video Demonstrativo](https://youtu.be/W5Opl8kqHBI)|
- |:-:|:-:|
- 
+ |[Video apresentação](https://youtu.be/KplxbhvhmD8)|[Video Demonstrativo](https://youtu.be/W5Opl8kqHBI)| Download Play Google : [Download](https://play.google.com/store/apps/details?id=com.dantas.thiago.suno)|
+ |:-:|:-:|:-:|
 
- 
- ### Download Play Google -> [Clique aqui](https://play.google.com/store/apps/details?id=com.dantas.thiago.suno)
  
  <br>
  
@@ -27,7 +24,7 @@ Assim o usuário terá um controle sobre o valor, a recorrência e o tipo de pla
 </div>
 <br>
 
- ## Screens
+ ## Telas
 
 <div align="left"> 
  
