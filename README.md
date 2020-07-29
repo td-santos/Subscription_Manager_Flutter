@@ -69,4 +69,6 @@ Assim o usuário terá um controle sobre o valor, a recorrência e o tipo de pla
     
     • Splash Screen
     
+    • Custom NavBar
+    
     
